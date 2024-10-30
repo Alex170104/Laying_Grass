@@ -1,0 +1,3 @@
+C:/Users/alexd/CLionProjects/Laying Grass/cmake-build-debug/CMakeFiles/Laying_Grass.dir
+C:/Users/alexd/CLionProjects/Laying Grass/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/alexd/CLionProjects/Laying Grass/cmake-build-debug/CMakeFiles/rebuild_cache.dir
