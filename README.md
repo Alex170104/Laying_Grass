@@ -16,4 +16,4 @@
 ### Étapes
 1. Clonez le dépôt :
    ```bash
-   [git clone https://github.com/votre-compte/Laying-Grass.git](https://github.com/Alex170104/Laying_Grass.git)
+   https://github.com/Alex170104/Laying_Grass.git
