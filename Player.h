@@ -13,7 +13,7 @@ class Player {
 public:
     string name;
     string color;
-    int tileX, tileY; // Coordonnées du tile de départ
+    int tileX, tileY; // Coordonnées de la tuile de départ
     int tileCoupons;
 
     Player(const string& playerName, const string& playerColor);
