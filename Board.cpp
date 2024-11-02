@@ -1,27 +1,25 @@
 #include "Board.h"
-#include <vector>
+#include <iostream>
 
 using namespace std;
 
 Board::Board(int nbPlayer) {
-    int size;
-    int vector<vector<int>> grid;
-
-    if (2 =< nbPlayer < 5){
+    if (2 <= nbPlayer && nbPlayer <= 4){
         size = 20;
     }
-    else{
+    else if (5 <= nbPlayer && nbPlayer <= 9){
         size = 30;
     }
-    grid = vector<vector<int>>(size, vector<int>(size, 0));
 
-    for(int i = 0; i < size; i++){
-        for(int j = 0; j < size; j++){
-            grid[i][j] = 0;
+    // Initialize the board
+    board.resize(size, vector<Case>(size, Case(0, 0, 0, 0)));
+}
+
+void Board::printBoard() const {
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            cout << board[i][j].caseColor() << " ";
         }
+        cout << endl;
     }
-
-
-
-
 }

@@ -21,12 +21,14 @@ public:
     int getType() const { return type; }
     void setType(int value) { type = value; }
 
+    string caseColor() const;
+
 protected:
     int x;
     int y;
     int casePlayer = 0;
     int type = 0;
-    string caseColor();
+
 };
 
 
