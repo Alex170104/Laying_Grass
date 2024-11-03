@@ -1,11 +1,7 @@
-#include <string>
 #include "Case.h"
 #include "raylib.h"
 
-
 Case::Case(int x, int y, int casePlayer, int type) : x(x), y(y), casePlayer(casePlayer), type(type) {}
-
-
 
 Color Case::caseColor() const {
     switch (casePlayer) {

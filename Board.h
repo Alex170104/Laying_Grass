@@ -7,13 +7,14 @@
 class Board {
 public:
     Board(int size);
-    vector<vector<Case>> getBoard() const { return board; }
+    vector<vector<Case>> getBoard() const { return grid; }
     Case &getCase(int x, int y);
+    vector<vector<Case>> createBoard();
+protected:
+    vector<vector<Case>> grid;
+    int size;
 
-private:
-    vector<vector<Case>> board;
-
-
+    void displayType();
 };
 
 #endif //LAYING_GRASS_BOARD_H

@@ -5,6 +5,7 @@
 Game::Game(int size, int sizeCell, int padding)
         : board(size), boardDisplay(board), size(size), sizeCell(sizeCell), padding(padding) {}
 
+
 void Game::run() {
     Tiles tiles;
     int windowSize = size * sizeCell + 2 * padding;
