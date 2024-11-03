@@ -6,12 +6,12 @@
 
 class Board {
 public:
-    Board(int nbPlayer, int size);
+    Board(int size);
     vector<vector<Case>> getBoard() const { return board; }
+    Case &getCase(int x, int y);
 
 private:
     vector<vector<Case>> board;
-
 
 
 };

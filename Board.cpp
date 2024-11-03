@@ -3,8 +3,11 @@
 
 using namespace std;
 
-Board::Board(int nbPlayer, int size) {
+Board::Board(int size) {
+    board.resize(size, vector<Case>(size, Case(0, 0, 5, 0)));
+    cout << "Board created:" << endl;
+}
 
-    // Initialize the board
-    board.resize(size, vector<Case>(size, Case(0, 0, 0, 0)));
+Case& Board::getCase(int x, int y) {
+    return board[x][y];
 }

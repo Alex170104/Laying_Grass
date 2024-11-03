@@ -1,8 +1,8 @@
 #ifndef LAYING_GRASS_CASE_H
 #define LAYING_GRASS_CASE_H
 
-
 #include <string>
+#include "raylib.h"
 using namespace std;
 
 class Case {
@@ -21,15 +21,14 @@ public:
     int getType() const { return type; }
     void setType(int value) { type = value; }
 
-    string caseColor() const;
+    Color caseColor() const;
 
 protected:
     int x;
     int y;
-    int casePlayer = 0;
-    int type = 0;
+    int casePlayer;
+    int type;
 
 };
-
 
 #endif //LAYING_GRASS_CASE_H

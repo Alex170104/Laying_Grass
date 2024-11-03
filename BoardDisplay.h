@@ -12,7 +12,7 @@
 class BoardDisplay {
 public:
     BoardDisplay(Board& board);
-    void display(int size);
+    void display(int size, int sizeCell, int padding);
 
 private:
     Board& board;

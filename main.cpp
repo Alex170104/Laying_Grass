@@ -1,33 +1,17 @@
-#include <iostream>
-#include "Board.h"
-#include "BoardDisplay.h"
-#include "raylib.h"
+#include "Game.h"
 
 int sizeBoard(int player);
 
 using namespace std;
 
 int main() {
-    int nbPlayer = 5;
-    int size = sizeBoard(nbPlayer);
-    Board board(nbPlayer, size);
-
-    BoardDisplay boardDisplay(board);
-    int sizeCell = (nbPlayer > 4) ? 30 : 50;
+    int nbPlayer = 4; //INITIALISATION
+    int size = sizeBoard(nbPlayer); // Size of the board
+    int sizeCell = (nbPlayer > 4) ? 40 : 50;
     int padding = 50;
-    int windowSize = size * sizeCell + 2 * padding;
 
-
-    // Initialisation de Raylib
-    InitWindow(windowSize, windowSize, "Board Display");
-    SetTargetFPS(60);
-
-    while (!WindowShouldClose()) {
-        boardDisplay.display(size);
-    }
-
-    // Fermeture de Raylib
-    CloseWindow();
+    Game game(size, sizeCell, padding);
+    game.run();
 
     return 0;
 }
