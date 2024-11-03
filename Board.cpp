@@ -4,7 +4,7 @@
 using namespace std;
 
 Board::Board(int size) {
-    board.resize(size, vector<Case>(size, Case(0, 0, 5, 0)));
+    board.resize(size, vector<Case>(size, Case(0, 0, 0, 0)));
     cout << "Board created:" << endl;
 }
 

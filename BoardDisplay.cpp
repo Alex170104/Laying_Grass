@@ -5,9 +5,6 @@ using namespace std;
 BoardDisplay::BoardDisplay(Board& board) : board(board) {}
 
 void BoardDisplay::display(int size, int sizeCell, int padding) {
-    BeginDrawing();
-//    ClearBackground(RAYWHITE);
-
 
     for (int i = 0; i < size; ++i) {
         for (int j = 0; j < size; ++j) {
@@ -17,5 +14,4 @@ void BoardDisplay::display(int size, int sizeCell, int padding) {
             DrawRectangleLines(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell, BLACK); // Draw the border
         }
     }
-    EndDrawing();
 }
