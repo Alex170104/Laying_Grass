@@ -8,7 +8,7 @@ int main() {
     int nbPlayer = 4; //INITIALISATION
     int size = sizeBoard(nbPlayer); // Size of the board
     int sizeCell = (nbPlayer > 4) ? 40 : 50;
-    int padding = 50;
+    int padding = 100;
 
     Game game(size, sizeCell, padding);
     game.run();

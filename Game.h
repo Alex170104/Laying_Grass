@@ -15,8 +15,6 @@ private:
     int size;
     int sizeCell;
     int padding;
-
-    void handleMouseClick();
 };
 
 #endif // GAME_H

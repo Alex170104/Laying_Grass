@@ -31,8 +31,6 @@ add_executable(Laying_Grass main.cpp
         BoardDisplay.h
         Game.cpp
         Game.h
-        Game.cpp
-        Game.cpp
         Tiles.cpp
         Tiles.h
 )
