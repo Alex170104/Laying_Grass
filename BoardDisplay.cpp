@@ -6,7 +6,7 @@ BoardDisplay::BoardDisplay(Board& board) : board(board) {}
 
 void BoardDisplay::display(int size, int sizeCell, int padding) {
     BeginDrawing();
-//    ClearBackground(RAYWHITE);
+    ClearBackground(RAYWHITE);
 
 
     for (int i = 0; i < size; ++i) {

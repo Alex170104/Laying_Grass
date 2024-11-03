@@ -1,7 +1,3 @@
-//
-// Created by alexd on 03/11/2024.
-//
-
 #ifndef LAYING_GRASS_BOARDDISPLAY_H
 #define LAYING_GRASS_BOARDDISPLAY_H
 

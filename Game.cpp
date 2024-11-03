@@ -3,7 +3,7 @@
 #include <stdexcept>
 
 Game::Game(int size, int sizeCell, int padding)
-        : board(size), boardDisplay(board), size(size), sizeCell(sizeCell), padding(padding) {}
+    : board(size), boardDisplay(board), size(size), sizeCell(sizeCell), padding(padding) {}
 
 
 void Game::run() {
@@ -12,13 +12,8 @@ void Game::run() {
     SetTargetFPS(100);
 
     while (!WindowShouldClose()) {
-        BeginDrawing();
-//        ClearBackground(RAYWHITE);
-
         handleMouseClick();
         boardDisplay.display(size, sizeCell, padding);
-
-        EndDrawing();
     }
     CloseWindow();
 }

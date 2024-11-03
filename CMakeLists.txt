@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.29)
+cmake_minimum_required(VERSION 3.28.1)
 project(Laying_Grass)
 
 set(CMAKE_CXX_STANDARD 20)
@@ -31,6 +31,10 @@ add_executable(Laying_Grass main.cpp
         BoardDisplay.h
         Game.cpp
         Game.h
+        Game.cpp
+        Game.cpp
+        Tiles.cpp
+        Tiles.h
 )
 
 target_link_libraries(Laying_Grass raylib ws2_32)

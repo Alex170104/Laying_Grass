@@ -7,12 +7,11 @@
 class Board {
 public:
     Board(int size);
-    vector<vector<Case>> getBoard() const { return board; }
+    vector<vector<Case>> getBoard() const { return grid; }
     Case &getCase(int x, int y);
 
-private:
-    vector<vector<Case>> board;
-
+protected:
+    vector<vector<Case>> grid;
 
 };
 
