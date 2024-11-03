@@ -1,10 +1,8 @@
 #include "Game.h"
 #include "raylib.h"
-#include <stdexcept>
 
 Game::Game(int size, int sizeCell, int padding)
     : board(size), boardDisplay(board), size(size), sizeCell(sizeCell), padding(padding) {}
-
 
 void Game::run() {
     int windowSize = size * sizeCell + 2 * padding;

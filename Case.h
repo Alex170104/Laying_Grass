@@ -26,8 +26,8 @@ public:
 protected:
     int x;
     int y;
-    int casePlayer;
-    int type;
+    int casePlayer; //0: free, 1: player1, 2:player2...
+    int type; // 0: empty, 1: tile, 2: bonus, 3: obstacle/pierre
 
 };
 
