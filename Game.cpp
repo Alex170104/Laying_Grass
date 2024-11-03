@@ -8,7 +8,7 @@ Game::Game(int size, int sizeCell, int padding)
 void Game::run() {
     Tiles tiles;
     int windowSize = size * sizeCell + 2 * padding;
-    InitWindow(windowSize, windowSize, "Game");
+    InitWindow(windowSize, windowSize, "Laying Grass");
     SetTargetFPS(100);
 
     bool isPreviewing = false;
