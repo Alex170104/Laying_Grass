@@ -14,17 +14,14 @@ public:
     void rotateTilePattern();
     void drawTilePattern(int x, int y, int sizeCell, int padding, Color color);
     void flip();
-    bool isValidPosition(int x, int y, Board &board, int size);
+    bool isValidPosition(int x, int y, Board& board, int size);
 private:
     int tilePattern[4][4] = {
             {1, 1, 1, 1},
             {1, 0, 0, 0},
-            {0, 0, 0, 0},
+            {1, 0, 0, 0},
             {0, 0, 0, 0}
     };
-
-
-
 };
 
 #endif //LAYING_GRASS_TILES_H

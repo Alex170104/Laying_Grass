@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "raylib.h"
 #include "Tiles.h"
+#include <iostream>
 
 Game::Game(int size, int sizeCell, int padding)
         : board(size), boardDisplay(board), size(size), sizeCell(sizeCell), padding(padding) {}
@@ -36,6 +37,10 @@ void Game::run() {
 
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && validPosition) {
                 tiles.placeTile(y, x, 1, board);
+
+                board.displayType();
+                cout << " " << endl;
+                board.displayCasePlayer();
                 isPreviewing = false;
             }
             if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {

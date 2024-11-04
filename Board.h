@@ -10,11 +10,14 @@ public:
     vector<vector<Case>> getBoard() const { return grid; }
     Case &getCase(int x, int y);
     vector<vector<Case>> createBoard();
+    void displayType();
+    void displayCasePlayer();
+
 protected:
     vector<vector<Case>> grid;
     int size;
 
-    void displayType();
+
 };
 
 #endif //LAYING_GRASS_BOARD_H
