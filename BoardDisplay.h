@@ -13,8 +13,9 @@ public:
 
 private:
     Board& board;
-    Image imgBonusStone;
-    Texture2D textureBonusStone; // Add this line
+    Texture2D textureBonusStone;
+    Texture2D textureBonusTicket;
+    Texture2D textureBonusVol;
     int sizeCell;
 };
 
