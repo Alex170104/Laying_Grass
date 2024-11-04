@@ -6,7 +6,6 @@ using namespace std;
 
 Board::Board(int size, int nbPlayer): size(size), nbPlayer(nbPlayer) {
     grid = createBoard();
-    displayType();
 }
 
 vector<vector<Case>> Board::createBoard() {

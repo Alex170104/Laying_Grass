@@ -15,9 +15,6 @@ void Game::run() {
     bool isPreviewing = false;
 
     while (!WindowShouldClose()) {
-        BeginDrawing();
-        ClearBackground(RAYWHITE);
-
         boardDisplay.display(size, sizeCell, padding);
 
         if (IsKeyPressed(KEY_SPACE)) {
@@ -45,7 +42,6 @@ void Game::run() {
                 tiles.flip();
             }
         }
-        EndDrawing();
     }
     CloseWindow();
 }
