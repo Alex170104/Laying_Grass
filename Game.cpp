@@ -4,13 +4,10 @@
 #include <iostream>
 
 Game::Game(int size, int nbPlayer, int sizeCell, int padding)
-        : board(size, nbPlayer), nbPlayer(nbPlayer), boardDisplay(board), size(size), sizeCell(sizeCell), padding(padding) {}
+        : board(size, nbPlayer), nbPlayer(nbPlayer), boardDisplay(board, sizeCell), size(size), sizeCell(sizeCell), padding(padding) {}
 
 void Game::run() {
     Tiles tiles;
-    int windowSize = size * sizeCell + 2 * padding;
-    InitWindow(windowSize, windowSize, "Laying Grass");
-    SetTargetFPS(100);
 
     bool isPreviewing = false;
 
@@ -44,4 +41,8 @@ void Game::run() {
         }
     }
     CloseWindow();
+}
+
+int Game::getSizeCell() {
+    return sizeCell;
 }
