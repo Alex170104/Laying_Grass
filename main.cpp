@@ -7,10 +7,10 @@ using namespace std;
 int main() {
     int nbPlayer = 4; //INITIALISATION
     int size = sizeBoard(nbPlayer); // Size of the board
-    int sizeCell = (nbPlayer > 4) ? 40 : 50;
+    int sizeCell = (nbPlayer > 4) ? 40 : 40;
     int padding = 100;
 
-    Game game(size, sizeCell, padding);
+    Game game(size, nbPlayer, sizeCell, padding);
     game.run();
 
     return 0;

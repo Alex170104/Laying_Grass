@@ -10,8 +10,10 @@ void BoardDisplay::display(int size, int sizeCell, int padding) {
         for (int j = 0; j < size; ++j) {
             Case& currentCase = board.getCase(i, j);
             Color color = currentCase.caseColor();
-            DrawRectangle(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell, color);
-            DrawRectangleLines(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell, BLACK); // Draw the border
+            if (currentCase.getType() == 0) {
+                DrawRectangle(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell, color);
+                DrawRectangleLines(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell, BLACK); // Draw the border
+            }
         }
     }
 }

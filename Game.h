@@ -6,7 +6,8 @@
 
 class Game {
 public:
-    Game(int size, int sizeCell, int padding);
+    Game(int size, int sizeCell, int padding, int nbPlayer);
+
     void run();
 
 private:
@@ -15,6 +16,7 @@ private:
     int size;
     int sizeCell;
     int padding;
+    int nbPlayer;
 };
 
 #endif // GAME_H
