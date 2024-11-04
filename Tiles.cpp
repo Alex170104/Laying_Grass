@@ -12,7 +12,10 @@ void Tiles::placeTile(int x, int y, int player, Board& board){
     for (int i = 0; i < 4; ++i) {
         for (int j = 0; j < 4; ++j) {
             if (tilePattern[i][j] == 1){
-                board.getCase(x + i, y + j).setCasePlayer(1);
+                int boardX = x + i;
+                int boardY = y + j;
+                board.getCase(boardX, boardY).setCasePlayer(1);
+                board.getCase(y + i, x + j).setType(1);
             }
         }
     }
@@ -22,7 +25,7 @@ void Tiles::rotateTilePattern() {
     int rotatedPattern[4][4];
     for (int i = 0; i < 4; ++i) {
         for (int j = 0; j < 4; ++j) {
-            rotatedPattern[j][3 - i] = tilePattern[i][j];
+            rotatedPattern[j][2 - i] = tilePattern[i][j];
         }
     }
     for (int i = 0; i < 4; ++i) {
@@ -60,19 +63,16 @@ bool Tiles::isValidPosition(int x, int y, Board& board, int size) {
     for (int i = 0; i < 4; ++i) {
         for (int j = 0; j < 4; ++j) {
             if (tilePattern[i][j] == 1) {
-                int boardX = x + i;
-                int boardY = y + j;
-
+                int boardX = x + j;
+                int boardY = y + i;
                 if (boardX < 0 || boardX >= size || boardY < 0 || boardY >= size) {
                     return false;
                 }
-
-                if (board.getCase(boardX, boardY).getCasePlayer() != 0) {
+                if (board.getCase(boardY, boardX).getCasePlayer() != 0) {
                     return false;
                 }
             }
         }
     }
-
     return true;
 }

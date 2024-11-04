@@ -10,11 +10,12 @@ Board::Board(int size): size(size) {
 
 vector<vector<Case>> Board::createBoard() {
     grid = vector<vector<Case>>(size, vector<Case>(size, Case(0, 0, 0, 0)));
-    for (int i = 1; i < size-1; ++i) {
-        for (int j = 1; j < size-1; ++j) {
-            grid[i][j].setType(2);
-        }
-    }
+//    for (int i = 1; i < size-1; ++i) {
+//        for (int j = 1; j < size-1; ++j) {
+//            grid[i][j].setType(0);
+//            grid[i][j].setCasePlayer(0);
+//        }
+//    }
     return grid;
 }
 
@@ -26,6 +27,14 @@ void Board::displayType() {
     for (int i = 0; i < size; ++i) {
         for (int j = 0; j < size; ++j) {
             cout << grid[i][j].getType() << " ";
+        }
+        cout << endl;
+    }
+}
+void Board::displayCasePlayer() {
+    for (int i = 0; i < size; ++i) {
+        for (int j = 0; j < size; ++j) {
+            cout << grid[i][j].getCasePlayer() << " ";
         }
         cout << endl;
     }
