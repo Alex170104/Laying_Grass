@@ -5,39 +5,51 @@
 #include "Tiles.h"
 #include "raylib.h"
 #include <iostream>
+#include <random>
+#include <algorithm>
+
+using namespace std;
 
 Tiles::Tiles() {}
 
-void Tiles::placeTile(int x, int y, int player, Board& board){
-    for (int i = 0; i < 4; ++i) {
-        for (int j = 0; j < 4; ++j) {
-            if (tilePattern[i][j] == 1){
+void Tiles::placeTile(int x, int y, int player, Board& board, vector<vector<int>>& tilePattern) {
+    int tileHeight = tilePattern.size();
+    int tileWidth = tilePattern[0].size();
+    cout << "tileHeight: " << tileHeight << "tileWidth" << tileWidth << endl;
+
+    for (int i = 0; i < tileHeight; ++i) {
+        for (int j = 0; j < tileWidth; ++j) {
+            if (tilePattern[i][j] == 1) {
                 int boardX = x + i;
                 int boardY = y + j;
-                board.getCase(boardX, boardY).setCasePlayer(1);
-                board.getCase(y + i, x + j).setType(1);
+                board.getCase(boardX, boardY).setCasePlayer(player);
+                board.getCase(boardY, boardX).setType(1);
             }
         }
     }
 }
 
-void Tiles::rotateTilePattern() {
-    int rotatedPattern[4][4];
-    for (int i = 0; i < 4; ++i) {
-        for (int j = 0; j < 4; ++j) {
-            rotatedPattern[j][2 - i] = tilePattern[i][j];
+// Rotation d'une tuile spécifique
+void Tiles::rotateTilePattern(vector<vector<int>>& tilePattern) {
+    int tileHeight = tilePattern.size();
+    int tileWidth = tilePattern[0].size();
+    vector<vector<int>> rotatedPattern(tileWidth, vector<int>(tileHeight));
+
+    for (int i = 0; i < tileHeight; ++i) {
+        for (int j = 0; j < tileWidth; ++j) {
+            rotatedPattern[j][tileHeight - i - 1] = tilePattern[i][j];
         }
     }
-    for (int i = 0; i < 4; ++i) {
-        for (int j = 0; j < 4; ++j) {
-            tilePattern[i][j] = rotatedPattern[i][j];
-        }
-    }
+    tilePattern = rotatedPattern;
 }
 
-void Tiles::drawTilePattern(int x, int y, int sizeCell, int padding, Color color) {
-    for (int i = 0; i < 4; ++i) {
-        for (int j = 0; j < 4; ++j) {
+// Affiche une tuile spécifique
+void Tiles::drawTilePattern(int x, int y, int sizeCell, int padding, Color color, vector<vector<int>>& tilePattern) {
+    int tileHeight = tilePattern.size();
+    int tileWidth = tilePattern[0].size();
+
+    for (int i = 0; i < tileHeight; ++i) {
+        for (int j = 0; j < tileWidth; ++j) {
             if (tilePattern[i][j] == 1) {
                 DrawRectangle((x + j) * sizeCell + padding, (y + i) * sizeCell + padding, sizeCell, sizeCell, color);
             }
@@ -45,26 +57,31 @@ void Tiles::drawTilePattern(int x, int y, int sizeCell, int padding, Color color
     }
 }
 
-void Tiles::flip() {
-    int flippedPattern[4][4];
-    for (int i = 0; i < 4; ++i) {
-        for (int j = 0; j < 4; ++j) {
-            flippedPattern[i][3 - j] = tilePattern[i][j];
+// Miroir horizontal d'une tuile spécifique
+void Tiles::flip(vector<vector<int>>& tilePattern) {
+    int tileHeight = tilePattern.size();
+    int tileWidth = tilePattern[0].size();
+    vector<vector<int>> flippedPattern(tileHeight, vector<int>(tileWidth, 0));
+
+    for (int i = 0; i < tileHeight; ++i) {
+        for (int j = 0; j < tileWidth; ++j) {
+            flippedPattern[i][tileWidth - 1 - j] = tilePattern[i][j];
         }
     }
-    for (int i = 0; i < 4; ++i) {
-        for (int j = 0; j < 4; ++j) {
-            tilePattern[i][j] = flippedPattern[i][j];
-        }
-    }
+     tilePattern = flippedPattern;
 }
 
-bool Tiles::isValidPosition(int x, int y, Board& board, int size) {
-    for (int i = 0; i < 4; ++i) {
-        for (int j = 0; j < 4; ++j) {
+// Vérifie le plateau
+bool Tiles::isValidPosition(int x, int y, Board& board, int size, vector<vector<int>>& tilePattern) {
+    int tileHeight = tilePattern.size();
+    int tileWidth = tilePattern[0].size();
+
+    for (int i = 0; i < tileHeight; ++i) {
+        for (int j = 0; j < tileWidth; ++j) {
             if (tilePattern[i][j] == 1) {
                 int boardX = x + j;
                 int boardY = y + i;
+
                 if (boardX < 0 || boardX >= size || boardY < 0 || boardY >= size) {
                     return false;
                 }
@@ -76,3 +93,16 @@ bool Tiles::isValidPosition(int x, int y, Board& board, int size) {
     }
     return true;
 }
+
+vector<vector<vector<vector<int>>>> Tiles::distributeTiles(int nbPlayers) {
+    vector<vector<vector<int>>> tileList = getTileList();
+    shuffle(tileList.begin(), tileList.end(), mt19937{random_device{}()});
+
+    vector<vector<vector<vector<int>>>> playerTiles(nbPlayers);
+    for (size_t i = 0; i < tileList.size(); ++i) {
+        playerTiles[i % nbPlayers].push_back(tileList[i]);
+    }
+    return playerTiles;
+}
+
+

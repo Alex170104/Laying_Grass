@@ -11,6 +11,7 @@ int main() {
     int padding = 100;
 
     Game game(size, sizeCell, padding);
+    game.init(nbPlayer);
     game.run();
 
     return 0;

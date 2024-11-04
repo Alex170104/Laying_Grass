@@ -7,6 +7,7 @@
 class Game {
 public:
     Game(int size, int sizeCell, int padding);
+    void init(int nbPlayer);
     void run();
 
 private:
