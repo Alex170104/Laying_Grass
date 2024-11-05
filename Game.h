@@ -8,7 +8,7 @@ class Game {
 public:
     Game(int size, int sizeCell, int padding);
     void init(int nbPlayer);
-    void run();
+    void run(int nbPlayer);
 
 private:
     Board board;

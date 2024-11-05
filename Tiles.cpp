@@ -45,12 +45,15 @@ void Tiles::rotateTilePattern(vector<vector<int>>& tilePattern) {
 
 // Affiche une tuile spécifique
 void Tiles::drawTilePattern(int x, int y, int sizeCell, int padding, Color color, vector<vector<int>>& tilePattern) {
-    int tileHeight = tilePattern.size();
-    int tileWidth = tilePattern[0].size();
+    Color borderColor = WHITE;
+    int rows = tilePattern.size();
+    int cols = tilePattern[0].size();
 
-    for (int i = 0; i < tileHeight; ++i) {
-        for (int j = 0; j < tileWidth; ++j) {
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
             if (tilePattern[i][j] == 1) {
+                int posX = (x + j) * sizeCell + padding;
+                int posY = (y + i) * sizeCell + padding;
                 DrawRectangle((x + j) * sizeCell + padding, (y + i) * sizeCell + padding, sizeCell, sizeCell, color);
             }
         }

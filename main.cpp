@@ -12,7 +12,7 @@ int main() {
 
     Game game(size, sizeCell, padding);
     game.init(nbPlayer);
-    game.run();
+    game.run(nbPlayer);
 
     return 0;
 }
