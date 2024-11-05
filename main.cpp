@@ -15,6 +15,7 @@ int main() {
     SetTargetFPS(60);
 
     Game game(size, nbPlayer, sizeCell, padding);
+    game.init(nbPlayer);
     game.run();
 
     return 0;

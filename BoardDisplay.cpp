@@ -39,8 +39,11 @@ void BoardDisplay::display(int size, int sizeCell, int padding) {
             Color color = currentCase.caseColor();
             if (currentCase.getType() == 0) {
                 DrawRectangle(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell, color);
-                DrawRectangleLines(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell,
-                                   BLACK);
+                DrawRectangleLines(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell,BLACK);
+            }
+            else if (currentCase.getType() == 1) {
+                DrawRectangle(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell, color);
+                DrawRectangleLines(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell,BLACK);
             } else if (currentCase.getType() == 2) {
                 DrawTexture(textureBonusTicket, padding + j * sizeCell, padding + i * sizeCell, WHITE);
             } else if (currentCase.getType() == 3) {
