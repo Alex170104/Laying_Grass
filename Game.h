@@ -6,16 +6,16 @@
 
 class Game {
 public:
-    Game(int size, int sizeCell, int padding);
+    Game(int size, int sizeCell, int padding, int nbPlayer);
     void init(int nbPlayer);
-    void run(int nbPlayer);
-
+    void run();
 private:
     Board board;
     BoardDisplay boardDisplay;
     int size;
     int sizeCell;
     int padding;
+    int nbPlayer;
 };
 
 #endif // GAME_H

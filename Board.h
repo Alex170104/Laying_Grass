@@ -6,7 +6,7 @@
 
 class Board {
 public:
-    Board(int size);
+    Board(int size, int nbPlayer);
     vector<vector<Case>> getBoard() const { return grid; }
     Case &getCase(int x, int y);
     vector<vector<Case>> createBoard();
@@ -16,8 +16,7 @@ public:
 protected:
     vector<vector<Case>> grid;
     int size;
-
-
+    int nbPlayer;
 };
 
 #endif //LAYING_GRASS_BOARD_H

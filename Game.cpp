@@ -4,19 +4,17 @@
 #include <iostream>
 #include <random>
 
-Game::Game(int size, int sizeCell, int padding)
-        : board(size), boardDisplay(board), size(size), sizeCell(sizeCell), padding(padding) {}
+Game::Game(int size, int nbPlayer, int sizeCell, int padding)
+        : board(size, nbPlayer), nbPlayer(nbPlayer), boardDisplay(board, sizeCell), size(size), sizeCell(sizeCell), padding(padding) {}
 
 void Game::init(int nbPlayer) {
     Tiles tiles;
     vector<vector<vector<vector<int>>>> playerTiles = tiles.distributeTiles(nbPlayer);
 }
 
-void Game::run(int nbPlayer) {
+
+void Game::run() {
     Tiles tiles;
-    int windowSize = size * sizeCell + 2 * padding;
-    InitWindow(windowSize, windowSize, "Laying Grass");
-    SetTargetFPS(100);
 
     int currentPlayer = 0;
     vector<vector<vector<vector<int>>>> playerTiles = tiles.distributeTiles(nbPlayer);
@@ -26,9 +24,6 @@ void Game::run(int nbPlayer) {
     bool isPreviewing = false;
 
     while (!WindowShouldClose()) {
-        BeginDrawing();
-        ClearBackground({10, 10, 10, 255});
-
         boardDisplay.display(size, sizeCell, padding);
 
         if (IsKeyPressed(KEY_SPACE)) {
@@ -66,7 +61,6 @@ void Game::run(int nbPlayer) {
                 tiles.flip(selectedTile);
             }
         }
-        EndDrawing();
     }
     CloseWindow();
 }

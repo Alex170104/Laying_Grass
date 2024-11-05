@@ -27,7 +27,7 @@ protected:
     int x;
     int y;
     int casePlayer; //0: free, 1: player1, 2:player2...
-    int type; // 0: empty, 1: tile, 2: bonus, 3: obstacle/pierre
+    int type; // 0: empty, 1: tile, 2: bonus(tile_exchange), 3: bonus(stone), 4: bonus(robbery) 5: obstacle/pierre
 
 };
 

@@ -10,9 +10,15 @@ int main() {
     int sizeCell = (nbPlayer > 4) ? 40 : 50;
     int padding = 100;
 
-    Game game(size, sizeCell, padding);
+
+
+    int windowSize = size * sizeCell + 2 * padding;
+    InitWindow(windowSize, windowSize, "Laying Grass");
+    SetTargetFPS(60);
+
+    Game game(size, nbPlayer, sizeCell, padding);
+    game.run();
     game.init(nbPlayer);
-    game.run(nbPlayer);
 
     return 0;
 }
