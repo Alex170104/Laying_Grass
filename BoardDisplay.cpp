@@ -7,14 +7,14 @@ BoardDisplay::BoardDisplay(Board& board, int sizeCell) : board(board), sizeCell(
     Image imgBonusTicket;
     Image imgBonusVol;
     if (sizeCell == 40) {
-        imgBonusStone = LoadImage("../img/the_rock40.png");
+        imgBonusStone = LoadImage("../img/rock40.png");
         imgBonusTicket = LoadImage("../img/ticket40.png");
-        imgBonusVol = LoadImage("../img/vol40.png");
+        imgBonusVol = LoadImage("../img/fissure40.png");
     }
     else {
-        imgBonusStone = LoadImage("../img/the_rock50.png");
+        imgBonusStone = LoadImage("../img/rock50.png");
         imgBonusTicket = LoadImage("../img/ticket50.png");
-        imgBonusVol = LoadImage("../img/vol50.png");
+        imgBonusVol = LoadImage("../img/fissure50.png");
     }
 
     textureBonusStone = LoadTextureFromImage(imgBonusStone);
@@ -30,9 +30,6 @@ BoardDisplay::~BoardDisplay() {
 }
 
 void BoardDisplay::display(int size, int sizeCell, int padding) {
-    BeginDrawing();
-    ClearBackground(RAYWHITE);
-
     for (int i = 0; i < size; ++i) {
         for (int j = 0; j < size; ++j) {
             Case &currentCase = board.getCase(i, j);
@@ -41,6 +38,11 @@ void BoardDisplay::display(int size, int sizeCell, int padding) {
                 DrawRectangle(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell, color);
                 DrawRectangleLines(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell,
                                    BLACK);
+            } else if (currentCase.getType() == 1) {
+                DrawRectangle(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell, color);
+                DrawRectangleLines(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell,
+                                   BLACK);
+
             } else if (currentCase.getType() == 2) {
                 DrawTexture(textureBonusTicket, padding + j * sizeCell, padding + i * sizeCell, WHITE);
             } else if (currentCase.getType() == 3) {
@@ -50,6 +52,4 @@ void BoardDisplay::display(int size, int sizeCell, int padding) {
             }
         }
     }
-
-    EndDrawing();
 }

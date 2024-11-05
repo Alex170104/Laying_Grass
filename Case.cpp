@@ -14,6 +14,6 @@ Color Case::caseColor() const {
         case 7: return ORANGE;
         case 8: return PURPLE;
         case 9: return BROWN;
-        default: return GRAY;
+        default: return LIGHTGRAY;
     }
 }

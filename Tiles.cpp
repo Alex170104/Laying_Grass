@@ -23,7 +23,7 @@ void Tiles::placeTile(int x, int y, int player, Board& board, vector<vector<int>
                 int boardX = x + i;
                 int boardY = y + j;
                 board.getCase(boardX, boardY).setCasePlayer(player);
-                board.getCase(boardY, boardX).setType(1);
+                board.getCase(boardX, boardY).setType(1);
             }
         }
     }
@@ -45,7 +45,7 @@ void Tiles::rotateTilePattern(vector<vector<int>>& tilePattern) {
 
 // Affiche une tuile spécifique
 void Tiles::drawTilePattern(int x, int y, int sizeCell, int padding, Color color, vector<vector<int>>& tilePattern) {
-    Color borderColor = WHITE;
+
     int rows = tilePattern.size();
     int cols = tilePattern[0].size();
 
@@ -54,7 +54,7 @@ void Tiles::drawTilePattern(int x, int y, int sizeCell, int padding, Color color
             if (tilePattern[i][j] == 1) {
                 int posX = (x + j) * sizeCell + padding;
                 int posY = (y + i) * sizeCell + padding;
-                DrawRectangle((x + j) * sizeCell + padding, (y + i) * sizeCell + padding, sizeCell, sizeCell, color);
+                DrawRectangle(posX, posY, sizeCell, sizeCell, color);
             }
         }
     }
