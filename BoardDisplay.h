@@ -8,7 +8,7 @@ class BoardDisplay {
 public:
     BoardDisplay(Board& board, int sizeCell);
     ~BoardDisplay();
-    void display(int size, int sizeCell, int padding);
+    void display(int size, int sizeCell, int padding, const vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, const vector<vector<int>>& selectedTile);
 
 
 private:

@@ -10,7 +10,7 @@ int main() {
     int sizeCell = (nbPlayer > 4) ? 40 : 50;
     int padding = 100;
     int windowSize = size * sizeCell + 2 * padding;
-    InitWindow(windowSize, windowSize, "Laying Grass");
+    InitWindow(windowSize, windowSize + 200, "Laying Grass");
     SetTargetFPS(60);
 
     Game game(size, nbPlayer, sizeCell, padding);

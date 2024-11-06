@@ -16,6 +16,9 @@ private:
     int sizeCell;
     int padding;
     int nbPlayer;
+
+    void
+    drawUpcomingTiles(const vector<vector<vector<vector<int>>>> &playerTiles, int currentPlayer, int padding);
 };
 
 #endif // GAME_H

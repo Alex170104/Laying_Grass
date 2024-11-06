@@ -28,7 +28,7 @@ void Game::run() {
 //        ClearBackground({10,10,10,255});
         ClearBackground(GRAY);
 
-        boardDisplay.display(size, sizeCell, padding);
+        boardDisplay.display(size, sizeCell, padding, playerTiles, currentPlayer, selectedTile);
 
         if (IsKeyPressed(KEY_SPACE)) {
             isPreviewing = true;
@@ -57,6 +57,7 @@ void Game::run() {
                 selectedTile = playerTiles[currentPlayer].back();
                 playerTiles[currentPlayer].pop_back();
 
+
             }
             if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {
                 tiles.rotateTilePattern(selectedTile);
@@ -65,6 +66,7 @@ void Game::run() {
                 tiles.flip(selectedTile);
             }
         }
+
         EndDrawing();
     }
     CloseWindow();

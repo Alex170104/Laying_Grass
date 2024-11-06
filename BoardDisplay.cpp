@@ -29,7 +29,13 @@ BoardDisplay::~BoardDisplay() {
     UnloadTexture(textureBonusStone);
 }
 
-void BoardDisplay::display(int size, int sizeCell, int padding) {
+void BoardDisplay::display(int size, int sizeCell, int padding, const vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, const vector<vector<int>>& selectedTile) {
+    int sizeCellPreview = 30;
+    int previewSize = 5;
+    int previewPadding = 100;
+    int startX = padding;
+    int startY = size * sizeCell + 2 * padding;
+
     for (int i = 0; i < size; ++i) {
         for (int j = 0; j < size; ++j) {
             Case &currentCase = board.getCase(i, j);
@@ -49,6 +55,39 @@ void BoardDisplay::display(int size, int sizeCell, int padding) {
                 DrawTexture(textureBonusStone, padding + j * sizeCell, padding + i * sizeCell, WHITE);
             } else if (currentCase.getType() == 4) {
                 DrawTexture(textureBonusVol, padding + j * sizeCell, padding + i * sizeCell, WHITE);
+            }
+        }
+    }
+
+
+
+    for (int i = 0; i < previewSize && i < playerTiles[currentPlayer].size(); ++i) {
+        int offsetX = startX + (sizeCellPreview + previewPadding) * i;
+        int offsetY = startY;
+
+        vector<vector<int>> tilePattern = playerTiles[currentPlayer][playerTiles[currentPlayer].size() - 1 - i];
+        for (int row = 0; row < tilePattern.size(); ++row) {
+            for (int col = 0; col < tilePattern[row].size(); ++col) {
+                if (tilePattern[row][col] == 1) {
+                    int posX = offsetX + col * sizeCellPreview;
+                    int posY = offsetY + row * sizeCellPreview;
+                    Color color = RED;
+                    DrawRectangle(posX, posY, sizeCellPreview, sizeCellPreview, color);
+                    DrawRectangleLines(posX, posY, sizeCellPreview, sizeCellPreview, BLACK);
+                }
+            }
+        }
+    }
+    int currentTileX = padding + size * sizeCell + padding;
+    int currentTileY = padding;
+    for (int row = 0; row < selectedTile.size(); ++row) {
+        for (int col = 0; col < selectedTile[row].size(); ++col) {
+            if (selectedTile[row][col] == 1) {
+                int posX = currentTileX + col * sizeCell;
+                int posY = currentTileY + row * sizeCell;
+                Color color = RED;
+                DrawRectangle(posX, posY, sizeCell, sizeCell, color);
+                DrawRectangleLines(posX, posY, sizeCell, sizeCell, BLACK);
             }
         }
     }
