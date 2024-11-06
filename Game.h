@@ -7,10 +7,8 @@
 class Game {
 public:
     Game(int size, int sizeCell, int padding, int nbPlayer);
-
     void init(int nbPlayer);
     void run();
-    int getSizeCell();
 private:
     Board board;
     BoardDisplay boardDisplay;

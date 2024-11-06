@@ -8,12 +8,12 @@ Color Case::caseColor() const {
         case 1: return BLUE;
         case 2: return RED;
         case 3: return GREEN;
-        case 4: return PINK;
+        case 4: return YELLOW;
         case 5: return GRAY;
-        case 6: return YELLOW;
+        case 6: return LIME;
         case 7: return ORANGE;
         case 8: return PURPLE;
         case 9: return BROWN;
-        default: return WHITE;
+        default: return LIGHTGRAY;
     }
 }

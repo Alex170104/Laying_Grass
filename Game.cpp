@@ -10,36 +10,25 @@ Game::Game(int size, int nbPlayer, int sizeCell, int padding)
 void Game::init(int nbPlayer) {
     Tiles tiles;
     vector<vector<vector<vector<int>>>> playerTiles = tiles.distributeTiles(nbPlayer);
-
-    // Afficher les tuiles distribuées pour chaque joueur (optionnel)
-    for (int i = 0; i < nbPlayer; ++i) {
-        std::cout << "Player " << i + 1 << " tiles:" << std::endl;
-        for (const auto& tile : playerTiles[i]) {
-            for (const auto& row : tile) {
-                for (int cell : row) {
-                    std::cout << cell << " ";
-                }
-                std::cout << std::endl;
-            }
-            std::cout << std::endl;
-        }
-    }
 }
-
 
 
 void Game::run() {
     Tiles tiles;
 
-    int selectedTileIndex = 1; //a changer
-    vector<vector<int>> selectedTile = tiles.getTileList()[selectedTileIndex];
+    int currentPlayer = 0;
+    vector<vector<vector<vector<int>>>> playerTiles = tiles.distributeTiles(nbPlayer);
+    vector<vector<int>> selectedTile = playerTiles[currentPlayer].back();
+    playerTiles[currentPlayer].pop_back();
 
     bool isPreviewing = false;
 
     while (!WindowShouldClose()) {
+        BeginDrawing();
+//        ClearBackground({10,10,10,255});
+        ClearBackground(GRAY);
+
         boardDisplay.display(size, sizeCell, padding);
-
-
 
         if (IsKeyPressed(KEY_SPACE)) {
             isPreviewing = true;
@@ -51,17 +40,23 @@ void Game::run() {
 
             bool validPosition = tiles.isValidPosition(x, y, board, size, selectedTile);
 
-            Color tileColor = validPosition ? Fade(GREEN, 0.5f) : Fade(RED, 0.5f);
+            Color playerColor = Case(currentPlayer + 1, 0, currentPlayer + 1, 0).caseColor();
+            Color tileColor = validPosition ? Fade(playerColor, 0.5f) : Fade({30,30,30,255}, 0.8f);
 
             tiles.drawTilePattern(x, y, sizeCell, padding, tileColor, selectedTile);
 
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && validPosition) {
-                tiles.placeTile(y, x, 1, board, selectedTile);
+                tiles.placeTile(y, x, currentPlayer + 1, board, selectedTile);
 
                 board.displayType();
                 cout << " " << endl;
                 board.displayCasePlayer();
                 isPreviewing = false;
+
+                currentPlayer = (currentPlayer + 1) % 4;
+                selectedTile = playerTiles[currentPlayer].back();
+                playerTiles[currentPlayer].pop_back();
+
             }
             if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {
                 tiles.rotateTilePattern(selectedTile);
@@ -70,10 +65,7 @@ void Game::run() {
                 tiles.flip(selectedTile);
             }
         }
+        EndDrawing();
     }
     CloseWindow();
-}
-
-int Game::getSizeCell() {
-    return sizeCell;
 }
