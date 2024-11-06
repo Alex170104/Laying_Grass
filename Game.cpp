@@ -48,15 +48,16 @@ void Game::run() {
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && validPosition) {
                 tiles.placeTile(y, x, currentPlayer + 1, board, selectedTile);
 
-                board.displayType();
-                cout << " " << endl;
-                board.displayCasePlayer();
+                //board.displayType();
+                //cout << " " << endl;
+                //board.displayCasePlayer();
                 isPreviewing = false;
 
                 currentPlayer = (currentPlayer + 1) % 4;
                 selectedTile = playerTiles[currentPlayer].back();
                 playerTiles[currentPlayer].pop_back();
 
+                cout << biggerSquare(1) << endl;
             }
             if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {
                 tiles.rotateTilePattern(selectedTile);
@@ -68,4 +69,37 @@ void Game::run() {
         EndDrawing();
     }
     CloseWindow();
+}
+
+int Game::biggerSquare(int player) {
+    int maxSquare = 0;
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            if (board.getCase(i, j).getCasePlayer() == player) {
+                bool alwaySquare = true;
+                while (alwaySquare) {
+                    int square = 1;
+                    for (int k = 1; k < size; k++) {
+                        if (i + k < size && j + k < size) {
+                            if (board.getCase(i + k, j).getCasePlayer() == player &&
+                                board.getCase(i, j + k).getCasePlayer() == player &&
+                                board.getCase(i + k, j + k).getCasePlayer() == player) {
+                                square++;
+                            } else {
+                                alwaySquare = false;
+                                break;
+                            }
+                        } else {
+                            alwaySquare = false;
+                            break;
+                        }
+                    }
+                    if (square > maxSquare) {
+                        maxSquare = square;
+                    }
+                }
+            }
+        }
+    }
+    return maxSquare;
 }

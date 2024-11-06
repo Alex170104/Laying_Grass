@@ -15,7 +15,7 @@ Tiles::Tiles() {}
 void Tiles::placeTile(int x, int y, int player, Board& board, vector<vector<int>>& tilePattern) {
     int tileHeight = tilePattern.size();
     int tileWidth = tilePattern[0].size();
-    cout << "tileHeight: " << tileHeight << "tileWidth" << tileWidth << endl;
+    //cout << "tileHeight: " << tileHeight << "tileWidth" << tileWidth << endl;
 
     for (int i = 0; i < tileHeight; ++i) {
         for (int j = 0; j < tileWidth; ++j) {

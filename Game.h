@@ -9,6 +9,9 @@ public:
     Game(int size, int sizeCell, int padding, int nbPlayer);
     void init(int nbPlayer);
     void run();
+
+    int biggerSquare(int player);
+
 private:
     Board board;
     BoardDisplay boardDisplay;
