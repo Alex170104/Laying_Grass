@@ -5,7 +5,7 @@ int sizeBoard(int player);
 using namespace std;
 
 int main() {
-    int nbPlayer = 4; //INITIALISATION
+    int nbPlayer = 5; //INITIALISATION
     int size = sizeBoard(nbPlayer); // Size of the board
     int sizeCell = (nbPlayer > 4) ? 40 : 50;
     int padding = 100;

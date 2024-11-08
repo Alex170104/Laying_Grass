@@ -25,10 +25,9 @@ void Game::run() {
 
     while (!WindowShouldClose()) {
         BeginDrawing();
-//        ClearBackground({10,10,10,255});
-        ClearBackground(GRAY);
+        ClearBackground(Color {192, 192, 192, 255});
 
-        boardDisplay.display(size, sizeCell, padding);
+        boardDisplay.display(size, sizeCell, padding, true, nbPlayer);
 
         if (IsKeyPressed(KEY_SPACE)) {
             isPreviewing = true;
@@ -48,9 +47,6 @@ void Game::run() {
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && validPosition) {
                 tiles.placeTile(y, x, currentPlayer + 1, board, selectedTile);
 
-                //board.displayType();
-                //cout << " " << endl;
-                //board.displayCasePlayer();
                 isPreviewing = false;
 
                 currentPlayer = (currentPlayer + 1) % 4;
