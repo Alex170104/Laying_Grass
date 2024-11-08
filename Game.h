@@ -6,8 +6,7 @@
 
 class Game {
 public:
-    Game(int size, int sizeCell, int padding, int nbPlayer);
-    void init(int nbPlayer);
+    Game(int size, int sizeCell, int padding, int nbPlayer, vector<Color> playerColors, vector<string> playerNames);
     void run();
 private:
     Board board;
@@ -16,9 +15,10 @@ private:
     int sizeCell;
     int padding;
     int nbPlayer;
+    vector<Color> playerColors;
+    vector<string> playerNames;
 
-    void
-    drawUpcomingTiles(const vector<vector<vector<vector<int>>>> &playerTiles, int currentPlayer, int padding);
+    void drawUpcomingTiles(const vector<vector<vector<vector<int>>>> &playerTiles, int currentPlayer, int padding);
 };
 
 #endif // GAME_H

@@ -4,13 +4,8 @@
 #include <iostream>
 #include <random>
 
-Game::Game(int size, int nbPlayer, int sizeCell, int padding)
-        : board(size, nbPlayer), nbPlayer(nbPlayer), boardDisplay(board, sizeCell), size(size), sizeCell(sizeCell), padding(padding) {}
-
-void Game::init(int nbPlayer) {
-    Tiles tiles;
-    vector<vector<vector<vector<int>>>> playerTiles = tiles.distributeTiles(nbPlayer);
-}
+Game::Game(int size, int nbPlayer, int sizeCell, int padding, vector<Color> playerColors, vector<string> playerNames)
+        : board(size, nbPlayer), nbPlayer(nbPlayer), boardDisplay(board, sizeCell), size(size), sizeCell(sizeCell), padding(padding), playerColors(playerColors), playerNames(playerNames){}
 
 
 void Game::run() {
@@ -27,7 +22,7 @@ void Game::run() {
         BeginDrawing();
 //        ClearBackground({10,10,10,255});
         ClearBackground(GRAY);
-        boardDisplay.display(size, sizeCell, padding, playerTiles, currentPlayer, selectedTile);
+        boardDisplay.display(size, sizeCell, padding, playerTiles, currentPlayer, selectedTile, playerColors, playerNames);
 
         if (isPreviewing) {
 
@@ -50,7 +45,7 @@ void Game::run() {
                 board.displayCasePlayer();
                 isPreviewing = false;
 
-                currentPlayer = (currentPlayer + 1) % 4;
+                currentPlayer = (currentPlayer + 1) % nbPlayer;
                 selectedTile = playerTiles[currentPlayer].back();
                 playerTiles[currentPlayer].pop_back();
                 isPreviewing = true;

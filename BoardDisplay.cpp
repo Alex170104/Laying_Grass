@@ -29,12 +29,16 @@ BoardDisplay::~BoardDisplay() {
     UnloadTexture(textureBonusStone);
 }
 
-void BoardDisplay::display(int size, int sizeCell, int padding, const vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, const vector<vector<int>>& selectedTile) {
+void BoardDisplay::display(int size, int sizeCell, int padding, const vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, const vector<vector<int>>& selectedTile, const vector<Color>& playerColors, const vector<string>& playerNames) {
     int sizeCellPreview = 30;
     int previewSize = 5;
     int previewPadding = 150;
     int startX = padding;
     int startY = size * sizeCell + 2 * padding;
+
+    string currentPlayerName = playerNames[currentPlayer];
+    Color currentPlayerColor = playerColors[currentPlayer];
+    DrawText(currentPlayerName.c_str(), startX, padding - 40, 30, currentPlayerColor);
 
     for (int i = 0; i < size; ++i) {
         for (int j = 0; j < size; ++j) {
