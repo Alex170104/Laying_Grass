@@ -21,19 +21,16 @@ void Game::run() {
     vector<vector<int>> selectedTile = playerTiles[currentPlayer].back();
     playerTiles[currentPlayer].pop_back();
 
-    bool isPreviewing = false;
+    bool isPreviewing = true;
 
     while (!WindowShouldClose()) {
         BeginDrawing();
 //        ClearBackground({10,10,10,255});
         ClearBackground(GRAY);
-
         boardDisplay.display(size, sizeCell, padding, playerTiles, currentPlayer, selectedTile);
 
-        if (IsKeyPressed(KEY_SPACE)) {
-            isPreviewing = true;
-        }
         if (isPreviewing) {
+
             Vector2 mousePosition = GetMousePosition();
             int x = (mousePosition.x - padding) / sizeCell;
             int y = (mousePosition.y - padding) / sizeCell;
@@ -41,7 +38,7 @@ void Game::run() {
             bool validPosition = tiles.isValidPosition(x, y, board, size, selectedTile);
 
             Color playerColor = Case(currentPlayer + 1, 0, currentPlayer + 1, 0).caseColor();
-            Color tileColor = validPosition ? Fade(playerColor, 0.5f) : Fade({30,30,30,255}, 0.8f);
+            Color tileColor = validPosition ? Fade(playerColor, 0.5f) : Fade({30, 30, 30, 255}, 0.8f);
 
             tiles.drawTilePattern(x, y, sizeCell, padding, tileColor, selectedTile);
 
@@ -56,7 +53,7 @@ void Game::run() {
                 currentPlayer = (currentPlayer + 1) % 4;
                 selectedTile = playerTiles[currentPlayer].back();
                 playerTiles[currentPlayer].pop_back();
-
+                isPreviewing = true;
 
             }
             if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {
@@ -65,6 +62,10 @@ void Game::run() {
             if (IsKeyPressed(KEY_F)) {
                 tiles.flip(selectedTile);
             }
+        }
+
+        if (IsKeyPressed(KEY_SPACE)) {
+            isPreviewing = !isPreviewing;
         }
 
         EndDrawing();

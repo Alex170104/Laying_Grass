@@ -32,7 +32,7 @@ BoardDisplay::~BoardDisplay() {
 void BoardDisplay::display(int size, int sizeCell, int padding, const vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, const vector<vector<int>>& selectedTile) {
     int sizeCellPreview = 30;
     int previewSize = 5;
-    int previewPadding = 100;
+    int previewPadding = 150;
     int startX = padding;
     int startY = size * sizeCell + 2 * padding;
 
@@ -59,7 +59,7 @@ void BoardDisplay::display(int size, int sizeCell, int padding, const vector<vec
         }
     }
 
-
+    DrawText("TUILES A VENIR", startX, startY - 60, 30, BLACK);
 
     for (int i = 0; i < previewSize && i < playerTiles[currentPlayer].size(); ++i) {
         int offsetX = startX + (sizeCellPreview + previewPadding) * i;
@@ -71,23 +71,10 @@ void BoardDisplay::display(int size, int sizeCell, int padding, const vector<vec
                 if (tilePattern[row][col] == 1) {
                     int posX = offsetX + col * sizeCellPreview;
                     int posY = offsetY + row * sizeCellPreview;
-                    Color color = RED;
+                    Color color = Case(currentPlayer + 1, 0, currentPlayer + 1, 0).caseColor();
                     DrawRectangle(posX, posY, sizeCellPreview, sizeCellPreview, color);
                     DrawRectangleLines(posX, posY, sizeCellPreview, sizeCellPreview, BLACK);
                 }
-            }
-        }
-    }
-    int currentTileX = padding + size * sizeCell + padding;
-    int currentTileY = padding;
-    for (int row = 0; row < selectedTile.size(); ++row) {
-        for (int col = 0; col < selectedTile[row].size(); ++col) {
-            if (selectedTile[row][col] == 1) {
-                int posX = currentTileX + col * sizeCell;
-                int posY = currentTileY + row * sizeCell;
-                Color color = RED;
-                DrawRectangle(posX, posY, sizeCell, sizeCell, color);
-                DrawRectangleLines(posX, posY, sizeCell, sizeCell, BLACK);
             }
         }
     }

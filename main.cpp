@@ -1,21 +1,31 @@
 #include "Game.h"
+#include "DisplayMenu.h"
 
 int sizeBoard(int player);
 
 using namespace std;
 
 int main() {
-    int nbPlayer = 4; //INITIALISATION
-    int size = sizeBoard(nbPlayer); // Size of the board
-    int sizeCell = (nbPlayer > 4) ? 40 : 50;
-    int padding = 100;
-    int windowSize = size * sizeCell + 2 * padding;
-    InitWindow(windowSize, windowSize + 200, "Laying Grass");
+    int screenWidth = 1000;
+    int screenHeight = 1000;
+    InitWindow(screenWidth, screenHeight, "Laying Grass");
     SetTargetFPS(60);
 
-    Game game(size, nbPlayer, sizeCell, padding);
-    game.run();
-    game.init(nbPlayer);
+    DisplayMenu menu(screenWidth, screenHeight);
+    menu.showMenu();
+
+    if (menu.isGameStart()) {
+        int nbPlayer = 4;
+        int size = sizeBoard(nbPlayer);
+        int sizeCell = (nbPlayer > 4) ? 40 : 50;
+        int padding = 100;
+        int windowSize = size * sizeCell + 2 * padding;
+        InitWindow(windowSize, windowSize + 200, "Laying Grass");
+
+        Game game(size, nbPlayer, sizeCell, padding);
+        game.run();
+        game.init(nbPlayer);
+    }
 
     return 0;
 }
