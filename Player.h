@@ -19,7 +19,7 @@ private:
     Color color;
     int tileX, tileY;
     int tileCoupons;
-    int nbTilesPlaced;
+    int nbTilesPlaced = 0;
 };
 
 

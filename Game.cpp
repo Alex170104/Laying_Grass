@@ -22,7 +22,13 @@ void Game::run() {
         BeginDrawing();
         ClearBackground(Color {192, 192, 192, 255});
 
-        boardDisplay.display(size, sizeCell, padding, true, playerTiles, currentPlayer, selectedTile, listPlayers);
+        bool firstTurn;
+        if (listPlayers[currentPlayer].getNbTilesPlaced() == 0) {
+            firstTurn = true;
+        } else {
+            firstTurn = false;
+        }
+        boardDisplay.display(size, sizeCell, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers);
 
         if (IsKeyPressed(KEY_SPACE)) {
             isPreviewing = true;
@@ -45,6 +51,7 @@ void Game::run() {
 
                 isPreviewing = false;
 
+                listPlayers[currentPlayer].incrementNbTilesPlaced();
                 currentPlayer = (currentPlayer + 1) % nbPlayer;
                 selectedTile = playerTiles[currentPlayer].back();
                 playerTiles[currentPlayer].pop_back();
