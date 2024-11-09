@@ -4,8 +4,8 @@
 #include <iostream>
 #include <random>
 
-Game::Game(int size, int nbPlayer, int sizeCell, int padding, vector<Color> playerColors, vector<string> playerNames)
-        : board(size, nbPlayer), nbPlayer(nbPlayer), boardDisplay(board, sizeCell), size(size), sizeCell(sizeCell), padding(padding), playerColors(playerColors), playerNames(playerNames){}
+Game::Game(int size, int nbPlayer, int sizeCell, int padding, vector<Player> listPlayers)
+        : board(size, nbPlayer), nbPlayer(nbPlayer), boardDisplay(board, sizeCell), size(size), sizeCell(sizeCell), padding(padding), listPlayers(listPlayers){}
 
 
 void Game::run() {
@@ -22,7 +22,7 @@ void Game::run() {
         BeginDrawing();
         ClearBackground(Color {192, 192, 192, 255});
 
-        boardDisplay.display(size, sizeCell, padding, true, nbPlayer, playerTiles, currentPlayer, selectedTile, playerColors, playerNames);
+        boardDisplay.display(size, sizeCell, padding, true, playerTiles, currentPlayer, selectedTile, listPlayers);
 
         if (IsKeyPressed(KEY_SPACE)) {
             isPreviewing = true;
@@ -35,7 +35,7 @@ void Game::run() {
 
             bool validPosition = tiles.isValidPosition(x, y, board, size, selectedTile);
 
-            Color playerColor = Case(currentPlayer + 1, 0, currentPlayer + 1, 0).caseColor();
+            Color playerColor = listPlayers[currentPlayer].getColor();
             Color tileColor = validPosition ? Fade(playerColor, 0.5f) : Fade({30, 30, 30, 255}, 0.8f);
 
             tiles.drawTilePattern(x, y, sizeCell, padding, tileColor, selectedTile);

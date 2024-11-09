@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include "raylib.h"
+#include "Player.h"
 
 using namespace std;
 
@@ -12,9 +13,8 @@ public:
     DisplayMenu(int screenWidth, int screenHeight);
     void showMenu();
     bool isGameStart();
-    int getNumPlayers() { return playerNames.size();};
-    vector<string> getPlayerNames(){ return playerNames;};
-    vector<Color> getPlayerColors(){ return playerColors;};
+    int getNumPlayers() { return listPlayers.size();};
+    vector<Player> getListPlayers(){ return listPlayers;};
 
 private:
     int screenWidth;
@@ -22,8 +22,7 @@ private:
     bool gameStart;
     int numPlayers;
     int selectedPlayer;
-    vector<string> playerNames;
-    vector<Color> playerColors;
+    vector<Player> listPlayers;
     vector<Color> availableColors;
     void drawMenu();
     void handleInput();

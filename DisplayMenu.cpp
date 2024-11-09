@@ -1,15 +1,10 @@
-//
-// Created by alexd on 08/11/2024.
-//
-
 #include "DisplayMenu.h"
 #include <iostream>
 #include "raylib.h"
 
 DisplayMenu::DisplayMenu(int screenWidth, int screenHeight)
         : screenWidth(screenWidth), screenHeight(screenHeight), gameStart(false), numPlayers(4), selectedPlayer(-1) {
-    playerNames.resize(numPlayers, "");
-    playerColors.resize(numPlayers, GRAY);
+    listPlayers.resize(numPlayers, Player("", GRAY));
     availableColors = {RED, GREEN, BLUE, YELLOW, ORANGE, PURPLE, BROWN, LIME, DARKGRAY};
 }
 
@@ -35,8 +30,8 @@ void DisplayMenu::drawMenu() {
 
     for (int i = 0; i < numPlayers; ++i) {
         Color color = (i == selectedPlayer) ? RED : BLACK;
-        DrawText(("Player " + to_string(i + 1) + ": " + playerNames[i]).c_str(), 100, 200 + 75 * i, 40, color);
-        Color squareColor = (playerColors[i].r == GRAY.r && playerColors[i].g == GRAY.g && playerColors[i].b == GRAY.b && playerColors[i].a == GRAY.a) ? RAYWHITE : playerColors[i];
+        DrawText(("Player " + to_string(i + 1) + ": " + listPlayers[i].getName()).c_str(), 100, 200 + 75 * i, 40, color);
+        Color squareColor = (listPlayers[i].getColor().r == GRAY.r && listPlayers[i].getColor().g == GRAY.g && listPlayers[i].getColor().b == GRAY.b && listPlayers[i].getColor().a == GRAY.a) ? RAYWHITE : listPlayers[i].getColor();
         DrawRectangle(50, 200 + 75 * i, 40, 40, squareColor);
     }
 
@@ -51,19 +46,17 @@ void DisplayMenu::drawMenu() {
 void DisplayMenu::handleInput() {
     if (IsKeyPressed(KEY_UP)) {
         numPlayers = (numPlayers < 9) ? numPlayers + 1 : 9;
-        playerNames.resize(numPlayers, "");
-        playerColors.resize(numPlayers, GRAY);
+        listPlayers.resize(numPlayers, Player("", GRAY));
     }
     if (IsKeyPressed(KEY_DOWN)) {
         if (numPlayers > 2){
             for (int i = numPlayers - 1; i >= numPlayers - 1; --i) {
-                if (!(playerColors[i].r == GRAY.r && playerColors[i].g == GRAY.g && playerColors[i].b == GRAY.b && playerColors[i].a == GRAY.a)) {
-                    availableColors.push_back(playerColors[i]);
+                if (!(listPlayers[i].getColor().r == GRAY.r && listPlayers[i].getColor().g == GRAY.g && listPlayers[i].getColor().b == GRAY.b && listPlayers[i].getColor().a == GRAY.a)) {
+                    availableColors.push_back(listPlayers[i].getColor());
                 }
             }
             numPlayers--;
-            playerNames.resize(numPlayers, "");
-            playerColors.resize(numPlayers, GRAY);
+            listPlayers.resize(numPlayers, Player("", GRAY));
         }
     }
 
@@ -84,10 +77,10 @@ void DisplayMenu::handleInput() {
             for (int i = 0; i < availableColors.size(); ++i) {
                 if (mousePosition.x > 100 + i * 50 && mousePosition.x < 140 + i * 50 &&
                     mousePosition.y > 230 + 75 * numPlayers && mousePosition.y < 270 + 75 * numPlayers) {
-                    if (!(playerColors[selectedPlayer].r == GRAY.r && playerColors[selectedPlayer].g == GRAY.g && playerColors[selectedPlayer].b == GRAY.b && playerColors[selectedPlayer].a == GRAY.a)) {
-                        availableColors.push_back(playerColors[selectedPlayer]);
+                    if (!(listPlayers[selectedPlayer].getColor().r == GRAY.r && listPlayers[selectedPlayer].getColor().g == GRAY.g && listPlayers[selectedPlayer].getColor().b == GRAY.b && listPlayers[selectedPlayer].getColor().a == GRAY.a)) {
+                        availableColors.push_back(listPlayers[selectedPlayer].getColor());
                     }
-                    playerColors[selectedPlayer] = availableColors[i];
+                    listPlayers[selectedPlayer].setColor(availableColors[i]);
                     availableColors.erase(availableColors.begin() + i);
                     selectedPlayer = -1;
                     break;
@@ -107,10 +100,10 @@ void DisplayMenu::handleInput() {
             else if (key == 'M') key = ';';
             else if (key == ';') key = 'M';
 
-            playerNames[selectedPlayer] += (char)key;
+            listPlayers[selectedPlayer].addChar((char)key);
         }
-        if (IsKeyPressed(KEY_BACKSPACE) && !playerNames[selectedPlayer].empty()) {
-            playerNames[selectedPlayer].pop_back();
+        if (IsKeyPressed(KEY_BACKSPACE) && !listPlayers[selectedPlayer].getName().empty()) {
+            listPlayers[selectedPlayer].getName().pop_back();
         }
     }
 }

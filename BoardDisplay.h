@@ -3,12 +3,13 @@
 
 #include "raylib.h"
 #include "Board.h"
+#include "Player.h"
 
 class BoardDisplay {
 public:
     BoardDisplay(Board& board, int sizeCell);
     ~BoardDisplay();
-    void display(int size, int sizeCell, int padding, bool firstTurn, int nbPlayer, const vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, const vector<vector<int>>& selectedTile, const vector<Color>& playerColors, const vector<string>& playerNames);
+    void display(int size, int sizeCell, int padding, bool firstTurn, const vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, const vector<vector<int>>& selectedTile, vector<Player> listPlayers);
 
 
 private:

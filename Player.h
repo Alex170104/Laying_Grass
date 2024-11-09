@@ -1,23 +1,25 @@
-//
-// Created by alexd on 30/10/2024.
-//
-
 #ifndef LAYING_GRASS_PLAYER_H
 #define LAYING_GRASS_PLAYER_H
 
 #include <string>
-
-using namespace std;
+#include "raylib.h"
 
 class Player {
 public:
-    string name;
-    string color;
-    int tileX, tileY; // Coordonnées de la tuile de départ
-    int tileCoupons;
-
-    Player(const string& playerName, const string& playerColor);
+    Player(const std::string& playerName, const Color playerColor);
     void setStartingTile(int x, int y);
+    int getNbTilesPlaced() const;
+    void incrementNbTilesPlaced();
+    std::string getName() const;
+    void addChar(char c);
+    Color getColor() const;
+    void setColor(const Color playerColor);
+private:
+    std::string name;
+    Color color;
+    int tileX, tileY;
+    int tileCoupons;
+    int nbTilesPlaced;
 };
 
 

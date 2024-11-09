@@ -16,15 +16,14 @@ int main() {
 
     if (menu.isGameStart()) {
         int nbPlayer = menu.getNumPlayers();
-        vector<string> playerNames = menu.getPlayerNames();
-        vector<Color> playerColors = menu.getPlayerColors();
+        vector<Player> listPlayers = menu.getListPlayers();
         int size = sizeBoard(nbPlayer);
         int sizeCell = (nbPlayer > 4) ? 40 : 50;
         int padding = 100;
         int windowSize = size * sizeCell + 2 * padding;
         InitWindow(windowSize, windowSize + 200, "Laying Grass");
 
-        Game game(size, nbPlayer, sizeCell, padding, playerColors, playerNames);
+        Game game(size, nbPlayer, sizeCell, padding, listPlayers);
         game.run();
     }
 
@@ -36,7 +35,7 @@ int sizeBoard(int nbPlayer) {
     if (2 <= nbPlayer && nbPlayer <= 4){
         size = 20;
     }
-    else if (5 <= nbPlayer && nbPlayer <= 9){
+    else {
         size = 30;
     }
     return size;

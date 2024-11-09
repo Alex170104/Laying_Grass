@@ -3,6 +3,7 @@
 
 #include <string>
 #include "raylib.h"
+
 using namespace std;
 
 class Case {
@@ -20,8 +21,6 @@ public:
 
     int getType() const { return type; }
     void setType(int value) { type = value; }
-
-    Color caseColor() const;
 
 private:
     int x;

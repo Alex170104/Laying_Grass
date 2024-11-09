@@ -29,69 +29,50 @@ BoardDisplay::~BoardDisplay() {
     UnloadTexture(textureBonusStone);
 }
 
-void BoardDisplay::display(int size, int sizeCell, int padding, bool firstTurn, int nbPlayer, const vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, const vector<vector<int>>& selectedTile, const vector<Color>& playerColors, const vector<string>& playerNames) {
+void BoardDisplay::display(int size, int sizeCell, int padding, bool firstTurn, const vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, const vector<vector<int>>& selectedTile, vector<Player> listPlayers) {
     int sizeCellPreview = 30;
     int previewSize = 5;
     int previewPadding = 150;
     int startX = padding;
     int startY = size * sizeCell + 2 * padding;
 
-    string currentPlayerName = playerNames[currentPlayer];
-    Color currentPlayerColor = playerColors[currentPlayer];
+    string currentPlayerName = listPlayers[currentPlayer].getName();
+    Color currentPlayerColor = listPlayers[currentPlayer].getColor();
     DrawText(currentPlayerName.c_str(), startX, padding - 40, 30, currentPlayerColor);
 
     for (int i = 0; i < size; ++i) {
         for (int j = 0; j < size; ++j) {
             Case &currentCase = board.getCase(i, j);
-            Color color = currentCase.caseColor();
+            Color color;
+            int playerCase = currentCase.getCasePlayer();
+            if (playerCase == 0) {
+                color = LIGHTGRAY;
+            } else {
+                playerCase--;
+                color = listPlayers[playerCase].getColor();
+            }
             Color colorEmpty = color;
+
             if (firstTurn) {
+                int nbPlayer = listPlayers.size();
+                vector<vector<bool>> pos;
                 if (nbPlayer <= 4) {
-                    if (i < size / 2 and j < size / 2) {
-                        colorEmpty = Fade(BLUE, 0.2f);
-                    }
-                    else if (i < size / 2 and j >= size / 2) {
-                        colorEmpty = Fade(RED, 0.2f);
-                    }
-                    else if (i >= size / 2 and j < size / 2) {
-                        colorEmpty = Fade(GREEN, 0.2f);
-                    }
-                    else {
-                        colorEmpty = Fade(YELLOW, 0.2f);
-                    }
+                    pos = {{i < size / 2, j < size / 2}, {i < size / 2, j >= size / 2}, {i >= size / 2, j < size / 2}, {i >= size / 2, j >= size / 2}};
                 } else {
-                    if (i < size / 3 and j < size / 3) {
-                        colorEmpty = Fade(BLUE, 0.2f);
-                    }
-                    else if (i < size / 3 and j >= size / 3 and j < 2 * size / 3) {
-                        colorEmpty = Fade(RED, 0.2f);
-                    }
-                    else if (i < size / 3 and j >= 2 * size / 3) {
-                        colorEmpty = Fade(GREEN, 0.2f);
-                    }
-                    else if (i >= size / 3 and i < 2 * size / 3 and j < size / 3) {
-                        colorEmpty = Fade(YELLOW, 0.2f);
-                    }
-                    else if (i >= size / 3 and i < 2 * size / 3 and j >= size / 3 and j < 2 * size / 3) {
-                        colorEmpty = Fade(GRAY, 0.2f);
-                    }
-                    else if (i >= size / 3 and i < 2 * size / 3 and j >= 2 * size / 3) {
-                        colorEmpty = Fade(LIME, 0.2f);
-                    }
-                    else if (i >= 2 * size / 3 and j < size / 3) {
-                        colorEmpty = Fade(ORANGE, 0.2f);
-                    }
-                    else if (i >= 2 * size / 3 and j >= size / 3 and j < 2 * size / 3) {
-                        colorEmpty = Fade(PURPLE, 0.2f);
-                    }
-                    else {
-                        colorEmpty = Fade(BROWN, 0.2f);
+                    pos = {{i < size / 3, j < size / 3}, {i < size / 3, j >= size / 3 && j < 2 * size / 3}, {i < size / 3, j >= 2 * size / 3},
+                           {i >= size / 3 && i < 2 * size / 3, j < size / 3}, {i >= size / 3 && i < 2 * size / 3, j >= size / 3 && j < 2 * size / 3},
+                           {i >= size / 3 && i < 2 * size / 3, j >= 2 * size / 3}, {i >= 2 * size / 3, j < size / 3}, {i >= 2 * size / 3, j >= size / 3 && j < 2 * size / 3},
+                           {i >= 2 * size / 3, j >= 2 * size / 3}};
+                }
+                for (int k = 0; k < nbPlayer; ++k) {
+                    if (pos[k][0] and pos[k][1]) {
+                        colorEmpty = Fade(listPlayers[k].getColor(), 0.2f);
                     }
                 }
             }
 
             if (currentCase.getType() == 0) {
-                DrawRectangle(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell, color);
+                DrawRectangle(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell, colorEmpty);
                 DrawRectangleLines(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell,BLACK);
             }
             else if (currentCase.getType() == 1) {
@@ -119,7 +100,7 @@ void BoardDisplay::display(int size, int sizeCell, int padding, bool firstTurn, 
                 if (tilePattern[row][col] == 1) {
                     int posX = offsetX + col * sizeCellPreview;
                     int posY = offsetY + row * sizeCellPreview;
-                    Color color = Case(currentPlayer + 1, 0, currentPlayer + 1, 0).caseColor();
+                    Color color = listPlayers[currentPlayer].getColor();
                     DrawRectangle(posX, posY, sizeCellPreview, sizeCellPreview, color);
                     DrawRectangleLines(posX, posY, sizeCellPreview, sizeCellPreview, BLACK);
                 }
