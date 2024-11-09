@@ -12,6 +12,7 @@ public:
     void incrementNbTilesPlaced();
     std::string getName() const;
     void addChar(char c);
+    void removeChar();
     Color getColor() const;
     void setColor(const Color playerColor);
 private:

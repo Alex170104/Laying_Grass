@@ -103,7 +103,7 @@ void DisplayMenu::handleInput() {
             listPlayers[selectedPlayer].addChar((char)key);
         }
         if (IsKeyPressed(KEY_BACKSPACE) && !listPlayers[selectedPlayer].getName().empty()) {
-            listPlayers[selectedPlayer].getName().pop_back();
+            listPlayers[selectedPlayer].removeChar();
         }
     }
 }

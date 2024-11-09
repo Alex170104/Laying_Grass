@@ -18,6 +18,10 @@ void Player::addChar(char c) {
     name += c;
 }
 
+void Player::removeChar() {
+    name.pop_back();
+}
+
 Color Player::getColor() const {
     return color;
 }
