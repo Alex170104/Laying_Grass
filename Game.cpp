@@ -20,10 +20,13 @@ void Game::run() {
 
     while (!WindowShouldClose()) {
         BeginDrawing();
-//        ClearBackground({10,10,10,255});
-        ClearBackground(GRAY);
-        boardDisplay.display(size, sizeCell, padding, playerTiles, currentPlayer, selectedTile, playerColors, playerNames);
+        ClearBackground(Color {192, 192, 192, 255});
 
+        boardDisplay.display(size, sizeCell, padding, true, nbPlayer, playerTiles, currentPlayer, selectedTile, playerColors, playerNames);
+
+        if (IsKeyPressed(KEY_SPACE)) {
+            isPreviewing = true;
+        }
         if (isPreviewing) {
 
             Vector2 mousePosition = GetMousePosition();
@@ -40,9 +43,6 @@ void Game::run() {
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && validPosition) {
                 tiles.placeTile(y, x, currentPlayer + 1, board, selectedTile);
 
-                board.displayType();
-                cout << " " << endl;
-                board.displayCasePlayer();
                 isPreviewing = false;
 
                 currentPlayer = (currentPlayer + 1) % nbPlayer;
@@ -66,4 +66,37 @@ void Game::run() {
         EndDrawing();
     }
     CloseWindow();
+}
+
+int Game::biggerSquare(int player) {
+    int maxSquare = 0;
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            if (board.getCase(i, j).getCasePlayer() == player) {
+                bool alwaySquare = true;
+                while (alwaySquare) {
+                    int square = 1;
+                    for (int k = 1; k < size; k++) {
+                        if (i + k < size && j + k < size) {
+                            if (board.getCase(i + k, j).getCasePlayer() == player &&
+                                board.getCase(i, j + k).getCasePlayer() == player &&
+                                board.getCase(i + k, j + k).getCasePlayer() == player) {
+                                square++;
+                            } else {
+                                alwaySquare = false;
+                                break;
+                            }
+                        } else {
+                            alwaySquare = false;
+                            break;
+                        }
+                    }
+                    if (square > maxSquare) {
+                        maxSquare = square;
+                    }
+                }
+            }
+        }
+    }
+    return maxSquare;
 }

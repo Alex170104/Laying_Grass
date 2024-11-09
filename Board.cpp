@@ -10,6 +10,12 @@ Board::Board(int size, int nbPlayer): size(size), nbPlayer(nbPlayer) {
 
 vector<vector<Case>> Board::createBoard() {
     grid = vector<vector<Case>>(size, vector<Case>(size, Case(0, 0, 0, 0)));
+    for (int i = 0; i < size; ++i) {
+        for (int j = 0; j < size; ++j) {
+            grid[i][j].setX(j);
+            grid[i][j].setY(i);
+        }
+    }
     int nbTileExchange = ceil(1.5 * nbPlayer);
     int nbStone = ceil(0.5 * nbPlayer);
     int nbRobbery = nbPlayer;
