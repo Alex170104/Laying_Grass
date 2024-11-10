@@ -72,35 +72,40 @@ void Tiles::flip(vector<vector<int>>& tilePattern) {
 
 // Vérifie le plateau
 bool Tiles::isValidPosition(int x, int y, Board& board, int size, vector<vector<int>>& tilePattern, bool firstTurn, int currentPlayer, int nbPlayer) {
-    for (int i = 0; i < size; ++i) {
-        for (int j = 0; j < size; ++j) {
-            vector<vector<bool>> pos;
-            if (nbPlayer <= 4) {
-                pos = {{i < size / 2,  j < size / 2},
-                       {i < size / 2,  j >= size / 2},
-                       {i >= size / 2, j < size / 2},
-                       {i >= size / 2, j >= size / 2}};
-            } else {
-                pos = {{i < size / 3,                      j < size / 3},
-                       {i < size / 3,                      j >= size / 3 && j < 2 * size / 3},
-                       {i < size / 3,                      j >= 2 * size / 3},
-                       {i >= size / 3 && i < 2 * size / 3, j < size / 3},
-                       {i >= size / 3 && i < 2 * size / 3, j >= size / 3 && j < 2 * size / 3},
-                       {i >= size / 3 && i < 2 * size / 3, j >= 2 * size / 3},
-                       {i >= 2 * size / 3,                 j < size / 3},
-                       {i >= 2 * size / 3,                 j >= size / 3 && j < 2 * size / 3},
-                       {i >= 2 * size / 3,                 j >= 2 * size / 3}};
-            }
-
-            for (int k = 0; k < nbPlayer; ++k) {
-                if (pos[k][0] and pos[k][1] && firstTurn) {
+    vector<vector<bool>> pos;
+    if (nbPlayer <= 4) {
+        pos = {{x < size / 2,  y < size / 2},
+               {x >= size / 2, y < size / 2},
+               {x < size / 2,  y >= size / 2},
+               {x >= size / 2, y >= size / 2}};
+    } else {
+        pos = {{x < size / 3,                      y < size / 3},
+               {x >= size / 3 && x < 2 * size / 3, y < size / 3},
+               {x >= 2 * size / 3,                 y < size / 3},
+               {x < size / 3,                      y >= size / 3 && y < 2 * size / 3},
+               {x >= size / 3 && x < 2 * size / 3, y >= size / 3 && y < 2 * size / 3},
+               {x >= size / 3 && x < 2 * size / 3, y >= 2 * size / 3},
+               {x < size / 3,                      y >= 2 * size / 3},
+               {x >= 2 * size / 3,                 y >= size / 3 && y < 2 * size / 3},
+               {x >= 2 * size / 3,                 y >= 2 * size / 3}};
+    }
+    for (int k = 0; k < pos.size(); ++k) {
+        if (x < 0 || x >= size || y < 0 || y >= size){
+            return false;
+        }
+        else{
+            if (pos[k][0] && pos[k][1] && firstTurn) {
+                if (k == currentPlayer) {
                     return true;
                 }
+                return false;
             }
         }
     }
+
     int tileHeight = tilePattern.size();
     int tileWidth = tilePattern[0].size();
+    bool adjacentToSamePlayer = false;
 
     for (int i = 0; i < tileHeight; ++i) {
         for (int j = 0; j < tileWidth; ++j) {
@@ -114,10 +119,16 @@ bool Tiles::isValidPosition(int x, int y, Board& board, int size, vector<vector<
                 if (board.getCase(boardY, boardX).getCasePlayer() != 0) {
                     return false;
                 }
+                if ((boardX > 0 && board.getCase(boardY, boardX - 1).getCasePlayer() == currentPlayer + 1) ||
+                    (boardX < size - 1 && board.getCase(boardY, boardX + 1).getCasePlayer() == currentPlayer + 1) ||
+                    (boardY > 0 && board.getCase(boardY - 1, boardX).getCasePlayer() == currentPlayer + 1) ||
+                    (boardY < size - 1 && board.getCase(boardY + 1, boardX).getCasePlayer() == currentPlayer + 1)) {
+                    adjacentToSamePlayer = true;
+                }
             }
         }
     }
-    return true;
+    return adjacentToSamePlayer;
 }
 
 vector<vector<vector<vector<int>>>> Tiles::distributeTiles(int nbPlayers) {
