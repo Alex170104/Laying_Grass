@@ -56,7 +56,7 @@ void Game::run() {
 
                 if (listPlayers[currentPlayer].getNbTilesPlaced() == 10) {
                     for (int i = 0; i < nbPlayer; i++) {
-                        cout << "Le joueur " << listPlayers[i].getName() << " a un carre de " << biggerSquare(currentPlayer) << endl;
+                        cout << "Le joueur " << listPlayers[i].getName() << " a un carre de " << biggerSquare(i+1) << endl;
                     }
                 }
             }
@@ -82,27 +82,24 @@ int Game::biggerSquare(int player) {
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
             if (board.getCase(i, j).getCasePlayer() == player) {
+                int square = 1;
                 bool alwaySquare = true;
                 while (alwaySquare) {
-                    int square = 1;
-                    for (int k = 1; k < size; k++) {
-                        if (i + k < size && j + k < size) {
-                            if (board.getCase(i + k, j).getCasePlayer() == player &&
-                                board.getCase(i, j + k).getCasePlayer() == player &&
-                                board.getCase(i + k, j + k).getCasePlayer() == player) {
-                                square++;
-                            } else {
+                    for (int k = 0; k < square; k++) {
+                        for (int l = 0; l < square; l++) {
+                            if (i + k >= size || j + l >= size || board.getCase(i + k, j + l).getCasePlayer() != player) {
                                 alwaySquare = false;
                                 break;
                             }
-                        } else {
-                            alwaySquare = false;
-                            break;
                         }
+                        if (!alwaySquare) break;
                     }
-                    if (square > maxSquare) {
-                        maxSquare = square;
+                    if (alwaySquare) {
+                        square++;
                     }
+                }
+                if (square - 1 > maxSquare) {
+                    maxSquare = square - 1;
                 }
             }
         }
