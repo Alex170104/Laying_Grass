@@ -1,7 +1,3 @@
-//
-// Created by alexd on 03/11/2024.
-//
-
 #include "Tiles.h"
 #include "raylib.h"
 #include <iostream>
@@ -75,7 +71,34 @@ void Tiles::flip(vector<vector<int>>& tilePattern) {
 }
 
 // Vérifie le plateau
-bool Tiles::isValidPosition(int x, int y, Board& board, int size, vector<vector<int>>& tilePattern) {
+bool Tiles::isValidPosition(int x, int y, Board& board, int size, vector<vector<int>>& tilePattern, bool firstTurn, int currentPlayer, int nbPlayer) {
+    for (int i = 0; i < size; ++i) {
+        for (int j = 0; j < size; ++j) {
+            vector<vector<bool>> pos;
+            if (nbPlayer <= 4) {
+                pos = {{i < size / 2,  j < size / 2},
+                       {i < size / 2,  j >= size / 2},
+                       {i >= size / 2, j < size / 2},
+                       {i >= size / 2, j >= size / 2}};
+            } else {
+                pos = {{i < size / 3,                      j < size / 3},
+                       {i < size / 3,                      j >= size / 3 && j < 2 * size / 3},
+                       {i < size / 3,                      j >= 2 * size / 3},
+                       {i >= size / 3 && i < 2 * size / 3, j < size / 3},
+                       {i >= size / 3 && i < 2 * size / 3, j >= size / 3 && j < 2 * size / 3},
+                       {i >= size / 3 && i < 2 * size / 3, j >= 2 * size / 3},
+                       {i >= 2 * size / 3,                 j < size / 3},
+                       {i >= 2 * size / 3,                 j >= size / 3 && j < 2 * size / 3},
+                       {i >= 2 * size / 3,                 j >= 2 * size / 3}};
+            }
+
+            for (int k = 0; k < nbPlayer; ++k) {
+                if (pos[k][0] and pos[k][1] && firstTurn) {
+                    return true;
+                }
+            }
+        }
+    }
     int tileHeight = tilePattern.size();
     int tileWidth = tilePattern[0].size();
 
@@ -98,6 +121,9 @@ bool Tiles::isValidPosition(int x, int y, Board& board, int size, vector<vector<
 }
 
 vector<vector<vector<vector<int>>>> Tiles::distributeTiles(int nbPlayers) {
+    vector<vector<int>> tile0 = {
+            {1}
+    };
     vector<vector<vector<int>>> tileList = getTileList();
     shuffle(tileList.begin(), tileList.end(), mt19937{random_device{}()});
 
@@ -105,7 +131,9 @@ vector<vector<vector<vector<int>>>> Tiles::distributeTiles(int nbPlayers) {
     for (size_t i = 0; i < tileList.size(); ++i) {
         playerTiles[i % nbPlayers].push_back(tileList[i]);
     }
+    for (int i = 0; i < nbPlayers; ++i) {
+        playerTiles[i % nbPlayers].push_back(tile0);
+    }
     return playerTiles;
 }
-
 

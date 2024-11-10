@@ -10,7 +10,7 @@ public:
     void rotateTilePattern(vector<vector<int>>& tilePattern);
     void drawTilePattern(int x, int y, int sizeCell, int padding, Color color, vector<vector<int>>& tilePattern);
     void flip(vector<vector<int>>& tilePattern);
-    bool isValidPosition(int x, int y, Board& board, int size, vector<vector<int>>& tilePattern);
+    bool isValidPosition(int x, int y, Board& board, int size, vector<vector<int>>& tilePattern, bool firstTurn, int currentPlayer, int nbPlayer);
     vector<vector<vector<int>>> getTileList() const { return listTile; }
     vector<vector<vector<vector<int>>>> distributeTiles(int nbPlayers);
 

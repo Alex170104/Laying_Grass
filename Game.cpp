@@ -30,24 +30,13 @@ void Game::run() {
         }
         boardDisplay.display(size, sizeCell, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers);
 
-        if (IsKeyPressed(KEY_SPACE)) {
-            isPreviewing = true;
-        }
-
         if (isPreviewing) {
 
             Vector2 mousePosition = GetMousePosition();
             int x = (mousePosition.x - padding) / sizeCell;
             int y = (mousePosition.y - padding) / sizeCell;
 
-            bool validPosition = tiles.isValidPosition(x, y, board, size, selectedTile);
-
-            if (firstTurn) {
-                if (!(x >= 0 && x < size / 2 && y >= 0 && y < size / 2)) {
-                    validPosition = false;
-                }
-            }
-
+            bool validPosition = tiles.isValidPosition(x, y, board, size, selectedTile, firstTurn, currentPlayer, nbPlayer);
 
             Color playerColor = listPlayers[currentPlayer].getColor();
             Color tileColor = validPosition ? Fade(playerColor, 0.5f) : Fade({30, 30, 30, 255}, 0.8f);
@@ -65,6 +54,11 @@ void Game::run() {
                 playerTiles[currentPlayer].pop_back();
                 isPreviewing = true;
 
+                if (listPlayers[currentPlayer].getNbTilesPlaced() == 10) {
+                    for (int i = 0; i < nbPlayer; i++) {
+                        cout << "Le joueur " << listPlayers[i].getName() << " a un carre de " << biggerSquare(currentPlayer) << endl;
+                    }
+                }
             }
             if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {
                 tiles.rotateTilePattern(selectedTile);
