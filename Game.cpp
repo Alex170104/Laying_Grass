@@ -33,6 +33,7 @@ void Game::run() {
         if (IsKeyPressed(KEY_SPACE)) {
             isPreviewing = true;
         }
+
         if (isPreviewing) {
 
             Vector2 mousePosition = GetMousePosition();
@@ -40,6 +41,13 @@ void Game::run() {
             int y = (mousePosition.y - padding) / sizeCell;
 
             bool validPosition = tiles.isValidPosition(x, y, board, size, selectedTile);
+
+            if (firstTurn) {
+                if (!(x >= 0 && x < size / 2 && y >= 0 && y < size / 2)) {
+                    validPosition = false;
+                }
+            }
+
 
             Color playerColor = listPlayers[currentPlayer].getColor();
             Color tileColor = validPosition ? Fade(playerColor, 0.5f) : Fade({30, 30, 30, 255}, 0.8f);
