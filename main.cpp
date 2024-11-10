@@ -13,6 +13,7 @@ int main() {
 
     DisplayMenu menu(screenWidth, screenHeight);
     menu.showMenu();
+    CloseWindow();
 
     if (menu.isGameStart()) {
         int nbPlayer = menu.getNumPlayers();
@@ -23,8 +24,15 @@ int main() {
         int windowSize = size * sizeCell + 2 * padding;
         InitWindow(windowSize, windowSize + 200, "Laying Grass");
 
-        Game game(size, nbPlayer, sizeCell, padding, listPlayers);
-        game.run();
+//        if (!win){
+            Game game(size, nbPlayer, sizeCell, padding, listPlayers);
+            game.run();
+//        }
+//        else {
+//            CloseWindow();
+//        }
+
+
     }
 
     return 0;
