@@ -54,11 +54,8 @@ void Game::run() {
                 playerTiles[currentPlayer].pop_back();
                 isPreviewing = true;
 
-                if (listPlayers[currentPlayer].getNbTilesPlaced() == 10) {
-                    for (int i = 0; i < nbPlayer; i++) {
-                        cout << "Le joueur " << listPlayers[i].getName() << " a un carre de " << biggerSquare(i+1) << endl;
-                    }
-                }
+                //Fin de jeu
+                win(currentPlayer);
             }
             if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {
                 tiles.rotateTilePattern(selectedTile);
@@ -75,6 +72,37 @@ void Game::run() {
         EndDrawing();
     }
     CloseWindow();
+}
+
+void Game::win(int currentPlayer) {
+    if (listPlayers[currentPlayer].getNbTilesPlaced() == 10) {
+        int playerWinFinal = 0;
+        vector<int> playerWinners;
+        int maxSquare = 0;
+        for (int i = 1; i < nbPlayer+1; i++) {
+            int square = biggerSquare(i);
+            if (square > maxSquare) {
+                playerWinners.clear();
+                playerWinners.push_back(i);
+                maxSquare = square;
+            } else if (square == maxSquare) {
+                playerWinners.push_back(i);
+            }
+        }
+        if (playerWinners.size() == 1) {
+            playerWinFinal = playerWinners[0];
+        } else {
+            int maxGrass = 0;
+            for (int i = 1; i < playerWinners.size()+1; i++) {
+                int grass = nbGrassPlaced(playerWinners[i]);
+                if (grass >= maxGrass) {
+                    playerWinFinal = playerWinners[i];
+                    maxGrass = grass;
+                }
+            }
+        }
+        cout << "Player " << listPlayers[playerWinFinal-1].getName() << " win !" << std::endl;
+    }
 }
 
 int Game::biggerSquare(int player) {
@@ -105,4 +133,16 @@ int Game::biggerSquare(int player) {
         }
     }
     return maxSquare;
+}
+
+int Game::nbGrassPlaced(int player) {
+    int nbGrass = 0;
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            if (board.getCase(i, j).getCasePlayer() == player) {
+                nbGrass++;
+            }
+        }
+    }
+    return nbGrass;
 }
