@@ -24,6 +24,10 @@ private:
     vector<Player> listPlayers;
 
     void drawUpcomingTiles(const vector<vector<vector<vector<int>>>> &playerTiles, int currentPlayer, int padding);
+
+    int nbGrassPlaced(int player);
+
+    void win(int currentPlayer);
 };
 
 #endif // GAME_H
