@@ -6,14 +6,29 @@ DisplayMenu::DisplayMenu(int screenWidth, int screenHeight)
         : screenWidth(screenWidth), screenHeight(screenHeight), gameStart(false), numPlayers(4), selectedPlayer(-1) {
     listPlayers.resize(numPlayers, Player("", GRAY));
     availableColors = {RED, GREEN, BLUE, YELLOW, ORANGE, PURPLE, BROWN, LIME, DARKGRAY};
+    Image imgDANGER;
+    imgDANGER = LoadImage("../img/DANGER.png");
+    textureDANGER = LoadTextureFromImage(imgDANGER);
+    UnloadImage(imgDANGER);
 }
 
 void DisplayMenu::showMenu() {
     while (!WindowShouldClose() && !gameStart) {
         BeginDrawing();
         ClearBackground(RAYWHITE);
-        drawMenu();
-        handleInput();
+
+        if (showWarning){
+            DrawTexture(textureDANGER, screenWidth / 2 - 50, 200, WHITE);
+            DrawText("Please enter a name", screenWidth / 2 - 200, 350, 40, RED);
+            DrawText("and select a color for each player", screenWidth / 2 - 350, 400, 40, RED);
+            if (GetTime() - warningTimer > 3){
+                UnloadTexture(textureDANGER);
+                showWarning = false;
+            }
+        } else {
+            drawMenu();
+            handleInput();
+        }
         EndDrawing();
     }
 }
@@ -70,7 +85,19 @@ void DisplayMenu::handleInput() {
         }
         if (mousePosition.x > screenWidth / 2 - 50 && mousePosition.x < screenWidth / 2 + 50 &&
             mousePosition.y > screenHeight - 100 && mousePosition.y < screenHeight - 80) {
-            gameStart = true;
+            bool allPlayersReady = true;
+            for (const auto& player : listPlayers) {
+                if (player.getName().empty() || (player.getColor().r == GRAY.r && player.getColor().g == GRAY.g && player.getColor().b == GRAY.b && player.getColor().a == GRAY.a)) {
+                    allPlayersReady = false;
+                    break;
+                }
+            }
+            if (allPlayersReady) {
+                gameStart = true;
+            } else {
+                showWarning = true;
+                warningTimer = GetTime();
+            }
         }
 
         if (selectedPlayer != -1) {

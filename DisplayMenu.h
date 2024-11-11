@@ -22,8 +22,11 @@ private:
     bool gameStart;
     int numPlayers;
     int selectedPlayer;
+    bool showWarning;
+    double warningTimer;
     vector<Player> listPlayers;
     vector<Color> availableColors;
+    Texture2D textureDANGER;
     void drawMenu();
     void handleInput();
 };

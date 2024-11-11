@@ -5,9 +5,11 @@
 #include "BoardDisplay.h"
 #include "Player.h"
 
+
+
 class Game {
 public:
-    Game(int size, int sizeCell, int padding, int nbPlayer, vector<Player> listPlayers);
+    Game(int size, int nbPlayer, int sizeCell, int padding, vector<Player> listPlayers, int turnCount);
     void run();
     int biggerSquare(int player);
 
@@ -18,6 +20,7 @@ private:
     int sizeCell;
     int padding;
     int nbPlayer;
+    int turnCount;
     vector<Player> listPlayers;
 
     void drawUpcomingTiles(const vector<vector<vector<vector<int>>>> &playerTiles, int currentPlayer, int padding);

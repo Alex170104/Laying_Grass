@@ -25,7 +25,7 @@ int main() {
         InitWindow(windowSize, windowSize + 200, "Laying Grass");
 
 //        if (!win){
-            Game game(size, nbPlayer, sizeCell, padding, listPlayers);
+            Game game(size, nbPlayer, sizeCell, padding, listPlayers, 0);
             game.run();
 //        }
 //        else {

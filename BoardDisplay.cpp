@@ -29,7 +29,7 @@ BoardDisplay::~BoardDisplay() {
     UnloadTexture(textureBonusStone);
 }
 
-void BoardDisplay::display(int size, int sizeCell, int padding, bool firstTurn, const vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, const vector<vector<int>>& selectedTile, vector<Player> listPlayers) {
+void BoardDisplay::display(int size, int sizeCell, int padding, bool firstTurn, const vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, const vector<vector<int>>& selectedTile, vector<Player> listPlayers, int turnCount) {
     int sizeCellPreview = 30;
     int previewSize = 5;
     int previewPadding = 150;
@@ -40,6 +40,12 @@ void BoardDisplay::display(int size, int sizeCell, int padding, bool firstTurn, 
     Color currentPlayerColor = listPlayers[currentPlayer].getColor();
     DrawText(currentPlayerName.c_str(), startX, padding - 40, 30, currentPlayerColor);
 
+    if (firstTurn) {
+        DrawText("PREMIER TOUR", startX + 750, padding - 40, 30, BLACK);
+    }
+    else {
+        DrawText(("TOUR " + to_string(listPlayers[currentPlayer].getNbTilesPlaced())).c_str(), startX + 870, padding - 40, 30, BLACK);
+    }
     for (int i = 0; i < size; ++i) {
         for (int j = 0; j < size; ++j) {
             Case &currentCase = board.getCase(i, j);

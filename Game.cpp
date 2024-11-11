@@ -4,8 +4,8 @@
 #include <iostream>
 #include <random>
 
-Game::Game(int size, int nbPlayer, int sizeCell, int padding, vector<Player> listPlayers)
-        : board(size, nbPlayer), nbPlayer(nbPlayer), boardDisplay(board, sizeCell), size(size), sizeCell(sizeCell), padding(padding), listPlayers(listPlayers){}
+Game::Game(int size, int nbPlayer, int sizeCell, int padding, vector<Player> listPlayers, int turnCount)
+        : board(size, nbPlayer), nbPlayer(nbPlayer), boardDisplay(board, sizeCell), size(size), sizeCell(sizeCell), padding(padding), listPlayers(listPlayers), turnCount(turnCount){}
 
 
 void Game::run() {
@@ -28,7 +28,7 @@ void Game::run() {
         } else {
             firstTurn = false;
         }
-        boardDisplay.display(size, sizeCell, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers);
+        boardDisplay.display(size, sizeCell, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers, turnCount);
 
         if (isPreviewing) {
 
@@ -53,6 +53,8 @@ void Game::run() {
                 selectedTile = playerTiles[currentPlayer].back();
                 playerTiles[currentPlayer].pop_back();
                 isPreviewing = true;
+
+                turnCount++;
 
                 if (listPlayers[currentPlayer].getNbTilesPlaced() == 10) {
                     for (int i = 0; i < nbPlayer; i++) {
