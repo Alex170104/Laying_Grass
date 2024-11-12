@@ -7,7 +7,7 @@ using namespace std;
 
 int main() {
     int screenWidth = 1000;
-    int screenHeight = 1000;
+    int screenHeight = 1200;
     InitWindow(screenWidth, screenHeight, "Laying Grass");
     SetTargetFPS(60);
 

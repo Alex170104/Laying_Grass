@@ -11,6 +11,7 @@ using namespace std;
 class DisplayMenu {
 public:
     DisplayMenu(int screenWidth, int screenHeight);
+    ~DisplayMenu();
     void showMenu();
     bool isGameStart();
     int getNumPlayers() { return listPlayers.size();};

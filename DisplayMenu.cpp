@@ -12,6 +12,10 @@ DisplayMenu::DisplayMenu(int screenWidth, int screenHeight)
     UnloadImage(imgDANGER);
 }
 
+DisplayMenu::~DisplayMenu() {
+    UnloadTexture(textureDANGER);
+}
+
 void DisplayMenu::showMenu() {
     while (!WindowShouldClose() && !gameStart) {
         BeginDrawing();
@@ -22,7 +26,6 @@ void DisplayMenu::showMenu() {
             DrawText("Please enter a name", screenWidth / 2 - 200, 350, 40, RED);
             DrawText("and select a color for each player", screenWidth / 2 - 350, 400, 40, RED);
             if (GetTime() - warningTimer > 3){
-                UnloadTexture(textureDANGER);
                 showWarning = false;
             }
         } else {
