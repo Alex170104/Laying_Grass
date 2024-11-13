@@ -9,7 +9,7 @@
 
 class Game {
 public:
-    Game(int size, int nbPlayer, int sizeCell, int padding, vector<Player> listPlayers, int turnCount);
+    Game(int size, int nbPlayer, int sizeCell, int padding, vector<Player> listPlayers);
     void run();
     int biggerSquare(int player);
 

@@ -29,7 +29,7 @@ BoardDisplay::~BoardDisplay() {
     UnloadTexture(textureBonusStone);
 }
 
-void BoardDisplay::display(int size, int sizeCell, int padding, bool firstTurn, const vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, const vector<vector<int>>& selectedTile, vector<Player> listPlayers, int turnCount) {
+void BoardDisplay::display(int size, int sizeCell, int padding, bool firstTurn, const vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, const vector<vector<int>>& selectedTile, vector<Player> listPlayers) {
     int sizeCellPreview = 30;
     int previewSize = 5;
     int previewPadding = 150;
