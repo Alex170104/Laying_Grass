@@ -54,7 +54,13 @@ void Game::run() {
                 playerTiles[currentPlayer].pop_back();
                 isPreviewing = true;
 
-                win(currentPlayer);
+                if (listPlayers[currentPlayer].getNbTilesPlaced() == 3) {
+                    vector<Player> orderWinners = calculWin();
+                    for (int i = 0; i < nbPlayer; i++) {
+                        cout << "Player " << orderWinners[i].getName() << " is " << i + 1 << " with " << orderWinners[i].getBiggestSquare() << " squares and " << orderWinners[i].getNbGrassPlaced() << " grass placed." << endl;
+                    }
+                    //displayWin();
+                }
             }
             if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {
                 tiles.rotateTilePattern(selectedTile);
@@ -73,35 +79,54 @@ void Game::run() {
     CloseWindow();
 }
 
-void Game::win(int currentPlayer) {
-    if (listPlayers[currentPlayer].getNbTilesPlaced() == 10) {
-        int playerWinFinal = 0;
-        vector<int> playerWinners;
+void Game::displayWin() {
+    InitWindow(800, 600, "Laying Grass - Game Over");
+    SetTargetFPS(60);
+
+    while (!WindowShouldClose()) {
+        BeginDrawing();
+        ClearBackground(RAYWHITE);
+
+        // Score
+
+        EndDrawing();
+    }
+
+    CloseWindow();
+}
+
+vector<Player> Game::calculWin() {
+    vector<Player> winnersOrdered;
+    vector<Player> listPlayersRestant = listPlayers;
+    for (int i = 0; i < nbPlayer; i++) {
+        listPlayers[i].setBiggestSquare(biggerSquare(i + 1));
+        listPlayers[i].setNbGrassPlaced(nbGrassPlaced(i + 1));
+    }
+    while (!listPlayersRestant.empty()) {
         int maxSquare = 0;
-        for (int i = 1; i < nbPlayer+1; i++) {
-            int square = biggerSquare(i);
-            if (square > maxSquare) {
-                playerWinners.clear();
-                playerWinners.push_back(i);
-                maxSquare = square;
-            } else if (square == maxSquare) {
-                playerWinners.push_back(i);
-            }
-        }
-        if (playerWinners.size() == 1) {
-            playerWinFinal = playerWinners[0];
-        } else {
-            int maxGrass = 0;
-            for (int i = 1; i < playerWinners.size()+1; i++) {
-                int grass = nbGrassPlaced(playerWinners[i]);
-                if (grass >= maxGrass) {
-                    playerWinFinal = playerWinners[i];
-                    maxGrass = grass;
+        int maxGrass = 0;
+        int index = 0;
+        /*
+        while (listPlayersRestant.size() > 1) {
+            for (int i = 0; i < listPlayersRestant.size(); i++) {
+                if (listPlayersRestant[i].getBiggestSquare() > maxSquare) {
+                    maxSquare = listPlayersRestant[i].getBiggestSquare();
+                    maxGrass = listPlayersRestant[i].getNbGrassPlaced();
+                    index = i;
+                } else if (listPlayersRestant[i].getBiggestSquare() == maxSquare) {
+                    if (listPlayersRestant[i].getNbGrassPlaced() >= maxGrass) {
+                        maxSquare = listPlayersRestant[i].getBiggestSquare();
+                        maxGrass = listPlayersRestant[i].getNbGrassPlaced();
+                        index = i;
+                    }
                 }
             }
+            winnersOrdered.push_back(listPlayersRestant[index]);
+            listPlayersRestant.erase(listPlayersRestant.begin() + index);
         }
-        cout << "Player " << listPlayers[playerWinFinal-1].getName() << " win !" << std::endl;
+        */
     }
+    return winnersOrdered;
 }
 
 int Game::biggerSquare(int player) {

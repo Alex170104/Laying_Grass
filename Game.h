@@ -27,7 +27,8 @@ private:
 
     int nbGrassPlaced(int player);
 
-    void win(int currentPlayer);
+    vector<Player> calculWin();
+    void displayWin();
 };
 
 #endif // GAME_H

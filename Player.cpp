@@ -37,3 +37,19 @@ int Player::getNbTilesPlaced() const {
 void Player::incrementNbTilesPlaced() {
     nbTilesPlaced++;
 }
+
+int Player::getBiggestSquare() const {
+    return biggestSquare;
+}
+
+void Player::setBiggestSquare(int square) {
+    biggestSquare = square;
+}
+
+int Player::getNbGrassPlaced() const {
+    return nbGrass;
+}
+
+void Player::setNbGrassPlaced(int grass) {
+    nbGrass = grass;
+}

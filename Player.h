@@ -15,12 +15,22 @@ public:
     void removeChar();
     Color getColor() const;
     void setColor(const Color playerColor);
+
+    int getBiggestSquare() const;
+    void setBiggestSquare(int square);
+    int getNbGrassPlaced() const;
+    void setNbGrassPlaced(int grass);
+
+
 private:
     std::string name;
     Color color;
     int tileX, tileY;
     int tileCoupons;
     int nbTilesPlaced = 0;
+
+    int biggestSquare;
+    int nbGrass;
 };
 
 
