@@ -18,6 +18,7 @@ private:
     Texture2D textureBonusStone;
     Texture2D textureBonusTicket;
     Texture2D textureBonusVol;
+    Texture2D textureFissure;
     int sizeCell;
 };
 

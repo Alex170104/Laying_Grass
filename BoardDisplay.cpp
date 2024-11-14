@@ -1,32 +1,32 @@
 #include "BoardDisplay.h"
 #include <iostream>
+
 using namespace std;
 
 BoardDisplay::BoardDisplay(Board& board, int sizeCell) : board(board), sizeCell(sizeCell) {
-    Image imgBonusStone;
-    Image imgBonusTicket;
-    Image imgBonusVol;
-    if (sizeCell == 40) {
-        imgBonusStone = LoadImage("../img/rock40.png");
-        imgBonusTicket = LoadImage("../img/ticket40.png");
-        imgBonusVol = LoadImage("../img/fissure40.png");
-    }
-    else {
-        imgBonusStone = LoadImage("../img/rock50.png");
-        imgBonusTicket = LoadImage("../img/ticket50.png");
-        imgBonusVol = LoadImage("../img/fissure50.png");
-    }
-
+    Image imgBonusStone = LoadImage("../img/rock.png");
+    Image imgBonusTicket = LoadImage("../img/ticket.png");
+    Image imgBonusVol = LoadImage("../img/vol.png");
+    Image imgFissure = LoadImage("../img/fissure.png");
+    ImageResize(&imgBonusStone, sizeCell, sizeCell);
+    ImageResize(&imgBonusTicket, sizeCell, sizeCell);
+    ImageResize(&imgBonusVol, sizeCell, sizeCell);
+    ImageResize(&imgFissure, sizeCell, sizeCell);
     textureBonusStone = LoadTextureFromImage(imgBonusStone);
     textureBonusTicket = LoadTextureFromImage(imgBonusTicket);
     textureBonusVol = LoadTextureFromImage(imgBonusVol);
+    textureFissure = LoadTextureFromImage(imgFissure);
     UnloadImage(imgBonusStone);
     UnloadImage(imgBonusTicket);
     UnloadImage(imgBonusVol);
+    UnloadImage(imgFissure);
 }
 
 BoardDisplay::~BoardDisplay() {
     UnloadTexture(textureBonusStone);
+    UnloadTexture(textureBonusTicket);
+    UnloadTexture(textureBonusVol);
+    UnloadTexture(textureFissure);
 }
 
 void BoardDisplay::display(int size, int sizeCell, int padding, bool firstTurn, const vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, const vector<vector<int>>& selectedTile, vector<Player> listPlayers) {

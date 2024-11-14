@@ -5,7 +5,7 @@
 DisplayMenu::DisplayMenu(int screenWidth, int screenHeight)
         : screenWidth(screenWidth), screenHeight(screenHeight), gameStart(false), numPlayers(4), selectedPlayer(-1) {
     listPlayers.resize(numPlayers, Player("", GRAY));
-    availableColors = {RED, GREEN, BLUE, YELLOW, ORANGE, PURPLE, BROWN, LIME, DARKGRAY};
+    availableColors = {PINK, RED, ORANGE, YELLOW, GREEN, DARKGREEN, BLUE, VIOLET, BEIGE};
     Image imgDANGER;
     imgDANGER = LoadImage("../img/DANGER.png");
     textureDANGER = LoadTextureFromImage(imgDANGER);
