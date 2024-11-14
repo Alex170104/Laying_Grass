@@ -41,7 +41,7 @@ bool DisplayMenu::isGameStart() {
 }
 
 void DisplayMenu::drawMenu() {
-    DrawText("Create Players", screenWidth / 2 - 150, 0, 40, BLACK);
+    DrawText("Create Players", screenWidth / 2 - 150, 20, 40, BLACK);
     DrawText("Number of Players:", 100, 100, 40, BLACK);
     DrawText(to_string(numPlayers).c_str(), 500, 100, 40, RED);
     DrawText("Use UP/DOWN keys to change", 100, 150, 20, BLACK);
@@ -130,7 +130,9 @@ void DisplayMenu::handleInput() {
             else if (key == 'M') key = ';';
             else if (key == ';') key = 'M';
 
-            listPlayers[selectedPlayer].addChar((char)key);
+            if (listPlayers[selectedPlayer].getName().size() < 12) {
+                listPlayers[selectedPlayer].addChar((char)key);
+            }
         }
         if (IsKeyPressed(KEY_BACKSPACE) && !listPlayers[selectedPlayer].getName().empty()) {
             listPlayers[selectedPlayer].removeChar();

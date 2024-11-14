@@ -5,8 +5,12 @@
 #include "Player.h"
 
 class displayWin {
+private:
+    Texture2D textureTrophee;
 public:
     displayWin(std::vector<Player> orderWinners);
+
+    ~displayWin();
 };
 
 
