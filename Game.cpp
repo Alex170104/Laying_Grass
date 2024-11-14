@@ -1,12 +1,12 @@
 #include "Game.h"
 #include "raylib.h"
 #include "Tiles.h"
+#include "displayWin.h"
 #include <iostream>
 #include <random>
 
 Game::Game(int size, int nbPlayer, int sizeCell, int padding, vector<Player> listPlayers)
         : board(size, nbPlayer), nbPlayer(nbPlayer), boardDisplay(board, sizeCell), size(size), sizeCell(sizeCell), padding(padding), listPlayers(listPlayers){}
-
 
 void Game::run() {
     Tiles tiles;
@@ -56,10 +56,7 @@ void Game::run() {
 
                 if (listPlayers[currentPlayer].getNbTilesPlaced() == 3) {
                     vector<Player> orderWinners = calculWin();
-                    for (int i = 0; i < nbPlayer; i++) {
-                        cout << "Player " << orderWinners[i].getName() << " is " << i + 1 << " with " << orderWinners[i].getBiggestSquare() << " squares and " << orderWinners[i].getNbGrassPlaced() << " grass placed." << endl;
-                    }
-                    //displayWin();
+                    displayWin displayWin(orderWinners);
                 }
             }
             if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {
@@ -79,52 +76,33 @@ void Game::run() {
     CloseWindow();
 }
 
-void Game::displayWin() {
-    InitWindow(800, 600, "Laying Grass - Game Over");
-    SetTargetFPS(60);
-
-    while (!WindowShouldClose()) {
-        BeginDrawing();
-        ClearBackground(RAYWHITE);
-
-        // Score
-
-        EndDrawing();
-    }
-
-    CloseWindow();
-}
-
 vector<Player> Game::calculWin() {
     vector<Player> winnersOrdered;
-    vector<Player> listPlayersRestant = listPlayers;
+    vector<Player> listPlayersRestant;
     for (int i = 0; i < nbPlayer; i++) {
         listPlayers[i].setBiggestSquare(biggerSquare(i + 1));
         listPlayers[i].setNbGrassPlaced(nbGrassPlaced(i + 1));
+        listPlayersRestant.push_back(listPlayers[i]);
     }
     while (!listPlayersRestant.empty()) {
         int maxSquare = 0;
         int maxGrass = 0;
         int index = 0;
-        /*
-        while (listPlayersRestant.size() > 1) {
-            for (int i = 0; i < listPlayersRestant.size(); i++) {
-                if (listPlayersRestant[i].getBiggestSquare() > maxSquare) {
+        for (int i = 0; i < listPlayersRestant.size(); i++) {
+            if (listPlayersRestant[i].getBiggestSquare() > maxSquare) {
+                maxSquare = listPlayersRestant[i].getBiggestSquare();
+                maxGrass = listPlayersRestant[i].getNbGrassPlaced();
+                index = i;
+            } else if (listPlayersRestant[i].getBiggestSquare() == maxSquare) {
+                if (listPlayersRestant[i].getNbGrassPlaced() >= maxGrass) {
                     maxSquare = listPlayersRestant[i].getBiggestSquare();
                     maxGrass = listPlayersRestant[i].getNbGrassPlaced();
                     index = i;
-                } else if (listPlayersRestant[i].getBiggestSquare() == maxSquare) {
-                    if (listPlayersRestant[i].getNbGrassPlaced() >= maxGrass) {
-                        maxSquare = listPlayersRestant[i].getBiggestSquare();
-                        maxGrass = listPlayersRestant[i].getNbGrassPlaced();
-                        index = i;
-                    }
                 }
             }
-            winnersOrdered.push_back(listPlayersRestant[index]);
-            listPlayersRestant.erase(listPlayersRestant.begin() + index);
         }
-        */
+        winnersOrdered.push_back(listPlayersRestant[index]);
+        listPlayersRestant.erase(listPlayersRestant.begin() + index);
     }
     return winnersOrdered;
 }

@@ -84,22 +84,20 @@ bool Tiles::isValidPosition(int x, int y, Board& board, int size, vector<vector<
                {x >= 2 * size / 3,                 y < size / 3},
                {x < size / 3,                      y >= size / 3 && y < 2 * size / 3},
                {x >= size / 3 && x < 2 * size / 3, y >= size / 3 && y < 2 * size / 3},
-               {x >= size / 3 && x < 2 * size / 3, y >= 2 * size / 3},
-               {x < size / 3,                      y >= 2 * size / 3},
                {x >= 2 * size / 3,                 y >= size / 3 && y < 2 * size / 3},
+               {x < size / 3,                      y >= 2 * size / 3},
+               {x >= size / 3 && x < 2 * size / 3, y >= 2 * size / 3},
                {x >= 2 * size / 3,                 y >= 2 * size / 3}};
     }
     for (int k = 0; k < pos.size(); ++k) {
         if (x < 0 || x >= size || y < 0 || y >= size){
             return false;
         }
-        else{
-            if (pos[k][0] && pos[k][1] && firstTurn) {
-                if (k == currentPlayer) {
-                    return true;
-                }
-                return false;
+        if (pos[k][0] && pos[k][1] && firstTurn) {
+            if (k == currentPlayer) {
+                return true;
             }
+            return false;
         }
     }
 
