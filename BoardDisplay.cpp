@@ -29,7 +29,7 @@ BoardDisplay::~BoardDisplay() {
     UnloadTexture(textureFissure);
 }
 
-void BoardDisplay::display(int size, int sizeCell, int padding, bool firstTurn, const vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, const vector<vector<int>>& selectedTile, vector<Player> listPlayers, int turnCount) {
+void BoardDisplay::display(int size, int sizeCell, int padding, bool firstTurn, const vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, const vector<vector<int>>& selectedTile, vector<Player> listPlayers) {
     int sizeCellPreview = 20;
     int previewSize = 5;
     int previewPadding = 100;
@@ -41,9 +41,12 @@ void BoardDisplay::display(int size, int sizeCell, int padding, bool firstTurn, 
     DrawText(currentPlayerName.c_str(), startX, padding - 40, 30, currentPlayerColor);
 
     if (firstTurn) {
-        DrawText("PREMIER TOUR", startX + 750, padding - 40, 30, BLACK);
-    }else {
-        DrawText(("TOUR " + to_string(listPlayers[currentPlayer].getNbTilesPlaced())).c_str(), startX + 870, padding - 40, 30, BLACK);
+        DrawText("INITIALIZATION", startX + 350, padding - 40, 30, BLACK);
+    } else if (listPlayers[currentPlayer].getNbTilesPlaced() < 10) {
+        DrawText(("TURN " + to_string(listPlayers[currentPlayer].getNbTilesPlaced())).c_str(), startX + 490, padding - 40, 30, BLACK);
+    }
+    else {
+        DrawText("GAME OVER", startX + 415, padding - 40, 30, BLACK);
     }
 
     for (int i = 0; i < size; ++i) {
@@ -113,9 +116,9 @@ void BoardDisplay::display(int size, int sizeCell, int padding, bool firstTurn, 
         }
     }
 
-    DrawText("COUPON D'ECHANGE", startX + 675, startY - 60, 30, BLACK);
-    DrawText("1", startX + 825, startY, 30, BLACK);
-    DrawRectangle(startX + 750, startY + 45, 165, 60, Fade(BLACK, 0.5f));
-    DrawText("UTILISER", startX + 760, startY + 60, 30, WHITE);
+    DrawText("COUPON D'ECHANGE", startX + 375, startY - 60, 30, BLACK);
+    DrawText(to_string(listPlayers[currentPlayer].getTileCoupons()).c_str(), startX + 625, startY, 30, BLACK);
+    DrawRectangle(startX + 550, startY + 45, 165, 60, Fade(BLACK, 0.5f));
+    DrawText("UTILISER", startX + 560, startY + 60, 30, WHITE);
 
 }

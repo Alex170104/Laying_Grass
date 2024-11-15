@@ -21,6 +21,11 @@ public:
     int getNbGrassPlaced() const;
     void setNbGrassPlaced(int grass);
 
+    int getTileCoupons() const;
+
+    void addTileCoupons();
+
+    void removeTileCoupons();
 
 private:
     std::string name;

@@ -7,9 +7,10 @@
 class displayWin {
 private:
     Texture2D textureTrophee;
+    std::vector<Player> orderWinners;
 public:
     displayWin(std::vector<Player> orderWinners);
-
+    void run();
     ~displayWin();
 };
 

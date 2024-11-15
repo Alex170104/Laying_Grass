@@ -26,6 +26,7 @@ private:
     void drawUpcomingTiles(const vector<vector<vector<vector<int>>>> &playerTiles, int currentPlayer, int padding);
     int nbGrassPlaced(int player);
     vector<Player> calculWin();
+    int verifBonus();
 };
 
 #endif // GAME_H

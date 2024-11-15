@@ -7,7 +7,7 @@ using namespace std;
 
 int main() {
     int screenWidth = 1000;
-    int screenHeight = 1200;
+    int screenHeight = 1000;
     InitWindow(screenWidth, screenHeight, "Laying Grass");
     SetTargetFPS(60);
 
@@ -19,7 +19,7 @@ int main() {
         int nbPlayer = menu.getNumPlayers();
         vector<Player> listPlayers = menu.getListPlayers();
         int size = sizeBoard(nbPlayer);
-        int sizeCell = (nbPlayer > 4) ? 30 : 50;
+        int sizeCell = (nbPlayer > 4) ? 20 : 30;
         int padding = 100;
         int windowSize = size * sizeCell + 2 * padding;
         if (nbPlayer > 4) {
@@ -31,7 +31,6 @@ int main() {
         Game game(size, nbPlayer, sizeCell, padding, listPlayers);
         game.run();
     }
-
     return 0;
 }
 
