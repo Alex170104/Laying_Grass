@@ -30,9 +30,9 @@ BoardDisplay::~BoardDisplay() {
 }
 
 void BoardDisplay::display(int size, int sizeCell, int padding, bool firstTurn, const vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, const vector<vector<int>>& selectedTile, vector<Player> listPlayers, int turnCount) {
-    int sizeCellPreview = 30;
+    int sizeCellPreview = 20;
     int previewSize = 5;
-    int previewPadding = 150;
+    int previewPadding = 100;
     int startX = padding;
     int startY = size * sizeCell + 2 * padding;
 
@@ -42,10 +42,10 @@ void BoardDisplay::display(int size, int sizeCell, int padding, bool firstTurn, 
 
     if (firstTurn) {
         DrawText("PREMIER TOUR", startX + 750, padding - 40, 30, BLACK);
-    }
-    else {
+    }else {
         DrawText(("TOUR " + to_string(listPlayers[currentPlayer].getNbTilesPlaced())).c_str(), startX + 870, padding - 40, 30, BLACK);
     }
+
     for (int i = 0; i < size; ++i) {
         for (int j = 0; j < size; ++j) {
             Case &currentCase = board.getCase(i, j);
@@ -95,7 +95,6 @@ void BoardDisplay::display(int size, int sizeCell, int padding, bool firstTurn, 
     }
 
     DrawText("TUILES A VENIR", startX, startY - 60, 30, BLACK);
-
     for (int i = 0; i < previewSize && i < playerTiles[currentPlayer].size(); ++i) {
         int offsetX = startX + (sizeCellPreview + previewPadding) * i;
         int offsetY = startY;
@@ -113,4 +112,10 @@ void BoardDisplay::display(int size, int sizeCell, int padding, bool firstTurn, 
             }
         }
     }
+
+    DrawText("COUPON D'ECHANGE", startX + 675, startY - 60, 30, BLACK);
+    DrawText("1", startX + 825, startY, 30, BLACK);
+    DrawRectangle(startX + 750, startY + 45, 165, 60, Fade(BLACK, 0.5f));
+    DrawText("UTILISER", startX + 760, startY + 60, 30, WHITE);
+
 }

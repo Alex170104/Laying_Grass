@@ -17,12 +17,20 @@ int main() {
 
     if (menu.isGameStart()) {
         int nbPlayer = menu.getNumPlayers();
+//        int nbPlayer = 2;
         vector<Player> listPlayers = menu.getListPlayers();
+//        vector<Player> listPlayers = {Player("Player 1", RED), Player("Player 2", BLUE)};
         int size = sizeBoard(nbPlayer);
-        int sizeCell = (nbPlayer > 4) ? 40 : 50;
+        int sizeCell = (nbPlayer > 4) ? 30 : 50;
         int padding = 100;
         int windowSize = size * sizeCell + 2 * padding;
-        InitWindow(windowSize, windowSize + 200, "Laying Grass");
+        if (nbPlayer > 4) {
+            InitWindow(windowSize, windowSize + 200, "Laying Grass");
+        } else {
+            InitWindow(windowSize, windowSize + 150, "Laying Grass");
+        }
+
+
 
 //        if (!win){
             Game game(size, nbPlayer, sizeCell, padding, listPlayers, 0);
@@ -30,10 +38,10 @@ int main() {
 //        }
 //        else {
 //            CloseWindow();
-//        }
+        }
 
 
-    }
+//    }
 
     return 0;
 }

@@ -20,7 +20,7 @@ void Game::run() {
 
     while (!WindowShouldClose()) {
         BeginDrawing();
-        ClearBackground(Color {192, 192, 192, 255});
+        ClearBackground(RAYWHITE);
 
         bool firstTurn;
         if (listPlayers[currentPlayer].getNbTilesPlaced() == 0) {
