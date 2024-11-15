@@ -4,6 +4,7 @@
 #include "displayWin.h"
 #include <iostream>
 #include <random>
+#include "Bonus.h"
 
 Game::Game(int size, int nbPlayer, int sizeCell, int padding, vector<Player> listPlayers)
         : board(size, nbPlayer), nbPlayer(nbPlayer), boardDisplay(board, sizeCell), size(size), sizeCell(sizeCell), padding(padding), listPlayers(listPlayers){}
@@ -18,6 +19,12 @@ void Game::run() {
 
     bool isPreviewing = true;
 
+    int sizeCellPreview = 20;
+    int previewSize = 5;
+    int previewPadding = 100;
+    int startX = padding;
+    int startY = size * sizeCell + 2 * padding;
+
     while (!WindowShouldClose()) {
         BeginDrawing();
         ClearBackground(RAYWHITE);
@@ -28,7 +35,8 @@ void Game::run() {
         } else {
             firstTurn = false;
         }
-        boardDisplay.display(size, sizeCell, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers, turnCount);
+
+        boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers, turnCount);
 
         if (isPreviewing) {
 
@@ -55,6 +63,11 @@ void Game::run() {
                 isPreviewing = true;
 
                 if (listPlayers[currentPlayer].getNbTilesPlaced() == 3) {
+                    EndDrawing();
+                    BeginDrawing();
+                    ClearBackground(RAYWHITE);
+                    boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers, turnCount);
+                    EndDrawing();
                     vector<Player> orderWinners = calculWin();
                     displayWin displayWin(orderWinners);
                 }
@@ -64,6 +77,38 @@ void Game::run() {
             }
             if (IsKeyPressed(KEY_F)) {
                 tiles.flip(selectedTile);
+            }
+        }else{
+            if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+                Vector2 mousePosition = GetMousePosition();
+                vector<vector<int>> tileMove;
+                bool clickTileExchange = false;
+                cout << "Mouse position: " << mousePosition.x << " " << mousePosition.y << endl;
+                while (!clickTileExchange) {
+                    if (mousePosition.x > startX + 750 && mousePosition.x < startX + 915 &&
+                        mousePosition.y > startY + 45 && mousePosition.y < startY + 105) {
+                        cout << "Ticket exchange" << endl;
+                        clickTileExchange = true;
+                    }
+                }
+                for (int i = 0; i < size; i++) {
+                    for (int j = 0; j < size; j++) {
+                        if (mousePosition.x > previewPadding + j * sizeCellPreview && mousePosition.x < previewPadding + (j + 1) * sizeCellPreview &&
+                            mousePosition.y > previewPadding + i * sizeCellPreview && mousePosition.y < previewPadding + (i + 1) * sizeCellPreview) {
+
+                            for (const auto &row: tileMove) {
+                                for (int val: row) {
+                                    cout << val << " ";
+                                }
+                                cout << endl;
+                            }
+                        }
+                    }
+                }
+//                Bonus bonus(playerTiles, currentPlayer, tileMove);
+//                bonus.ticketExchange(playerTiles, currentPlayer, tileMove);
+//                boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer,
+//                                     selectedTile, listPlayers, turnCount);
             }
         }
 

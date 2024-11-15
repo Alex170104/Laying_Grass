@@ -37,6 +37,8 @@ add_executable(Laying_Grass main.cpp
         DisplayMenu.h
         displayWin.cpp
         displayWin.h
+        Bonus.cpp
+        Bonus.h
 )
 
 target_link_libraries(Laying_Grass raylib ws2_32)

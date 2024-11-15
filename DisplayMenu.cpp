@@ -89,7 +89,7 @@ void DisplayMenu::handleInput() {
                 selectedPlayer = i;
             }
         }
-        if (mousePosition.x > screenWidth / 2 - 50 && mousePosition.x < screenWidth / 2 + 50 &&
+        if (mousePosition.x > screenWidth / 2 - 120 && mousePosition.x < screenWidth / 2 + 155 &&
             mousePosition.y > screenHeight - 110 && mousePosition.y < screenHeight - 60) {
             bool allPlayersReady = true;
             for (const auto& player : listPlayers) {

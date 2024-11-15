@@ -29,12 +29,7 @@ BoardDisplay::~BoardDisplay() {
     UnloadTexture(textureFissure);
 }
 
-void BoardDisplay::display(int size, int sizeCell, int padding, bool firstTurn, const vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, const vector<vector<int>>& selectedTile, vector<Player> listPlayers, int turnCount) {
-    int sizeCellPreview = 20;
-    int previewSize = 5;
-    int previewPadding = 100;
-    int startX = padding;
-    int startY = size * sizeCell + 2 * padding;
+void BoardDisplay::display(int startX, int startY, int size, int sizeCell, int sizeCellPreview, int previewSize, int previewPadding, int padding, bool firstTurn, const vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, const vector<vector<int>>& selectedTile, vector<Player> listPlayers, int turnCount) {
 
     string currentPlayerName = listPlayers[currentPlayer].getName();
     Color currentPlayerColor = listPlayers[currentPlayer].getColor();
