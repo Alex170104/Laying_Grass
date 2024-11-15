@@ -41,8 +41,8 @@ bool DisplayMenu::isGameStart() {
 }
 
 void DisplayMenu::drawMenu() {
-    DrawRectangle(screenWidth / 2 - 200, 0, 420, 60, Fade(BLACK, 0.8f));
-    DrawText("Create Players", screenWidth / 2 - 150, 20, 40, BLACK);
+    DrawRectangle(screenWidth / 2 - 200, 10, 420, 60, Fade(BLACK, 0.8f));
+    DrawText("Create Players", screenWidth / 2 - 150, 20, 40, WHITE);
     DrawText("Number of Players:", 100, 100, 40, BLACK);
     DrawRectangle(500, 90, 60, 60, Fade(RED, 0.8f));
     DrawText(to_string(numPlayers).c_str(), 520, 100, 40, WHITE);
