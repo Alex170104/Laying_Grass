@@ -20,7 +20,7 @@ void Game::run() {
 
     while (!WindowShouldClose()) {
         BeginDrawing();
-        ClearBackground(Color {192, 192, 192, 255});
+        ClearBackground(RAYWHITE);
 
         bool firstTurn;
         if (listPlayers[currentPlayer].getNbTilesPlaced() == 0) {
@@ -28,7 +28,7 @@ void Game::run() {
         } else {
             firstTurn = false;
         }
-        boardDisplay.display(size, sizeCell, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers);
+        boardDisplay.display(size, sizeCell, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers, turnCount);
 
         if (isPreviewing) {
 

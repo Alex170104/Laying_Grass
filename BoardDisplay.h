@@ -9,7 +9,7 @@ class BoardDisplay {
 public:
     BoardDisplay(Board& board, int sizeCell);
     ~BoardDisplay();
-    void display(int size, int sizeCell, int padding, bool firstTurn, const vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, const vector<vector<int>>& selectedTile, vector<Player> listPlayers);
+    void display(int size, int sizeCell, int padding, bool firstTurn, const vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, const vector<vector<int>>& selectedTile, vector<Player> listPlayers, int turnCount);
 
 
 

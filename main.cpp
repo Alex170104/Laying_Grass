@@ -6,8 +6,8 @@ int sizeBoard(int player);
 using namespace std;
 
 int main() {
-    int screenWidth = 800;
-    int screenHeight = 900;
+    int screenWidth = 1000;
+    int screenHeight = 1200;
     InitWindow(screenWidth, screenHeight, "Laying Grass");
     SetTargetFPS(60);
 
@@ -19,20 +19,17 @@ int main() {
         int nbPlayer = menu.getNumPlayers();
         vector<Player> listPlayers = menu.getListPlayers();
         int size = sizeBoard(nbPlayer);
-        int sizeCell = (nbPlayer > 4) ? 20 : 30;
-        int padding = 80;
+        int sizeCell = (nbPlayer > 4) ? 30 : 50;
+        int padding = 100;
         int windowSize = size * sizeCell + 2 * padding;
-        InitWindow(windowSize, windowSize + 200, "Laying Grass");
+        if (nbPlayer > 4) {
+            InitWindow(windowSize, windowSize + 200, "Laying Grass");
+        } else {
+            InitWindow(windowSize, windowSize + 150, "Laying Grass");
+        }
 
-//        if (!win){
-            Game game(size, nbPlayer, sizeCell, padding, listPlayers);
-            game.run();
-//        }
-//        else {
-//            CloseWindow();
-//        }
-
-
+        Game game(size, nbPlayer, sizeCell, padding, listPlayers);
+        game.run();
     }
 
     return 0;
