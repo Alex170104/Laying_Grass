@@ -11,6 +11,7 @@ Game::Game(int size, int nbPlayer, int sizeCell, int padding, vector<Player> lis
 
 void Game::run() {
     Tiles tiles;
+    Bonus bonus;
 
     int currentPlayer = 0;
     vector<vector<vector<vector<int>>>> playerTiles = tiles.distributeTiles(nbPlayer);
@@ -83,9 +84,7 @@ void Game::run() {
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
                 Vector2 mousePosition = GetMousePosition();
                 vector<vector<int>> tileMove;
-                cout << "Mouse position: " << mousePosition.x << " " << mousePosition.y << endl;
                 if (clickTileExchange) {
-                    cout << "Ticket exchange 2" << endl;
                     for (int i = 0; i < previewSize && i < playerTiles[currentPlayer].size(); ++i) {
                         int offsetX = startX + (sizeCellPreview + previewPadding) * i;
                         int offsetY = startY;
@@ -97,9 +96,7 @@ void Game::run() {
 
                                 if (mousePosition.x > posX && mousePosition.x < posX + sizeCellPreview &&
                                     mousePosition.y > posY && mousePosition.y < posY + sizeCellPreview) {
-                                    playerTiles[currentPlayer][playerTiles[currentPlayer].size() - 1] = playerTiles[currentPlayer][playerTiles[currentPlayer].size() - 1 - i];
-                                    playerTiles[currentPlayer].erase(playerTiles[currentPlayer].end() - 1 - i, playerTiles[currentPlayer].end() - 1);
-//                                    playerTiles[currentPlayer].erase(playerTiles[currentPlayer].end() - 1 - i);
+                                    bonus.ticketExchange(playerTiles, currentPlayer, i);
                                     isPreviewing = true;
                                     boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer,
                                      selectedTile, listPlayers, turnCount);
@@ -116,8 +113,7 @@ void Game::run() {
                     }
                 }
 
-//                Bonus bonus(playerTiles, currentPlayer, tileMove);
-//                bonus.ticketExchange(playerTiles, currentPlayer, tileMove);
+
 
             }
         }

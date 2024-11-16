@@ -8,9 +8,12 @@
 
 using namespace std;
 
-Bonus::Bonus(vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, vector<vector<int>>& tileMove) {}
+Bonus::Bonus() {}
 
-void Bonus::ticketExchange(vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, vector<vector<int>>& tileMove){
-    cout << "Ticket exchange 2 dans la fct" << endl;
+void Bonus::ticketExchange(vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, int i){
+    playerTiles[currentPlayer][playerTiles[currentPlayer].size() - 1] = playerTiles[currentPlayer][playerTiles[currentPlayer].size() - 1 - i];
+    playerTiles[currentPlayer].erase(playerTiles[currentPlayer].end() - 1 - i, playerTiles[currentPlayer].end() - 1);
 }
+
+
 

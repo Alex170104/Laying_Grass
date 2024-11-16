@@ -13,8 +13,8 @@ using namespace std;
 
 class Bonus {
 public:
-    Bonus(vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, vector<vector<int>>& tileMove);
-    void ticketExchange(vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, vector<vector<int>>& tileMove);
+    Bonus();
+    void ticketExchange(vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, int i);
 };
 
 

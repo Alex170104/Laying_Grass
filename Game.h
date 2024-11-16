@@ -22,8 +22,6 @@ private:
     int nbPlayer;
     int turnCount;
     vector<Player> listPlayers;
-
-    void drawUpcomingTiles(const vector<vector<vector<vector<int>>>> &playerTiles, int currentPlayer, int padding);
     int nbGrassPlaced(int player);
     vector<Player> calculWin();
 };
