@@ -24,6 +24,7 @@ private:
     vector<Player> listPlayers;
     int nbGrassPlaced(int player);
     vector<Player> calculWin();
+    int verifBonus();
 };
 
 #endif // GAME_H

@@ -53,3 +53,15 @@ int Player::getNbGrassPlaced() const {
 void Player::setNbGrassPlaced(int grass) {
     nbGrass = grass;
 }
+
+int Player::getTileCoupons() const {
+    return tileCoupons;
+}
+
+void Player::addTileCoupons() {
+    tileCoupons += 1;
+}
+
+void Player::removeTileCoupons() {
+    tileCoupons -= 1;
+}

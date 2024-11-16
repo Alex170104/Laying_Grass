@@ -29,16 +29,19 @@ BoardDisplay::~BoardDisplay() {
     UnloadTexture(textureFissure);
 }
 
-void BoardDisplay::display(int startX, int startY, int size, int sizeCell, int sizeCellPreview, int previewSize, int previewPadding, int padding, bool firstTurn, const vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, const vector<vector<int>>& selectedTile, vector<Player> listPlayers, int turnCount) {
+void BoardDisplay::display(int startX, int startY, int size, int sizeCell, int sizeCellPreview, int previewSize, int previewPadding, int padding, bool firstTurn, const vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, const vector<vector<int>>& selectedTile, vector<Player> listPlayers) {
 
     string currentPlayerName = listPlayers[currentPlayer].getName();
     Color currentPlayerColor = listPlayers[currentPlayer].getColor();
     DrawText(currentPlayerName.c_str(), startX, padding - 40, 30, currentPlayerColor);
 
     if (firstTurn) {
-        DrawText("PREMIER TOUR", startX + 750, padding - 40, 30, BLACK);
-    }else {
-        DrawText(("TOUR " + to_string(listPlayers[currentPlayer].getNbTilesPlaced())).c_str(), startX + 870, padding - 40, 30, BLACK);
+        DrawText("INITIALIZATION", startX + 350, padding - 40, 30, BLACK);
+    } else if (listPlayers[currentPlayer].getNbTilesPlaced() < 10) {
+        DrawText(("TURN " + to_string(listPlayers[currentPlayer].getNbTilesPlaced())).c_str(), startX + 490, padding - 40, 30, BLACK);
+    }
+    else {
+        DrawText("GAME OVER", startX + 415, padding - 40, 30, BLACK);
     }
 
     for (int i = 0; i < size; ++i) {
@@ -109,7 +112,7 @@ void BoardDisplay::display(int startX, int startY, int size, int sizeCell, int s
     }
 
     DrawText("COUPON D'ECHANGE", startX + 675, startY - 60, 30, BLACK);
-    DrawText("1", startX + 825, startY, 30, BLACK);
+    DrawText(to_string(listPlayers[currentPlayer].getTileCoupons()).c_str(), startX + 825, startY, 30, BLACK);
     DrawRectangle(startX + 750, startY + 45, 165, 60, Fade(BLACK, 0.5f));
     DrawText("UTILISER", startX + 760, startY + 60, 30, WHITE);
 

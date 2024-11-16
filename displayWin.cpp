@@ -2,7 +2,9 @@
 
 using namespace std;
 
-displayWin::displayWin(vector<Player> orderWinners) {
+displayWin::displayWin(vector<Player> orderWinners) : orderWinners(orderWinners) {}
+
+void displayWin::run() {
     InitWindow(800, 700, "Laying Grass - Game Over");
     SetTargetFPS(60);
     Image imgTrophee = LoadImage("../img/trophee.png");
@@ -33,6 +35,7 @@ displayWin::displayWin(vector<Player> orderWinners) {
         EndDrawing();
     }
     CloseWindow();
+    return;
 }
 
 displayWin::~displayWin() {

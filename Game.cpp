@@ -38,7 +38,7 @@ void Game::run() {
             firstTurn = false;
         }
 
-        boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers, turnCount);
+        boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers);
 
         if (isPreviewing) {
 
@@ -63,15 +63,29 @@ void Game::run() {
                 selectedTile = playerTiles[currentPlayer].back();
                 playerTiles[currentPlayer].pop_back();
                 isPreviewing = true;
+                int newActiveBonus = verifBonus();
+                if (newActiveBonus != 0) {
+                    if (newActiveBonus == 2) {
+                        // Il faudra appeller ici la méthode correspondante de la classe Bonus (activeTileExchange par exemple)
+                        // Je me mets le code en dessous
+                        listPlayers[currentPlayer-1%nbPlayer].addTileCoupons();
+                    } else if (newActiveBonus == 3) {
+                        cout << "Bonus 3" << endl;
+                    } else if (newActiveBonus == 4) {
+                        cout << "Bonus 4" << endl;
+                    }
+                }
 
                 if (listPlayers[currentPlayer].getNbTilesPlaced() == 3) {
                     EndDrawing();
                     BeginDrawing();
                     ClearBackground(RAYWHITE);
-                    boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers, turnCount);
+                    boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers);
                     EndDrawing();
                     vector<Player> orderWinners = calculWin();
                     displayWin displayWin(orderWinners);
+                    displayWin.run();
+                    return;
                 }
             }
             if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {
@@ -99,7 +113,7 @@ void Game::run() {
                                     bonus.ticketExchange(playerTiles, currentPlayer, i);
                                     isPreviewing = true;
                                     boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer,
-                                     selectedTile, listPlayers, turnCount);
+                                     selectedTile, listPlayers);
                                 }
                             }
                         }
@@ -110,6 +124,8 @@ void Game::run() {
                         mousePosition.y > startY + 45 && mousePosition.y < startY + 105) {
                         cout << "Ticket exchange" << endl;
                         clickTileExchange = true;
+                    }else{
+                        break;
                     }
                 }
 
@@ -126,6 +142,23 @@ void Game::run() {
         EndDrawing();
     }
     CloseWindow();
+}
+
+int Game::verifBonus() {
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            if (board.getCase(j, i).getType() > 1 and board.getCase(j, i).getType() < 5 and board.getCase(j, i).getCasePlayer() == 0) {
+                int playerNeighbor = board.getCase(j-1, i).getCasePlayer();
+                if (board.getCase(j, i+1).getCasePlayer() == playerNeighbor and board.getCase(j+1, i).getCasePlayer() == playerNeighbor and board.getCase(j, i-1).getCasePlayer() == playerNeighbor) {
+                    if (playerNeighbor != 0) {
+                        board.getCase(j, i).setCasePlayer(playerNeighbor);
+                        return board.getCase(j, i).getType();
+                    }
+                }
+            }
+        }
+    }
+    return 0;
 }
 
 vector<Player> Game::calculWin() {
