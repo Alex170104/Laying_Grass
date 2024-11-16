@@ -66,9 +66,7 @@ void Game::run() {
                 int newActiveBonus = verifBonus();
                 if (newActiveBonus != 0) {
                     if (newActiveBonus == 2) {
-                        // Il faudra appeller ici la méthode correspondante de la classe Bonus (activeTileExchange par exemple)
-                        // Je me mets le code en dessous
-                        listPlayers[currentPlayer-1%nbPlayer].addTileCoupons();
+                        listPlayers[currentPlayer - 1 % nbPlayer].addTileCoupons();
                     } else if (newActiveBonus == 3) {
                         cout << "Bonus 3" << endl;
                     } else if (newActiveBonus == 4) {
@@ -76,7 +74,7 @@ void Game::run() {
                     }
                 }
 
-                if (listPlayers[currentPlayer].getNbTilesPlaced() == 3) {
+                if (listPlayers[currentPlayer].getNbTilesPlaced() == 10) {
                     EndDrawing();
                     BeginDrawing();
                     ClearBackground(RAYWHITE);
@@ -111,6 +109,7 @@ void Game::run() {
                                 if (mousePosition.x > posX && mousePosition.x < posX + sizeCellPreview &&
                                     mousePosition.y > posY && mousePosition.y < posY + sizeCellPreview) {
                                     bonus.ticketExchange(playerTiles, currentPlayer, i);
+                                    listPlayers[(currentPlayer + nbPlayer) %nbPlayer].removeTileCoupons();
                                     isPreviewing = true;
                                     boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer,
                                      selectedTile, listPlayers);
@@ -122,15 +121,11 @@ void Game::run() {
                 while (!clickTileExchange) {
                     if (mousePosition.x > startX + 750 && mousePosition.x < startX + 915 &&
                         mousePosition.y > startY + 45 && mousePosition.y < startY + 105) {
-                        cout << "Ticket exchange" << endl;
                         clickTileExchange = true;
                     }else{
                         break;
                     }
                 }
-
-
-
             }
         }
 
