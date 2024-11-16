@@ -18,6 +18,7 @@ void Game::run() {
     playerTiles[currentPlayer].pop_back();
 
     bool isPreviewing = true;
+    bool clickTileExchange = false;
 
     int sizeCellPreview = 20;
     int previewSize = 5;
@@ -82,8 +83,31 @@ void Game::run() {
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
                 Vector2 mousePosition = GetMousePosition();
                 vector<vector<int>> tileMove;
-                bool clickTileExchange = false;
                 cout << "Mouse position: " << mousePosition.x << " " << mousePosition.y << endl;
+                if (clickTileExchange) {
+                    cout << "Ticket exchange 2" << endl;
+                    for (int i = 0; i < previewSize && i < playerTiles[currentPlayer].size(); ++i) {
+                        int offsetX = startX + (sizeCellPreview + previewPadding) * i;
+                        int offsetY = startY;
+
+                        for (int row = 0; row < playerTiles[currentPlayer][playerTiles[currentPlayer].size() - 1 - i].size(); ++row) {
+                            for (int col = 0; col < playerTiles[currentPlayer][playerTiles[currentPlayer].size() - 1 - i][row].size(); ++col) {
+                                int posX = offsetX + col * sizeCellPreview;
+                                int posY = offsetY + row * sizeCellPreview;
+
+                                if (mousePosition.x > posX && mousePosition.x < posX + sizeCellPreview &&
+                                    mousePosition.y > posY && mousePosition.y < posY + sizeCellPreview) {
+                                    playerTiles[currentPlayer][playerTiles[currentPlayer].size() - 1] = playerTiles[currentPlayer][playerTiles[currentPlayer].size() - 1 - i];
+                                    playerTiles[currentPlayer].erase(playerTiles[currentPlayer].end() - 1 - i, playerTiles[currentPlayer].end() - 1);
+//                                    playerTiles[currentPlayer].erase(playerTiles[currentPlayer].end() - 1 - i);
+                                    isPreviewing = true;
+                                    boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer,
+                                     selectedTile, listPlayers, turnCount);
+                                }
+                            }
+                        }
+                    }
+                }
                 while (!clickTileExchange) {
                     if (mousePosition.x > startX + 750 && mousePosition.x < startX + 915 &&
                         mousePosition.y > startY + 45 && mousePosition.y < startY + 105) {
@@ -91,28 +115,15 @@ void Game::run() {
                         clickTileExchange = true;
                     }
                 }
-                for (int i = 0; i < size; i++) {
-                    for (int j = 0; j < size; j++) {
-                        if (mousePosition.x > previewPadding + j * sizeCellPreview && mousePosition.x < previewPadding + (j + 1) * sizeCellPreview &&
-                            mousePosition.y > previewPadding + i * sizeCellPreview && mousePosition.y < previewPadding + (i + 1) * sizeCellPreview) {
 
-                            for (const auto &row: tileMove) {
-                                for (int val: row) {
-                                    cout << val << " ";
-                                }
-                                cout << endl;
-                            }
-                        }
-                    }
-                }
 //                Bonus bonus(playerTiles, currentPlayer, tileMove);
 //                bonus.ticketExchange(playerTiles, currentPlayer, tileMove);
-//                boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer,
-//                                     selectedTile, listPlayers, turnCount);
+
             }
         }
 
         if (IsKeyPressed(KEY_SPACE)) {
+            clickTileExchange = false;
             isPreviewing = !isPreviewing;
         }
 
