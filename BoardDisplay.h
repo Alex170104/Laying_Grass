@@ -10,9 +10,6 @@ public:
     BoardDisplay(Board& board, int sizeCell);
     ~BoardDisplay();
     void display(int startX, int startY, int size, int sizeCell, int sizeCellPreview, int previewSize, int previewPadding, int padding, bool firstTurn, const vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, const vector<vector<int>>& selectedTile, vector<Player> listPlayers);
-
-
-
 private:
     Board& board;
     Texture2D textureBonusStone;

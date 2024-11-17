@@ -29,13 +29,11 @@ void displayWin::run() {
             DrawText(" | ", 120, 230 + 50 * i, 30, orderWinners[i].getColor());
             DrawText(orderWinners[i].getName().c_str(), 150, 230 + 50 * i, 30, orderWinners[i].getColor());
             DrawText(to_string(orderWinners[i].getBiggestSquare()).c_str(), 398, 230 + 50 * i, 30, orderWinners[i].getColor());
-            DrawText(to_string(orderWinners[i].getNbGrassPlaced()).c_str(), 660, 230 + 50 * i, 30, orderWinners[i].getColor());
+            DrawText(to_string(orderWinners[i].getNbGrassPlaced()).c_str(), 655, 230 + 50 * i, 30, orderWinners[i].getColor());
         }
-
         EndDrawing();
     }
     CloseWindow();
-    return;
 }
 
 displayWin::~displayWin() {
