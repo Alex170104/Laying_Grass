@@ -6,8 +6,10 @@
 #include <random>
 #include "Bonus.h"
 
+using namespace std;
+
 Game::Game(int size, int nbPlayer, int sizeCell, int padding, vector<Player> listPlayers)
-        : board(size, nbPlayer), nbPlayer(nbPlayer), boardDisplay(board, sizeCell), size(size), sizeCell(sizeCell), padding(padding), listPlayers(listPlayers){}
+        : board(size, nbPlayer), nbPlayer(nbPlayer), size(size), sizeCell(sizeCell), padding(padding), listPlayers(listPlayers), boardDisplay(board, sizeCell){}
 
 void Game::run() {
     Tiles tiles;
@@ -66,11 +68,10 @@ void Game::run() {
                 if (newActiveBonus != 0) {
                     if (newActiveBonus == 2) {
                         float startTime = GetTime();
-                        string text = "Vous avez un Bonus !";
-                        bonus.popUpBonus(startTime, sizeCell, size, padding, text, boardDisplay, startX, startY, sizeCellPreview, previewSize, previewPadding, firstTurn, playerTiles, currentPlayer, listPlayers, selectedTile);
-                        text = "+1 coupon d'échange !";
+                        string text = "+1 coupon d'échange !";
                         bonus.popUpBonus(startTime, sizeCell, size, padding, text, boardDisplay, startX, startY, sizeCellPreview, previewSize, previewPadding, firstTurn, playerTiles, currentPlayer, listPlayers, selectedTile);
                         listPlayers[currentPlayer].addTileCoupons();
+                        boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers);
 
                     } else if (newActiveBonus == 3) {
                         isPreviewing = false;
@@ -88,11 +89,14 @@ void Game::run() {
                     }
                 }
                 if (robber){
+                    int player;
+                    int index;
                     EndDrawing();
-                    bonus.robbery(board, currentPlayer, robber, listPlayers, playerTiles);
-                    BeginDrawing();
-                    boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers);
+                    tie(selectedTile, player, index) = bonus.robbery(currentPlayer, robber, listPlayers, playerTiles, previewSize, sizeCellPreview, previewPadding);
+                    playerTiles[player].erase(playerTiles[player].end() - index - 1);
+                    robber = false;
                     isPreviewing = true;
+                    continue;
                 }
                 if (!clickEmptyCase) {
                     currentPlayer = (currentPlayer + 1) % nbPlayer;
@@ -126,9 +130,11 @@ void Game::run() {
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && board.getCase(y, x).getType() == 0) {
                 board.getCase(y, x).setType(5);
                 boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers);
+                EndDrawing();
                 float startTime = GetTime();
                 string text = "vous avez place une pierre";
                 bonus.popUpBonus(startTime, sizeCell, size, padding, text, boardDisplay, startX, startY, sizeCellPreview, previewSize, previewPadding, firstTurn, playerTiles, currentPlayer, listPlayers, selectedTile);
+                BeginDrawing();
                 clickEmptyCase = false;
                 isPreviewing = true;
                 currentPlayer = (currentPlayer + 1) % nbPlayer;
@@ -173,8 +179,7 @@ void Game::run() {
                 }
             }
         }
-
-        if (IsKeyPressed(KEY_SPACE)) {
+        if (IsKeyPressed(KEY_SPACE) && !clickEmptyCase) {
             clickTileExchange = false;
             isPreviewing = !isPreviewing;
         }

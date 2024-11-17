@@ -7,19 +7,19 @@ BoardDisplay::BoardDisplay(Board& board, int sizeCell) : board(board), sizeCell(
     Image imgBonusStone = LoadImage("../img/rock.png");
     Image imgBonusTicket = LoadImage("../img/ticket.png");
     Image imgBonusVol = LoadImage("../img/vol.png");
-    Image imgFissure = LoadImage("../img/fissure.png");
+
     ImageResize(&imgBonusStone, sizeCell, sizeCell);
     ImageResize(&imgBonusTicket, sizeCell, sizeCell);
     ImageResize(&imgBonusVol, sizeCell, sizeCell);
-    ImageResize(&imgFissure, sizeCell, sizeCell);
+
     textureBonusStone = LoadTextureFromImage(imgBonusStone);
     textureBonusTicket = LoadTextureFromImage(imgBonusTicket);
     textureBonusVol = LoadTextureFromImage(imgBonusVol);
-    textureFissure = LoadTextureFromImage(imgFissure);
+
     UnloadImage(imgBonusStone);
     UnloadImage(imgBonusTicket);
     UnloadImage(imgBonusVol);
-    UnloadImage(imgFissure);
+
 }
 
 BoardDisplay::~BoardDisplay() {
