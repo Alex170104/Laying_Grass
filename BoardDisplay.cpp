@@ -29,7 +29,7 @@ BoardDisplay::~BoardDisplay() {
     UnloadTexture(textureFissure);
 }
 
-void BoardDisplay::display(int startX, int startY, int size, int sizeCell, int sizeCellPreview, int previewSize, int previewPadding, int padding, bool firstTurn, const vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, const vector<vector<int>>& selectedTile, vector<Player> listPlayers) {
+void BoardDisplay::display(int startX, int startY, int size, int sizeCell, int sizeCellPreview, int previewSize, int previewPadding, int padding, bool firstTurn, const vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, const vector<vector<int>>& selectedTile, vector<Player> listPlayers, bool clickTileExchange, bool clickRepair) {
     string currentPlayerName = listPlayers[currentPlayer].getName();
     Color currentPlayerColor = listPlayers[currentPlayer].getColor();
     DrawText(currentPlayerName.c_str(), startX, padding - 40, 30, currentPlayerColor);
@@ -87,7 +87,7 @@ void BoardDisplay::display(int startX, int startY, int size, int sizeCell, int s
                 DrawTexture(textureBonusStone, padding + j * sizeCell, padding + i * sizeCell, WHITE);
             } else if (currentCase.getType() == 4) {
                 DrawTexture(textureBonusVol, padding + j * sizeCell, padding + i * sizeCell, WHITE);
-            }else if (currentCase.getType() == 5) {
+            } else if (currentCase.getType() == 5) {
                 DrawRectangle(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell, DARKGRAY);
                 DrawRectangleLines(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell, BLACK);
             }
@@ -113,12 +113,20 @@ void BoardDisplay::display(int startX, int startY, int size, int sizeCell, int s
             }
         }
     }
+    Color colorTextEchange = WHITE;
+    Color colorTextRepair = WHITE;
+    if (clickTileExchange) {
+        colorTextEchange = listPlayers[currentPlayer].getColor();
+    }
+    if (clickRepair) {
+        colorTextRepair = listPlayers[currentPlayer].getColor();
+    }
 
     DrawText(("COUPON D'ECHANGE : " + to_string(listPlayers[currentPlayer].getTileCoupons())).c_str(), startX + 645, startY - 60, 30, BLACK);
     DrawRectangle(startX + 725, startY - 25, 195, 60, Fade(BLACK, 0.5f));
-    DrawText("ECHANGER", startX + 740, startY - 10, 30, WHITE);
+    DrawText("ECHANGER", startX + 740, startY - 10, 30, colorTextEchange);
     if (board.hasCrack()) {
         DrawRectangle(startX + 733, startY + 45, 180, 60, Fade(BLACK, 0.5f));
-        DrawText("REPARER", startX + 753, startY + 60, 30, WHITE);
+        DrawText("REPARER", startX + 753, startY + 60, 30, colorTextRepair);
     }
 }

@@ -8,7 +8,7 @@ void Bonus::popUpBonus(float startTime, int sizeCell, int size, int padding, str
     while (GetTime() - startTime < 2.0f) {
         BeginDrawing();
         ClearBackground(RAYWHITE);
-        boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers);
+        boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers, false, false);
         DrawRectangle((GetScreenWidth() - 500) / 2, padding + (size * sizeCell) / 2 - 50, 500, 100,
                       WHITE);
         DrawText(text.c_str(),
