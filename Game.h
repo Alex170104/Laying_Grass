@@ -5,8 +5,6 @@
 #include "BoardDisplay.h"
 #include "Player.h"
 
-
-
 class Game {
 public:
     Game(int size, int nbPlayer, int sizeCell, int padding, vector<Player> listPlayers);

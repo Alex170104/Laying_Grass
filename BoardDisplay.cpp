@@ -88,7 +88,11 @@ void BoardDisplay::display(int startX, int startY, int size, int sizeCell, int s
                 DrawTexture(textureBonusStone, padding + j * sizeCell, padding + i * sizeCell, WHITE);
             } else if (currentCase.getType() == 4) {
                 DrawTexture(textureBonusVol, padding + j * sizeCell, padding + i * sizeCell, WHITE);
+            }else if (currentCase.getType() == 5) {
+                DrawRectangle(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell, DARKGRAY);
+                DrawRectangleLines(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell, BLACK);
             }
+
         }
     }
 

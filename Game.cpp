@@ -20,6 +20,8 @@ void Game::run() {
 
     bool isPreviewing = true;
     bool clickTileExchange = false;
+    bool clickEmptyCase = false;
+    bool robber = false;
 
     int sizeCellPreview = 20;
     int previewSize = 5;
@@ -54,24 +56,48 @@ void Game::run() {
             tiles.drawTilePattern(x, y, sizeCell, padding, tileColor, selectedTile);
 
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && validPosition) {
+
                 tiles.placeTile(y, x, currentPlayer + 1, board, selectedTile);
-
-                isPreviewing = false;
-
                 listPlayers[currentPlayer].incrementNbTilesPlaced();
-                currentPlayer = (currentPlayer + 1) % nbPlayer;
-                selectedTile = playerTiles[currentPlayer].back();
-                playerTiles[currentPlayer].pop_back();
+
                 isPreviewing = true;
+
                 int newActiveBonus = verifBonus();
                 if (newActiveBonus != 0) {
                     if (newActiveBonus == 2) {
-                        listPlayers[currentPlayer - 1 % nbPlayer].addTileCoupons();
+                        float startTime = GetTime();
+                        string text = "Vous avez un Bonus !";
+                        bonus.popUpBonus(startTime, sizeCell, size, padding, text, boardDisplay, startX, startY, sizeCellPreview, previewSize, previewPadding, firstTurn, playerTiles, currentPlayer, listPlayers, selectedTile);
+                        text = "+1 coupon d'échange !";
+                        bonus.popUpBonus(startTime, sizeCell, size, padding, text, boardDisplay, startX, startY, sizeCellPreview, previewSize, previewPadding, firstTurn, playerTiles, currentPlayer, listPlayers, selectedTile);
+                        listPlayers[currentPlayer].addTileCoupons();
+
                     } else if (newActiveBonus == 3) {
-                        cout << "Bonus 3" << endl;
+                        isPreviewing = false;
+                        float startTime = GetTime();
+                        string text = "Vous avez un Bonus !";
+                        bonus.popUpBonus(startTime, sizeCell, size, padding, text, boardDisplay, startX, startY, sizeCellPreview, previewSize, previewPadding, firstTurn, playerTiles, currentPlayer, listPlayers, selectedTile);
+                        clickEmptyCase = true;
+
                     } else if (newActiveBonus == 4) {
-                        cout << "Bonus 4" << endl;
+                        isPreviewing = false;
+                        float startTime = GetTime();
+                        string text = "Vous avez un Bonus !";
+                        bonus.popUpBonus(startTime, sizeCell, size, padding, text, boardDisplay, startX, startY, sizeCellPreview, previewSize, previewPadding, firstTurn, playerTiles, currentPlayer, listPlayers, selectedTile);
+                        robber = true;
                     }
+                }
+                if (robber){
+                    EndDrawing();
+                    bonus.robbery(board, currentPlayer, robber, listPlayers, playerTiles);
+                    BeginDrawing();
+                    boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers);
+                    isPreviewing = true;
+                }
+                if (!clickEmptyCase) {
+                    currentPlayer = (currentPlayer + 1) % nbPlayer;
+                    selectedTile = playerTiles[currentPlayer].back();
+                    playerTiles[currentPlayer].pop_back();
                 }
 
                 if (listPlayers[currentPlayer].getNbTilesPlaced() == 10) {
@@ -92,10 +118,29 @@ void Game::run() {
             if (IsKeyPressed(KEY_F)) {
                 tiles.flip(selectedTile);
             }
+        }else if (clickEmptyCase) {
+            Vector2 mousePosition = GetMousePosition();
+            int x = (mousePosition.x - padding) / sizeCell;
+            int y = (mousePosition.y - padding) / sizeCell;
+
+            if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && board.getCase(y, x).getType() == 0) {
+                board.getCase(y, x).setType(5);
+                boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers);
+                float startTime = GetTime();
+                string text = "vous avez place une pierre";
+                bonus.popUpBonus(startTime, sizeCell, size, padding, text, boardDisplay, startX, startY, sizeCellPreview, previewSize, previewPadding, firstTurn, playerTiles, currentPlayer, listPlayers, selectedTile);
+                clickEmptyCase = false;
+                isPreviewing = true;
+                currentPlayer = (currentPlayer + 1) % nbPlayer;
+                selectedTile = playerTiles[currentPlayer].back();
+                playerTiles[currentPlayer].pop_back();
+
+            }
         }else{
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
                 Vector2 mousePosition = GetMousePosition();
                 vector<vector<int>> tileMove;
+
                 if (clickTileExchange) {
                     for (int i = 0; i < previewSize && i < playerTiles[currentPlayer].size(); ++i) {
                         int offsetX = startX + (sizeCellPreview + previewPadding) * i;

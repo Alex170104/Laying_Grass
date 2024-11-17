@@ -11,8 +11,6 @@ Tiles::Tiles() {}
 void Tiles::placeTile(int x, int y, int player, Board& board, vector<vector<int>>& tilePattern) {
     int tileHeight = tilePattern.size();
     int tileWidth = tilePattern[0].size();
-    //cout << "tileHeight: " << tileHeight << "tileWidth" << tileWidth << endl;
-
     for (int i = 0; i < tileHeight; ++i) {
         for (int j = 0; j < tileWidth; ++j) {
             if (tilePattern[i][j] == 1) {
@@ -115,6 +113,9 @@ bool Tiles::isValidPosition(int x, int y, Board& board, int size, vector<vector<
                     return false;
                 }
                 if (board.getCase(boardY, boardX).getCasePlayer() != 0) {
+                    return false;
+                }
+                if (board.getCase(boardY, boardX).getType() == 5) {
                     return false;
                 }
                 if ((boardX > 0 && board.getCase(boardY, boardX - 1).getCasePlayer() == currentPlayer + 1) ||
