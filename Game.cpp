@@ -22,7 +22,6 @@ Game::Game(int size, int nbPlayer, int sizeCell, int padding, vector<Player> lis
         : board(size, nbPlayer), nbPlayer(nbPlayer), size(size), sizeCell(sizeCell), padding(padding), listPlayers(listPlayers), boardDisplay(board, sizeCell){}
 
 
-
 /**
  * @brief Lance la boucle principale du jeu.
  *

@@ -1,6 +1,22 @@
 #include "Game.h"
 #include "DisplayMenu.h"
 
+/**
+ * @mainpage La documentation technique du jeu LAYING GRASS GAME !
+ * Vous pouvez acceder à toutes les classes et fonctions du projet en cliquant sur les onglets ci-dessus.
+ * @author Alexandre DISCHAMPS
+ * @author Camille CRETOIS--BLANCHARD
+ * @version 1.0
+ * @date 18/11/2024
+ *
+ * Le projet est developpé en C++ avec la librairie Raylib.
+ */
+
+
+
+
+
+
 int sizeBoard(int player);
 
 using namespace std;
