@@ -11,6 +11,35 @@ using namespace std;
  */
 Bonus::Bonus() {}
 
+void Bonus::popUpTile(float startTime, int sizeCell, int size, int padding, string text, BoardDisplay& boardDisplay, int startX, int startY, int sizeCellPreview, int previewSize, int previewPadding, bool firstTurn, vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, vector<Player> listPlayers, vector<vector<int>> selectedTile) {
+    while (GetTime() - startTime < 5.0f) {
+        BeginDrawing();
+        ClearBackground(GRAY);
+        boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers, false, false);
+        DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(),
+                      Fade(BLACK, 0.7f));
+        DrawRectangle((GetScreenWidth() - 500) / 2, padding + (size * sizeCell) / 2 - 50, 500, 100,
+                      WHITE);
+        DrawText(text.c_str(),
+                 (GetScreenWidth() - MeasureText(text.c_str(), 30)) / 2,
+                 padding + (size * sizeCell) / 2 - 15, 30, BLACK);
+
+        int tileStartX = (GetScreenWidth() - (selectedTile[0].size() * sizeCellPreview)) / 2;
+        int tileStartY = padding + (size * sizeCell) / 2 + 100;
+        for (int row = 0; row < selectedTile.size(); ++row) {
+            for (int col = 0; col < selectedTile[row].size(); ++col) {
+                if (selectedTile[row][col] == 1) {
+                    DrawRectangle(tileStartX + col * sizeCellPreview, tileStartY + row * sizeCellPreview, sizeCellPreview, sizeCellPreview, listPlayers[currentPlayer].getColor());
+                    DrawRectangleLines(tileStartX + col * sizeCellPreview, tileStartY + row * sizeCellPreview, sizeCellPreview, sizeCellPreview, WHITE);
+                }
+            }
+        }
+
+        EndDrawing();
+    }
+}
+
+
 /**
  * \brief Affiche une fenêtre popup de bonus.
  * \param startTime Le temps de début.

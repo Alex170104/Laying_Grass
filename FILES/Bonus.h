@@ -21,6 +21,27 @@ public:
     Bonus();
 
     /**
+     * \brief Affiche un pop-up de tuile.
+     * \param startTime Le temps de début.
+     * \param sizeCell La taille de la cellule.
+     * \param size La taille du plateau.
+     * \param padding Le padding.
+     * \param text Le texte à afficher.
+     * \param boardDisplay L'affichage du plateau.
+     * \param startX La coordonnée x de départ.
+     * \param startY La coordonnée y de départ.
+     * \param sizeCellPreview La taille de la cellule en aperçu.
+     * \param previewSize La taille de l'aperçu.
+     * \param previewPadding Le padding de l'aperçu.
+     * \param firstTurn Indique si c'est le premier tour.
+     * \param playerTiles Les tuiles des joueurs.
+     * \param currentPlayer Le joueur actuel.
+     * \param listPlayers La liste des joueurs.
+     * \param selectedTile La tuile sélectionnée.
+     */
+    void popUpTile(float startTime, int sizeCell, int size, int padding, string text, BoardDisplay& boardDisplay, int startX, int startY, int sizeCellPreview, int previewSize, int previewPadding, bool firstTurn, vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, vector<Player> listPlayers, vector<vector<int>> selectedTile);
+
+    /**
      * \brief Affiche un pop-up de bonus.
      * \param startTime Le temps de début.
      * \param sizeCell La taille de la cellule.

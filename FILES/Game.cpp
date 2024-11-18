@@ -66,12 +66,10 @@ void Game::run() {
         if (!possibleTile) {
             possibleTile = isTilePlacementValid(selectedTile, currentPlayer, board, firstTurn, tiles);
             if (!possibleTile) {
-                bonus.popUpBonus(GetTime(), sizeCell, size, padding, "Tuile impossible a placer", boardDisplay, startX, startY, sizeCellPreview, previewSize, previewPadding, firstTurn, playerTiles, currentPlayer, listPlayers, selectedTile);
-                playerTiles[currentPlayer].pop_back();
+                bonus.popUpTile(GetTime(), sizeCell, size, padding, "Tuile impossible a placer", boardDisplay, startX, startY, sizeCellPreview, previewSize, previewPadding, firstTurn, playerTiles, currentPlayer, listPlayers, selectedTile);
                 currentPlayer = (currentPlayer + 1) % nbPlayer;
                 selectedTile = playerTiles[currentPlayer].back();
                 playerTiles[currentPlayer].pop_back();
-                continue;
             }
         }
 
