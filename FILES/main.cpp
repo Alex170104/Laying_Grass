@@ -45,9 +45,9 @@ int main() {
         int padding = 100;
         int windowSize = size * sizeCell + 2 * padding;
         if (nbPlayer > 4) {
-            InitWindow(windowSize, windowSize + 200, "Laying Grass - GAME");
+            InitWindow(windowSize + 200, windowSize + 200, "Laying Grass - GAME");
         } else {
-            InitWindow(windowSize, windowSize + 150, "Laying Grass - GAME");
+            InitWindow(windowSize + 150, windowSize + 150, "Laying Grass - GAME");
         }
 
         Game game(size, nbPlayer, sizeCell, padding, listPlayers);
