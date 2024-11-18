@@ -68,3 +68,14 @@ Case& Board::getCase(int x, int y) {
     return grid[x][y];
 }
 
+bool Board::hasCrack() {
+    for (int i = 0; i < size; ++i) {
+        for (int j = 0; j < size; ++j) {
+            if (grid[i][j].getType() == 5) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+

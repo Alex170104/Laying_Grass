@@ -32,11 +32,9 @@ void displayWin::run() {
             DrawText(to_string(orderWinners[i].getBiggestSquare()).c_str(), 398, 230 + 50 * i, 30, WHITE);
             DrawText(to_string(orderWinners[i].getNbGrassPlaced()).c_str(), 660, 230 + 50 * i, 30, WHITE);
         }
-
         EndDrawing();
     }
     CloseWindow();
-    return;
 }
 
 displayWin::~displayWin() {

@@ -12,7 +12,7 @@ public:
     vector<vector<Case>> createBoard();
     void displayType();
     void displayCasePlayer();
-
+    bool hasCrack();
 protected:
     vector<vector<Case>> grid;
     int size;

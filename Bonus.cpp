@@ -12,7 +12,7 @@ void Bonus::popUpBonus(float startTime, int sizeCell, int size, int padding, str
     while (GetTime() - startTime < 2.0f) {
         BeginDrawing();
         ClearBackground(GRAY);
-        boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers);
+        boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers, false, false);
         DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(),
                       Fade(BLACK, 0.7f));
         DrawRectangle((GetScreenWidth() - 500) / 2, padding + (size * sizeCell) / 2 - 50, 500, 100,
@@ -135,5 +135,19 @@ tuple<vector<vector<int>>, int, int> Bonus::robbery(int currentPlayer, bool robb
     }
 }
 
-
-
+int Bonus::verifBonus(Board& board, int size) {
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            if (board.getCase(j, i).getType() > 1 and board.getCase(j, i).getType() < 5 and board.getCase(j, i).getCasePlayer() == 0) {
+                int playerNeighbor = board.getCase(j-1, i).getCasePlayer();
+                if (board.getCase(j, i+1).getCasePlayer() == playerNeighbor and board.getCase(j+1, i).getCasePlayer() == playerNeighbor and board.getCase(j, i-1).getCasePlayer() == playerNeighbor) {
+                    if (playerNeighbor != 0) {
+                        board.getCase(j, i).setCasePlayer(playerNeighbor);
+                        return board.getCase(j, i).getType();
+                    }
+                }
+            }
+        }
+    }
+    return 0;
+}
