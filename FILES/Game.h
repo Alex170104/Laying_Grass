@@ -26,6 +26,9 @@ public:
      */
     void run();
 
+    void endGameEchange(int currentPlayer, vector<vector<vector<vector<int>>>> &playerTiles, vector<vector<int>> &selectedTile);
+
+
     /**
      * \brief Calcule la plus grande zone carrée pour un joueur.
      * \param player Le joueur.

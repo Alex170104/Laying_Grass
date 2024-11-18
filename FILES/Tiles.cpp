@@ -164,6 +164,16 @@ bool Tiles::isValidPosition(int x, int y, Board& board, int size, vector<vector<
                      && board.getCase(boardY + 1, boardX).getCasePlayer() != 0)) {
                     return false;
                 }
+                if ((boardX > 0 && board.getCase(boardY, boardX - 1).getCasePlayer() != currentPlayer + 1
+                    && board.getCase(boardY, boardX - 1).getCasePlayer() != 0) ||
+                    (boardX < size - 1 && board.getCase(boardY, boardX + 1).getCasePlayer() != currentPlayer + 1
+                    && board.getCase(boardY, boardX + 1).getCasePlayer() != 0) ||
+                    (boardY > 0 && board.getCase(boardY - 1, boardX).getCasePlayer() != currentPlayer + 1
+                    && board.getCase(boardY - 1, boardX).getCasePlayer() != 0) ||
+                    (boardY < size - 1 && board.getCase(boardY + 1, boardX).getCasePlayer() != currentPlayer + 1
+                    && board.getCase(boardY + 1, boardX).getCasePlayer() != 0)) {
+                    return false;
+                }
                 if ((boardX > 0 && board.getCase(boardY, boardX - 1).getCasePlayer() == currentPlayer + 1) ||
                     (boardX < size - 1 && board.getCase(boardY, boardX + 1).getCasePlayer() == currentPlayer + 1) ||
                     (boardY > 0 && board.getCase(boardY - 1, boardX).getCasePlayer() == currentPlayer + 1) ||
