@@ -28,7 +28,6 @@ Game::Game(int size, int nbPlayer, int sizeCell, int padding, vector<Player> lis
  * Gère les interactions utilisateur, l'affichage du plateau et la logique de jeu.
  */
 void Game::run() {
-    Tiles tiles;
     Bonus bonus;
 
     int currentPlayer = 0;
@@ -41,6 +40,7 @@ void Game::run() {
     bool clickRepair = false;
     bool clickEmptyCase = false;
     bool robber = false;
+    bool possibleTile = false;
 
     int sizeCellPreview = 20;
     int previewSize = 5;
@@ -63,8 +63,21 @@ void Game::run() {
         // Affichage du plateau et de l'interface
         boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers, clickTileExchange, clickRepair);
 
-        if (isPreviewing) {
+        if (!possibleTile) {
+            possibleTile = isTilePlacementValid(selectedTile, currentPlayer, board, firstTurn, tiles);
+            if (!possibleTile) {
+                bonus.popUpBonus(GetTime(), sizeCell, size, padding, "Tuile impossible a placer", boardDisplay, startX, startY, sizeCellPreview, previewSize, previewPadding, firstTurn, playerTiles, currentPlayer, listPlayers, selectedTile);
+                playerTiles[currentPlayer].pop_back();
+                currentPlayer = (currentPlayer + 1) % nbPlayer;
+                selectedTile = playerTiles[currentPlayer].back();
+                playerTiles[currentPlayer].pop_back();
+                continue;
+            }
+        }
 
+
+
+        if (isPreviewing) {
             // Gérer l'aperçu de placement de tuile
             Vector2 mousePosition = GetMousePosition();
             int x = (mousePosition.x - padding) / sizeCell;
@@ -83,6 +96,7 @@ void Game::run() {
                 listPlayers[currentPlayer].incrementNbTilesPlaced();
 
                 isPreviewing = true;
+                possibleTile = false;
 
                 // Vérification des bonus après le placement
                 int newActiveBonus = bonus.verifBonus(board, size);
@@ -235,6 +249,30 @@ void Game::run() {
     }
     CloseWindow();
 }
+
+bool Game::isTilePlacementValid(vector<vector<int>>selectedTile, int currentPlayer, Board board, bool firstTurn, Tiles tiles){
+    bool OK;
+    for (int a = 0; a < 2; a++) {
+        for (int b = 0; b < 4; b++) {
+            for (int i = 0; i < size; i++) {
+                for (int j = 0; j < size; j++) {
+                    if (board.getCase(i, j).getType() == 0) {
+                        OK = tiles.isValidPosition(i, j, board, size, selectedTile, firstTurn, currentPlayer, nbPlayer);
+                        if (OK) {
+                            cout << "ok" << endl;
+                            return OK;
+                        }
+                    }
+                }
+            }
+            tiles.rotateTilePattern(selectedTile);
+        }
+        tiles.flip(selectedTile);
+    }
+    cout << "pas ok" << endl;
+    return OK;
+}
+
 
 /**
  * @brief Calcule les gagnants de la partie.

@@ -13,10 +13,6 @@
  */
 
 
-
-
-
-
 int sizeBoard(int player);
 
 using namespace std;

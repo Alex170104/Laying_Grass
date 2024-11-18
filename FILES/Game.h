@@ -4,6 +4,7 @@
 #include "Board.h"
 #include "BoardDisplay.h"
 #include "Player.h"
+#include "Tiles.h"
 
 /**
  * \brief Classe représentant le jeu.
@@ -34,12 +35,15 @@ public:
 
 private:
     Board board; /**< Le plateau de jeu. */
+    Tiles tiles; /**< Les tuiles. */
     int size; /**< La taille du plateau. */
     int sizeCell; /**< La taille de la cellule. */
     int padding; /**< Le padding. */
     int nbPlayer; /**< Le nombre de joueurs. */
     int turnCount; /**< Le nombre de tours. */
     vector<Player> listPlayers; /**< La liste des joueurs. */
+
+    bool isTilePlacementValid(vector<vector<int>> selectedTile, int currentPlayer, Board board, bool firstTurn, Tiles tiles); /**< Vérifie si il retse de la place pour la tuile. */
 
     /**
      * \brief Calcule le nombre de cases d'herbe placées par un joueur.
