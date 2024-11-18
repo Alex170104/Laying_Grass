@@ -12,11 +12,6 @@
  * Le projet est developpé en C++ avec la librairie Raylib.
  */
 
-
-
-
-
-
 int sizeBoard(int player);
 
 using namespace std;
