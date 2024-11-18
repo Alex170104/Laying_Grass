@@ -33,15 +33,17 @@ void BoardDisplay::display(int startX, int startY, int size, int sizeCell, int s
 
     string currentPlayerName = listPlayers[currentPlayer].getName();
     Color currentPlayerColor = listPlayers[currentPlayer].getColor();
-    DrawText(currentPlayerName.c_str(), startX, padding - 40, 30, currentPlayerColor);
+    int textWidth = MeasureText(currentPlayerName.c_str(), 30);
+    DrawRectangle(startX, padding - 50, textWidth + 20, 50, Fade(currentPlayerColor, 0.5f));
+    DrawText(currentPlayerName.c_str(), startX + 10, padding - 40, 30, WHITE);
 
     if (firstTurn) {
-        DrawText("INITIALIZATION", startX + 350, padding - 40, 30, BLACK);
+        DrawText("INITIALIZATION", startX + 350, padding - 40, 30, WHITE);
     } else if (listPlayers[currentPlayer].getNbTilesPlaced() < 10) {
-        DrawText(("TURN " + to_string(listPlayers[currentPlayer].getNbTilesPlaced())).c_str(), startX + 490, padding - 40, 30, BLACK);
+        DrawText(("TURN " + to_string(listPlayers[currentPlayer].getNbTilesPlaced())).c_str(), startX + 490, padding - 40, 30, WHITE);
     }
     else {
-        DrawText("GAME OVER", startX + 415, padding - 40, 30, BLACK);
+        DrawText("GAME OVER", startX + 415, padding - 40, 30, WHITE);
     }
 
     for (int i = 0; i < size; ++i) {
@@ -77,11 +79,11 @@ void BoardDisplay::display(int startX, int startY, int size, int sizeCell, int s
 
             if (currentCase.getType() == 0) {
                 DrawRectangle(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell, colorEmpty);
-                DrawRectangleLines(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell,BLACK);
+                DrawRectangleLines(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell,WHITE);
             }
             else if (currentCase.getType() == 1) {
                 DrawRectangle(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell, color);
-                DrawRectangleLines(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell,BLACK);
+                DrawRectangleLines(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell,WHITE);
             } else if (currentCase.getType() == 2) {
                 DrawTexture(textureBonusTicket, padding + j * sizeCell, padding + i * sizeCell, WHITE);
             } else if (currentCase.getType() == 3) {
@@ -90,13 +92,13 @@ void BoardDisplay::display(int startX, int startY, int size, int sizeCell, int s
                 DrawTexture(textureBonusVol, padding + j * sizeCell, padding + i * sizeCell, WHITE);
             }else if (currentCase.getType() == 5) {
                 DrawRectangle(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell, DARKGRAY);
-                DrawRectangleLines(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell, BLACK);
+                DrawRectangleLines(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell, WHITE);
             }
 
         }
     }
 
-    DrawText("TUILES A VENIR", startX, startY - 60, 30, BLACK);
+    DrawText("TUILES A VENIR", startX, startY - 60, 30, WHITE);
     for (int i = 0; i < previewSize && i < playerTiles[currentPlayer].size(); ++i) {
         int offsetX = startX + (sizeCellPreview + previewPadding) * i;
         int offsetY = startY;
@@ -109,14 +111,14 @@ void BoardDisplay::display(int startX, int startY, int size, int sizeCell, int s
                     int posY = offsetY + row * sizeCellPreview;
                     Color color = listPlayers[currentPlayer].getColor();
                     DrawRectangle(posX, posY, sizeCellPreview, sizeCellPreview, color);
-                    DrawRectangleLines(posX, posY, sizeCellPreview, sizeCellPreview, BLACK);
+                    DrawRectangleLines(posX, posY, sizeCellPreview, sizeCellPreview, WHITE);
                 }
             }
         }
     }
 
-    DrawText("COUPON D'ECHANGE", startX + 675, startY - 60, 30, BLACK);
-    DrawText(to_string(listPlayers[currentPlayer].getTileCoupons()).c_str(), startX + 825, startY, 30, BLACK);
+    DrawText("COUPON D'ECHANGE", startX + 675, startY - 60, 30, WHITE);
+    DrawText(to_string(listPlayers[currentPlayer].getTileCoupons()).c_str(), startX + 825, startY, 30, WHITE);
     DrawRectangle(startX + 750, startY + 45, 165, 60, Fade(BLACK, 0.5f));
     DrawText("UTILISER", startX + 760, startY + 60, 30, WHITE);
 

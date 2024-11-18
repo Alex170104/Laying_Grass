@@ -33,7 +33,7 @@ void Game::run() {
 
     while (!WindowShouldClose()) {
         BeginDrawing();
-        ClearBackground(RAYWHITE);
+        ClearBackground(GRAY);
 
         bool firstTurn;
         if (listPlayers[currentPlayer].getNbTilesPlaced() == 0) {
@@ -92,7 +92,7 @@ void Game::run() {
                     int player;
                     int index;
                     EndDrawing();
-                    tie(selectedTile, player, index) = bonus.robbery(currentPlayer, robber, listPlayers, playerTiles, previewSize, sizeCellPreview, previewPadding);
+                    tie(selectedTile, player, index) = bonus.robbery(currentPlayer, robber, listPlayers, playerTiles, previewSize, 30, previewPadding);
                     playerTiles[player].erase(playerTiles[player].end() - index - 1);
                     robber = false;
                     isPreviewing = true;
@@ -104,10 +104,10 @@ void Game::run() {
                     playerTiles[currentPlayer].pop_back();
                 }
 
-                if (listPlayers[currentPlayer].getNbTilesPlaced() == 10) {
+                if (listPlayers[currentPlayer].getNbTilesPlaced() == 2) {
                     EndDrawing();
                     BeginDrawing();
-                    ClearBackground(RAYWHITE);
+                    ClearBackground(GRAY);
                     boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers);
                     EndDrawing();
                     vector<Player> orderWinners = calculWin();

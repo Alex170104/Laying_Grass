@@ -14,22 +14,23 @@ void displayWin::run() {
 
     while (!WindowShouldClose()) {
         BeginDrawing();
-        ClearBackground(RAYWHITE);
+        ClearBackground(GRAY);
 
-        DrawText("Game Over", 275, 50, 50, RED);
-        DrawText("Player", 150, 150, 30, BLACK);
-        DrawText("Biggest", 350, 135, 30, BLACK);
-        DrawText("Square", 350, 165, 30, BLACK);
-        DrawText("Number of", 542, 135, 30, BLACK);
-        DrawText("Grass", 600, 165,30, BLACK);
+        DrawText("Game Over", 275, 50, 50, GOLD);
+        DrawRectangle(80, 130, 640, 50 + 100 * orderWinners.size(), Fade(BLACK, 0.1f));
+        DrawText("Player", 150, 150, 30, WHITE);
+        DrawText("Biggest", 350, 135, 30, WHITE);
+        DrawText("Square", 350, 165, 30, WHITE);
+        DrawText("Number of", 542, 135, 30, WHITE);
+        DrawText("Grass", 600, 165,30, WHITE);
         DrawTexture(textureTrophee, 40, 222, WHITE);
         for (int i = 0; i < orderWinners.size(); i++) {
             DrawRectangle(90, 218 + 50 * i, 610, 50, Fade(orderWinners[i].getColor(), 0.25f));
-            DrawText((to_string(i+1)).c_str(), 105, 230 + 50 * i, 30, orderWinners[i].getColor());
+            DrawText((to_string(i+1)).c_str(), 105, 230 + 50 * i, 30, WHITE);
             DrawText(" | ", 120, 230 + 50 * i, 30, orderWinners[i].getColor());
-            DrawText(orderWinners[i].getName().c_str(), 150, 230 + 50 * i, 30, orderWinners[i].getColor());
-            DrawText(to_string(orderWinners[i].getBiggestSquare()).c_str(), 398, 230 + 50 * i, 30, orderWinners[i].getColor());
-            DrawText(to_string(orderWinners[i].getNbGrassPlaced()).c_str(), 660, 230 + 50 * i, 30, orderWinners[i].getColor());
+            DrawText(orderWinners[i].getName().c_str(), 150, 230 + 50 * i, 30, WHITE);
+            DrawText(to_string(orderWinners[i].getBiggestSquare()).c_str(), 398, 230 + 50 * i, 30, WHITE);
+            DrawText(to_string(orderWinners[i].getNbGrassPlaced()).c_str(), 660, 230 + 50 * i, 30, WHITE);
         }
 
         EndDrawing();
