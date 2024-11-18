@@ -80,7 +80,15 @@ void Game::run() {
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && validPosition) {
 
                 tiles.placeTile(y, x, currentPlayer + 1, board, selectedTile);
-                listPlayers[currentPlayer].incrementNbTilesPlaced();
+                if (!turnEndExchange) {
+                    listPlayers[currentPlayer].incrementNbTilesPlaced();
+                }
+                else {
+                    listPlayers[currentPlayer].removeTileCoupons();
+                    if (listPlayers[currentPlayer].getTileCoupons() == 0) {
+                        listPlayers[currentPlayer].incrementNbTilesPlaced();
+                    }
+                }
 
                 isPreviewing = true;
 
@@ -119,13 +127,20 @@ void Game::run() {
                     isPreviewing = true;
                     continue;
                 }
-                if (!clickEmptyCase) {
+                if (!clickEmptyCase && !turnEndExchange) {
                     currentPlayer = (currentPlayer + 1) % nbPlayer;
                     selectedTile = playerTiles[currentPlayer].back();
                     playerTiles[currentPlayer].pop_back();
                 }
-
-                if (listPlayers[currentPlayer].getNbTilesPlaced() >= 10) {
+                if (listPlayers[currentPlayer].getNbTilesPlaced() == 10) {
+                    turnEndExchange = true;
+                    selectedTile = {{1}};
+                    for (int i = 0; i < listPlayers[currentPlayer].getTileCoupons()-1; i++) {
+                        playerTiles[currentPlayer].push_back(selectedTile);
+                    }
+                }
+                cout << listPlayers[currentPlayer].getNbTilesPlaced() << endl;
+                if (listPlayers[currentPlayer].getNbTilesPlaced() > 10) {
                     EndDrawing();
                     BeginDrawing();
                     ClearBackground(GRAY);
@@ -214,19 +229,18 @@ void Game::run() {
                 }
                 if (mousePosition.x > startX + 725 && mousePosition.x < startX + 920 &&
                     mousePosition.y > startY - 25 && mousePosition.y < startY + 35 && listPlayers[currentPlayer].getTileCoupons() > 0) {
-                    if (listPlayers[currentPlayer].getNbTilesPlaced() < 10) {
                         clickTileExchange = !clickTileExchange;
                         clickRepair = false;
-                    }
-                    else {
-                        endGameEchange(currentPlayer, playerTiles, selectedTile);
-                        isPreviewing = true;
-                    }
                 }
                 if (mousePosition.x > startX + 733 && mousePosition.x < startX + 913 &&
                     mousePosition.y > startY + 45 && mousePosition.y < startY + 105 && board.hasCrack() && listPlayers[currentPlayer].getTileCoupons() > 0) {
                     clickRepair = !clickRepair;
                     clickTileExchange = false;
+                }
+                if (turnEndExchange && mousePosition.x > startX + 725 && mousePosition.x < startX + 920 &&
+                    mousePosition.y > startY - 25 && mousePosition.y < startY + 35) {
+                    listPlayers[currentPlayer].incrementNbTilesPlaced();
+                    currentPlayer = (currentPlayer + 1) % nbPlayer;
                 }
             }
         }
@@ -240,14 +254,6 @@ void Game::run() {
         EndDrawing();
     }
     CloseWindow();
-}
-
-void Game::endGameEchange(int currentPlayer, vector<vector<vector<vector<int>>>>& playerTiles, vector<vector<int>>& selectedTile) {
-    vector<vector<int>> tile1x1 = {{1}};
-    if (listPlayers[currentPlayer].getTileCoupons() > 0) {
-        selectedTile = tile1x1;
-        listPlayers[currentPlayer].removeTileCoupons();
-    }
 }
 
 /**

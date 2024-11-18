@@ -153,10 +153,15 @@ void BoardDisplay::display(int startX, int startY, int size, int sizeCell, int s
     }
 
     DrawText(("COUPON D'ECHANGE : " + to_string(listPlayers[currentPlayer].getTileCoupons())).c_str(), startX + 645, startY - 60, 30, BLACK);
-    DrawRectangle(startX + 725, startY - 25, 195, 60, Fade(BLACK, 0.5f));
-    DrawText("ECHANGER", startX + 740, startY - 10, 30, colorTextEchange);
-    if (board.hasCrack()) {
-        DrawRectangle(startX + 733, startY + 45, 180, 60, Fade(BLACK, 0.5f));
-        DrawText("REPARER", startX + 753, startY + 60, 30, colorTextRepair);
+    if (listPlayers[currentPlayer].getNbTilesPlaced() < 10) {
+        DrawRectangle(startX + 725, startY - 25, 195, 60, Fade(BLACK, 0.5f));
+        DrawText("ECHANGER", startX + 740, startY - 10, 30, colorTextEchange);
+        if (board.hasCrack()) {
+            DrawRectangle(startX + 733, startY + 45, 180, 60, Fade(BLACK, 0.5f));
+            DrawText("REPARER", startX + 753, startY + 60, 30, colorTextRepair);
+        }
+    } else {
+        DrawRectangle(startX + 725, startY - 25, 195, 60, Fade(BLACK, 0.5f));
+        DrawText("FIN DU TOUR", startX + 740, startY - 10, 30, WHITE);
     }
 }
