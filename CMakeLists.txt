@@ -20,25 +20,25 @@ if (NOT raylib_FOUND) # If there's none, fetch and build raylib
     endif()
 endif()
 
-add_executable(Laying_Grass main.cpp
-        Player.cpp
-        Player.h
-        Board.cpp
-        Board.h
-        Case.cpp
-        Case.h
-        BoardDisplay.cpp
-        BoardDisplay.h
-        Game.cpp
-        Game.h
-        Tiles.cpp
-        Tiles.h
-        DisplayMenu.cpp
-        DisplayMenu.h
-        displayWin.cpp
-        displayWin.h
-        Bonus.cpp
-        Bonus.h
+add_executable(Laying_Grass FILES/main.cpp
+        FILES/Player.cpp
+        FILES/Player.h
+        FILES/Board.cpp
+        FILES/Board.h
+        FILES/Case.cpp
+        FILES/Case.h
+        FILES/BoardDisplay.cpp
+        FILES/BoardDisplay.h
+        FILES/Game.cpp
+        FILES/Game.h
+        FILES/Tiles.cpp
+        FILES/Tiles.h
+        FILES/DisplayMenu.cpp
+        FILES/DisplayMenu.h
+        FILES/displayWin.cpp
+        FILES/displayWin.h
+        FILES/Bonus.cpp
+        FILES/Bonus.h
 )
 
 target_link_libraries(Laying_Grass raylib ws2_32)
