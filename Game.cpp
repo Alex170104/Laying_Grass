@@ -105,7 +105,7 @@ void Game::run() {
                     playerTiles[currentPlayer].pop_back();
                 }
 
-                if (listPlayers[currentPlayer].getNbTilesPlaced() == 10) {
+                if (listPlayers[currentPlayer].getNbTilesPlaced() >= 10) {
                     EndDrawing();
                     BeginDrawing();
                     ClearBackground(GRAY);
@@ -191,11 +191,17 @@ void Game::run() {
                 }
                 if (mousePosition.x > startX + 725 && mousePosition.x < startX + 920 &&
                     mousePosition.y > startY - 25 && mousePosition.y < startY + 35 && listPlayers[currentPlayer].getTileCoupons() > 0) {
-                    clickTileExchange = !clickTileExchange;
-                    clickRepair = false;
+                    if (listPlayers[currentPlayer].getNbTilesPlaced() < 10) {
+                        clickTileExchange = !clickTileExchange;
+                        clickRepair = false;
+                    }
+                    else {
+                        endGameEchange(currentPlayer, playerTiles, selectedTile);
+                        isPreviewing = true;
+                    }
                 }
                 if (mousePosition.x > startX + 733 && mousePosition.x < startX + 913 &&
-                    mousePosition.y > startY + 45 && mousePosition.y < startY + 105 && board.hasCrack()) {
+                    mousePosition.y > startY + 45 && mousePosition.y < startY + 105 && board.hasCrack() && listPlayers[currentPlayer].getTileCoupons() > 0) {
                     clickRepair = !clickRepair;
                     clickTileExchange = false;
                 }
@@ -209,6 +215,14 @@ void Game::run() {
         EndDrawing();
     }
     CloseWindow();
+}
+
+void Game::endGameEchange(int currentPlayer, vector<vector<vector<vector<int>>>>& playerTiles, vector<vector<int>>& selectedTile) {
+    vector<vector<int>> tile1x1 = {{1}};
+    if (listPlayers[currentPlayer].getTileCoupons() > 0) {
+        selectedTile = tile1x1;
+        listPlayers[currentPlayer].removeTileCoupons();
+    }
 }
 
 vector<Player> Game::calculWin() {

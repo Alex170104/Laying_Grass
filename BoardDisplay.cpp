@@ -97,20 +97,22 @@ void BoardDisplay::display(int startX, int startY, int size, int sizeCell, int s
         }
     }
 
-    DrawText("TUILES A VENIR", startX, startY - 60, 30, WHITE);
-    for (int i = 0; i < previewSize && i < playerTiles[currentPlayer].size(); ++i) {
-        int offsetX = startX + (sizeCellPreview + previewPadding) * i;
-        int offsetY = startY;
+    if (listPlayers[currentPlayer].getNbTilesPlaced() < 10) {
+        DrawText("TUILES A VENIR", startX, startY - 60, 30, WHITE);
+        for (int i = 0; i < previewSize && i < playerTiles[currentPlayer].size(); ++i) {
+            int offsetX = startX + (sizeCellPreview + previewPadding) * i;
+            int offsetY = startY;
 
-        vector<vector<int>> tilePattern = playerTiles[currentPlayer][playerTiles[currentPlayer].size() - 1 - i];
-        for (int row = 0; row < tilePattern.size(); ++row) {
-            for (int col = 0; col < tilePattern[row].size(); ++col) {
-                if (tilePattern[row][col] == 1) {
-                    int posX = offsetX + col * sizeCellPreview;
-                    int posY = offsetY + row * sizeCellPreview;
-                    Color color = listPlayers[currentPlayer].getColor();
-                    DrawRectangle(posX, posY, sizeCellPreview, sizeCellPreview, color);
-                    DrawRectangleLines(posX, posY, sizeCellPreview, sizeCellPreview, WHITE);
+            vector<vector<int>> tilePattern = playerTiles[currentPlayer][playerTiles[currentPlayer].size() - 1 - i];
+            for (int row = 0; row < tilePattern.size(); ++row) {
+                for (int col = 0; col < tilePattern[row].size(); ++col) {
+                    if (tilePattern[row][col] == 1) {
+                        int posX = offsetX + col * sizeCellPreview;
+                        int posY = offsetY + row * sizeCellPreview;
+                        Color color = listPlayers[currentPlayer].getColor();
+                        DrawRectangle(posX, posY, sizeCellPreview, sizeCellPreview, color);
+                        DrawRectangleLines(posX, posY, sizeCellPreview, sizeCellPreview, WHITE);
+                    }
                 }
             }
         }

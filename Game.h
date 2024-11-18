@@ -10,6 +10,9 @@ class Game {
 public:
     Game(int size, int nbPlayer, int sizeCell, int padding, vector<Player> listPlayers);
     void run();
+
+    void endGameEchange(int currentPlayer, vector<vector<vector<vector<int>>>> &playerTiles, vector<vector<int>> &selectedTile);
+
     int biggerSquare(int player);
 
 private:
