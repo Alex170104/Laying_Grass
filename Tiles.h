@@ -3,19 +3,78 @@
 
 #include "Board.h"
 
+/**
+ * \brief Classe représentant les tuiles du jeu.
+ */
 class Tiles {
 public:
+    /**
+     * \brief Constructeur de la classe Tiles.
+     */
     Tiles();
+
+    /**
+     * \brief Place une tuile sur le plateau.
+     * \param x La coordonnée x de la tuile.
+     * \param y La coordonnée y de la tuile.
+     * \param player Le joueur plaçant la tuile.
+     * \param board Le plateau de jeu.
+     * \param tilePattern Le motif de la tuile.
+     */
     void placeTile(int x, int y, int player, Board& board, vector<vector<int>>& tilePattern);
+
+    /**
+     * \brief Fait pivoter le motif de la tuile.
+     * \param tilePattern Le motif de la tuile.
+     */
     void rotateTilePattern(vector<vector<int>>& tilePattern);
+
+    /**
+     * \brief Dessine le motif de la tuile.
+     * \param x La coordonnée x de la tuile.
+     * \param y La coordonnée y de la tuile.
+     * \param sizeCell La taille de la cellule.
+     * \param padding Le padding.
+     * \param color La couleur de la tuile.
+     * \param tilePattern Le motif de la tuile.
+     */
     void drawTilePattern(int x, int y, int sizeCell, int padding, Color color, vector<vector<int>>& tilePattern);
+
+    /**
+     * \brief Retourne le motif de la tuile.
+     * \param tilePattern Le motif de la tuile.
+     */
     void flip(vector<vector<int>>& tilePattern);
+
+    /**
+     * \brief Vérifie si la position de la tuile est valide.
+     * \param x La coordonnée x de la tuile.
+     * \param y La coordonnée y de la tuile.
+     * \param board Le plateau de jeu.
+     * \param size La taille de la tuile.
+     * \param tilePattern Le motif de la tuile.
+     * \param firstTurn Indique si c'est le premier tour.
+     * \param currentPlayer Le joueur actuel.
+     * \param nbPlayer Le nombre de joueurs.
+     * \return true si la position est valide, false sinon.
+     */
     bool isValidPosition(int x, int y, Board& board, int size, vector<vector<int>>& tilePattern, bool firstTurn, int currentPlayer, int nbPlayer);
+
+    /**
+     * \brief Obtient la liste des motifs de tuiles.
+     * \return La liste des motifs de tuiles.
+     */
     vector<vector<vector<int>>> getTileList() const { return listTile; }
+
+    /**
+     * \brief Distribue les tuiles aux joueurs.
+     * \param nbPlayers Le nombre de joueurs.
+     * \return La liste des tuiles distribuées.
+     */
     vector<vector<vector<vector<int>>>> distributeTiles(int nbPlayers);
 
 private:
-    vector<vector<vector<int>>> listTile = {
+    vector<vector<vector<int>>> listTile = { /**< La liste des motifs de tuiles. */
             { // Forme 1 (2x3)
                     {1, 0, 0},
                     {1, 1, 1}

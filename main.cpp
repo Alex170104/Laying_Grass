@@ -5,6 +5,10 @@ int sizeBoard(int player);
 
 using namespace std;
 
+/**
+ * \brief Point d'entrée principal du programme.
+ * \return Code de sortie du programme.
+ */
 int main() {
     int screenWidth = 1000;
     int screenHeight = 1200;
@@ -37,6 +41,11 @@ int main() {
     return 0;
 }
 
+/**
+ * \brief Calcule la taille du plateau en fonction du nombre de joueurs.
+ * \param nbPlayer Le nombre de joueurs.
+ * \return La taille du plateau.
+ */
 int sizeBoard(int nbPlayer) {
     int size;
     if (2 <= nbPlayer && nbPlayer <= 4){

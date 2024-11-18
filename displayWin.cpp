@@ -2,8 +2,15 @@
 
 using namespace std;
 
+/**
+ * \brief Constructeur de la classe displayWin.
+ * \param orderWinners Le vecteur des joueurs gagnants.
+ */
 displayWin::displayWin(vector<Player> orderWinners) : orderWinners(orderWinners) {}
 
+/**
+ * \brief Exécute l'affichage de l'écran de fin de jeu.
+ */
 void displayWin::run() {
     InitWindow(800, 700, "Laying Grass - Game Over");
     SetTargetFPS(60);
@@ -37,6 +44,9 @@ void displayWin::run() {
     CloseWindow();
 }
 
+/**
+ * \brief Destructeur de la classe displayWin.
+ */
 displayWin::~displayWin() {
     UnloadTexture(textureTrophee);
 }

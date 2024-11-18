@@ -6,8 +6,30 @@
 
 using namespace std;
 
+/**
+ * \brief Constructeur de la classe Bonus.
+ */
 Bonus::Bonus() {}
 
+/**
+ * \brief Affiche une fenêtre popup de bonus.
+ * \param startTime Le temps de début.
+ * \param sizeCell La taille d'une cellule.
+ * \param size La taille du plateau.
+ * \param padding Le padding entre les éléments.
+ * \param text Le texte à afficher.
+ * \param boardDisplay L'affichage du plateau.
+ * \param startX La position X de départ.
+ * \param startY La position Y de départ.
+ * \param sizeCellPreview La taille des cellules de prévisualisation.
+ * \param previewSize La taille de la prévisualisation.
+ * \param previewPadding Le padding de la prévisualisation.
+ * \param firstTurn Indique si c'est le premier tour.
+ * \param playerTiles Les tuiles des joueurs.
+ * \param currentPlayer Le joueur actuel.
+ * \param listPlayers La liste des joueurs.
+ * \param selectedTile La tuile sélectionnée.
+ */
 void Bonus::popUpBonus(float startTime, int sizeCell, int size, int padding, string text, BoardDisplay& boardDisplay, int startX, int startY, int sizeCellPreview, int previewSize, int previewPadding, bool firstTurn, vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, vector<Player> listPlayers, vector<vector<int>> selectedTile) {
     while (GetTime() - startTime < 2.0f) {
         BeginDrawing();
@@ -24,11 +46,26 @@ void Bonus::popUpBonus(float startTime, int sizeCell, int size, int padding, str
     }
 }
 
+/**
+ * \brief Échange les tuiles d'un joueur.
+ * \param playerTiles Les tuiles des joueurs.
+ * \param currentPlayer Le joueur actuel.
+ * \param i L'index de la tuile à échanger.
+ */
 void Bonus::ticketExchange(vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, int i){
     playerTiles[currentPlayer][playerTiles[currentPlayer].size() - 1] = playerTiles[currentPlayer][playerTiles[currentPlayer].size() - 1 - i];
     playerTiles[currentPlayer].erase(playerTiles[currentPlayer].end() - 1 - i, playerTiles[currentPlayer].end() - 1);
 }
 
+/**
+ * \brief Permet à un joueur de voler une tuile à un autre joueur.
+ * \param board Le plateau de jeu.
+ * \param currentPlayer Le joueur actuel.
+ * \param robber Indique si le vol est en cours.
+ * \param listPlayers La liste des joueurs.
+ * \param playerTiles Les tuiles des joueurs.
+ * \return Un tuple contenant la tuile volée, l'index du joueur volé et l'index de la tuile volée.
+ */
 tuple<vector<vector<int>>, int, int> Bonus::robbery(int currentPlayer, bool robber, vector<Player> listPlayers, vector<vector<vector<vector<int>>>> playerTiles, int previewSize, int sizeCellPreview, int previewPadding) {
     bool displayPlayer = true;
     bool displayTileRobbery = false;
@@ -135,6 +172,12 @@ tuple<vector<vector<int>>, int, int> Bonus::robbery(int currentPlayer, bool robb
     }
 }
 
+/**
+ * \brief Vérifie et applique les bonus sur le plateau.
+ * \param board Le plateau de jeu.
+ * \param size La taille du plateau.
+ * \return Le type de bonus appliqué, ou 0 si aucun bonus n'a été appliqué.
+ */
 int Bonus::verifBonus(Board& board, int size) {
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {

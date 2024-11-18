@@ -3,6 +3,11 @@
 
 using namespace std;
 
+/**
+ * \brief Constructeur de la classe BoardDisplay.
+ * \param board Le plateau de jeu.
+ * \param sizeCell La taille de la cellule.
+ */
 BoardDisplay::BoardDisplay(Board& board, int sizeCell) : board(board), sizeCell(sizeCell) {
     Image imgBonusStone = LoadImage("../img/rock.png");
     Image imgBonusTicket = LoadImage("../img/ticket.png");
@@ -22,6 +27,9 @@ BoardDisplay::BoardDisplay(Board& board, int sizeCell) : board(board), sizeCell(
 
 }
 
+/**
+ * \brief Destructeur de la classe BoardDisplay.
+ */
 BoardDisplay::~BoardDisplay() {
     UnloadTexture(textureBonusStone);
     UnloadTexture(textureBonusTicket);
@@ -29,6 +37,24 @@ BoardDisplay::~BoardDisplay() {
 
 }
 
+/**
+ * \brief Affiche le plateau de jeu.
+ * \param startX La coordonnée x de départ.
+ * \param startY La coordonnée y de départ.
+ * \param size La taille du plateau.
+ * \param sizeCell La taille de la cellule.
+ * \param sizeCellPreview La taille de la cellule en aperçu.
+ * \param previewSize La taille de l'aperçu.
+ * \param previewPadding Le padding de l'aperçu.
+ * \param padding Le padding.
+ * \param firstTurn Indique si c'est le premier tour.
+ * \param playerTiles Les tuiles des joueurs.
+ * \param currentPlayer Le joueur actuel.
+ * \param selectedTile La tuile sélectionnée.
+ * \param listPlayers La liste des joueurs.
+ * \param clickTileExchange Indique si l'échange de tuiles est cliqué.
+ * \param clickRepair Indique si la réparation est cliquée.
+ */
 void BoardDisplay::display(int startX, int startY, int size, int sizeCell, int sizeCellPreview, int previewSize, int previewPadding, int padding, bool firstTurn, const vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, const vector<vector<int>>& selectedTile, vector<Player> listPlayers, bool clickTileExchange, bool clickRepair) {
     string currentPlayerName = listPlayers[currentPlayer].getName();
     Color currentPlayerColor = listPlayers[currentPlayer].getColor();

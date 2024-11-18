@@ -8,9 +8,26 @@
 
 using namespace std;
 
+
+/**
+ * @brief Constructeur de la classe Game.
+ *
+ * @param size Taille du plateau de jeu.
+ * @param nbPlayer Nombre de joueurs.
+ * @param sizeCell Taille des cellules du plateau.
+ * @param padding Espacement autour du plateau.
+ * @param listPlayers Liste des joueurs participant au jeu.
+ */
 Game::Game(int size, int nbPlayer, int sizeCell, int padding, vector<Player> listPlayers)
         : board(size, nbPlayer), nbPlayer(nbPlayer), size(size), sizeCell(sizeCell), padding(padding), listPlayers(listPlayers), boardDisplay(board, sizeCell){}
 
+
+
+/**
+ * @brief Lance la boucle principale du jeu.
+ *
+ * Gère les interactions utilisateur, l'affichage du plateau et la logique de jeu.
+ */
 void Game::run() {
     Tiles tiles;
     Bonus bonus;
@@ -36,6 +53,7 @@ void Game::run() {
         BeginDrawing();
         ClearBackground(GRAY);
 
+        // Détection du premier tour
         bool firstTurn;
         if (listPlayers[currentPlayer].getNbTilesPlaced() == 0) {
             firstTurn = true;
@@ -43,10 +61,12 @@ void Game::run() {
             firstTurn = false;
         }
 
+        // Affichage du plateau et de l'interface
         boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers, clickTileExchange, clickRepair);
 
         if (isPreviewing) {
 
+            // Gérer l'aperçu de placement de tuile
             Vector2 mousePosition = GetMousePosition();
             int x = (mousePosition.x - padding) / sizeCell;
             int y = (mousePosition.y - padding) / sizeCell;
@@ -65,6 +85,7 @@ void Game::run() {
 
                 isPreviewing = true;
 
+                // Vérification des bonus après le placement
                 int newActiveBonus = bonus.verifBonus(board, size);
                 if (newActiveBonus != 0) {
                     if (newActiveBonus == 2) {
@@ -123,6 +144,7 @@ void Game::run() {
             if (IsKeyPressed(KEY_F)) {
                 tiles.flip(selectedTile);
             }
+            // Logique pour placer une pierre
         } else if (clickEmptyCase) {
             Vector2 mousePosition = GetMousePosition();
             int x = (mousePosition.x - padding) / sizeCell;
@@ -149,6 +171,7 @@ void Game::run() {
                 Vector2 mousePosition = GetMousePosition();
                 vector<vector<int>> tileMove;
 
+                // Logique pour échanger une tuile
                 if (clickTileExchange) {
                     clickRepair = false;
                     for (int i = 0; i < previewSize && i < playerTiles[currentPlayer].size(); ++i) {
@@ -172,6 +195,7 @@ void Game::run() {
                         }
                     }
                 }
+                // Logique pour réparer une case
                 if (clickRepair) {
                     clickTileExchange = false;
                     for (int i = 0; i < size; i++) {
@@ -201,6 +225,8 @@ void Game::run() {
                 }
             }
         }
+
+        // Gestion des touches de la barre d'espace
         if (IsKeyPressed(KEY_SPACE) && (!clickEmptyCase)) {
             clickTileExchange = false;
             clickRepair = false;
@@ -211,6 +237,11 @@ void Game::run() {
     CloseWindow();
 }
 
+/**
+ * @brief Calcule les gagnants de la partie.
+ *
+ * @return La liste des joueurs gagnants, ordonnée par score décroissant.
+ */
 vector<Player> Game::calculWin() {
     vector<Player> winnersOrdered;
     vector<Player> listPlayersRestant;
@@ -242,6 +273,12 @@ vector<Player> Game::calculWin() {
     return winnersOrdered;
 }
 
+/**
+ * @brief Calcule la plus grande zone de cases contigües d'un joueur.
+ *
+ * @param player Le joueur dont on veut calculer la plus grande zone.
+ * @return La taille de la plus grande zone de cases contigües du joueur.
+ */
 int Game::biggerSquare(int player) {
     int maxSquare = 0;
     for (int i = 0; i < size; i++) {
@@ -272,6 +309,12 @@ int Game::biggerSquare(int player) {
     return maxSquare;
 }
 
+/**
+ * @brief Compte le nombre de cases de type 1 (herbe) d'un joueur.
+ *
+ * @param player Le joueur dont on veut compter les cases de type 1.
+ * @return Le nombre de cases de type 1 du joueur.
+ */
 int Game::nbGrassPlaced(int player) {
     int nbGrass = 0;
     for (int i = 0; i < size; i++) {

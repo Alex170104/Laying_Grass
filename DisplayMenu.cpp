@@ -2,6 +2,11 @@
 #include <iostream>
 #include "raylib.h"
 
+/**
+ * \brief Constructeur de la classe DisplayMenu.
+ * \param screenWidth La largeur de l'écran.
+ * \param screenHeight La hauteur de l'écran.
+ */
 DisplayMenu::DisplayMenu(int screenWidth, int screenHeight)
         : screenWidth(screenWidth), screenHeight(screenHeight), gameStart(false), numPlayers(4), selectedPlayer(-1) {
     listPlayers.resize(numPlayers, Player("", GRAY));
@@ -12,10 +17,16 @@ DisplayMenu::DisplayMenu(int screenWidth, int screenHeight)
     UnloadImage(imgDANGER);
 }
 
+/**
+ * \brief Destructeur de la classe DisplayMenu.
+ */
 DisplayMenu::~DisplayMenu() {
     UnloadTexture(textureDANGER);
 }
 
+/**
+ * \brief Affiche le menu principal.
+ */
 void DisplayMenu::showMenu() {
     while (!WindowShouldClose() && !gameStart) {
         BeginDrawing();
@@ -37,10 +48,17 @@ void DisplayMenu::showMenu() {
     }
 }
 
+/**
+ * \brief Vérifie si le jeu a commencé.
+ * \return true si le jeu a commencé, false sinon.
+ */
 bool DisplayMenu::isGameStart() {
     return gameStart;
 }
 
+/**
+ * \brief Dessine le menu principal.
+ */
 void DisplayMenu::drawMenu() {
     DrawRectangle(40, 100, screenWidth - 80, screenHeight - 150, RAYWHITE);
     DrawRectangle(screenWidth / 2 - 200, 30, 420, 60, Fade(BLACK, 0.8f));
@@ -66,6 +84,9 @@ void DisplayMenu::drawMenu() {
     DrawText("Start Game", screenWidth / 2 - 100, screenHeight - 150, 40, WHITE);
 }
 
+/**
+ * \brief Gère les entrées utilisateur pour le menu.
+ */
 void DisplayMenu::handleInput() {
     if (IsKeyPressed(KEY_UP)) {
         if (numPlayers > 2){

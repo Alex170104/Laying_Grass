@@ -4,6 +4,10 @@
 #include <vector>
 #include "Case.h"
 
+/**
+ * @class Board
+ * @brief Représente un plateau de jeu contenant des cases.
+ */
 class Board {
 public:
     Board(int size, int nbPlayer);
