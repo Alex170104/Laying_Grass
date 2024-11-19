@@ -1,0 +1,119 @@
+\doxysection{Game Class Reference}
+\hypertarget{class_game}{}\label{class_game}\index{Game@{Game}}
+
+
+Classe représentant le jeu.  
+
+
+
+
+{\ttfamily \#include $<$Game.\+h$>$}
+
+
+
+Collaboration diagram for Game\+:
+% FIG 0
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_a174983283f0de1a408f2147a7c68ca8a}{Game}} (int size, int nb\+Player, int size\+Cell, int padding, vector$<$ \mbox{\hyperlink{class_player}{Player}} $>$ list\+Players)
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe \doxylink{class_game}{Game}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa}{run}} ()
+\begin{DoxyCompactList}\small\item\em Lance le jeu. \end{DoxyCompactList}\item 
+\Hypertarget{class_game_a7e6c75d6c592a76af87075f65399d042}\label{class_game_a7e6c75d6c592a76af87075f65399d042} 
+void {\bfseries end\+Game\+Echange} (int current\+Player, vector$<$ vector$<$ vector$<$ vector$<$ int $>$ $>$ $>$ $>$ \&player\+Tiles, vector$<$ vector$<$ int $>$ $>$ \&selected\+Tile)
+\item 
+int \mbox{\hyperlink{class_game_a0580ca62e59819ff3acec84f639a589d}{bigger\+Square}} (int player)
+\begin{DoxyCompactList}\small\item\em Calcule la plus grande zone carrée pour un joueur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe représentant le jeu. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_game_a174983283f0de1a408f2147a7c68ca8a}\label{class_game_a174983283f0de1a408f2147a7c68ca8a} 
+\index{Game@{Game}!Game@{Game}}
+\index{Game@{Game}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{Game()}{Game()}}
+{\footnotesize\ttfamily Game\+::\+Game (\begin{DoxyParamCaption}\item[{int}]{size,  }\item[{int}]{nb\+Player,  }\item[{int}]{size\+Cell,  }\item[{int}]{padding,  }\item[{vector$<$ \mbox{\hyperlink{class_player}{Player}} $>$}]{list\+Players }\end{DoxyParamCaption})}
+
+
+
+Constructeur de la classe \doxylink{class_game}{Game}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & La taille du plateau. \\
+\hline
+{\em nb\+Player} & Le nombre de joueurs. \\
+\hline
+{\em size\+Cell} & La taille de la cellule. \\
+\hline
+{\em padding} & Le padding. \\
+\hline
+{\em list\+Players} & La liste des joueurs.\\
+\hline
+{\em size} & Taille du plateau de jeu. \\
+\hline
+{\em nb\+Player} & Nombre de joueurs. \\
+\hline
+{\em size\+Cell} & Taille des cellules du plateau. \\
+\hline
+{\em padding} & Espacement autour du plateau. \\
+\hline
+{\em list\+Players} & Liste des joueurs participant au jeu. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_game_a0580ca62e59819ff3acec84f639a589d}\label{class_game_a0580ca62e59819ff3acec84f639a589d} 
+\index{Game@{Game}!biggerSquare@{biggerSquare}}
+\index{biggerSquare@{biggerSquare}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{biggerSquare()}{biggerSquare()}}
+{\footnotesize\ttfamily int Game\+::bigger\+Square (\begin{DoxyParamCaption}\item[{int}]{player }\end{DoxyParamCaption})}
+
+
+
+Calcule la plus grande zone carrée pour un joueur. 
+
+Calcule la plus grande zone de cases contigües d\textquotesingle{}un joueur.
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Le joueur. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La taille de la plus grande zone carrée.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Le joueur dont on veut calculer la plus grande zone. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La taille de la plus grande zone de cases contigües du joueur. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 1
+\Hypertarget{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa}\label{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa} 
+\index{Game@{Game}!run@{run}}
+\index{run@{run}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Game\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Lance le jeu. 
+
+Lance la boucle principale du jeu.
+
+Gère les interactions utilisateur, l\textquotesingle{}affichage du plateau et la logique de jeu. Here is the call graph for this function\+:
+% FIG 2
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alexd/\+CLion\+Projects/\+Laying\+\_\+\+Grass/\+FILES/Game.\+h\item 
+C\+:/\+Users/alexd/\+CLion\+Projects/\+Laying\+\_\+\+Grass/\+FILES/Game.\+cpp\end{DoxyCompactItemize}

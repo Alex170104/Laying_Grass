@@ -1,0 +1,29 @@
+\doxysection{Board\+Display.\+h}
+\hypertarget{_board_display_8h_source}{}\label{_board_display_8h_source}\index{C:/Users/alexd/CLionProjects/Laying\_Grass/FILES/BoardDisplay.h@{C:/Users/alexd/CLionProjects/Laying\_Grass/FILES/BoardDisplay.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ LAYING\_GRASS\_BOARDDISPLAY\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ LAYING\_GRASS\_BOARDDISPLAY\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}raylib.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Board.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Player.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_board_display}{BoardDisplay}}\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{class_board_display_a9a24e996ccbdf1244e07129fb031a5f0}{BoardDisplay}}(\mbox{\hyperlink{class_board}{Board}}\&\ board,\ \textcolor{keywordtype}{int}\ sizeCell);}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_board_display_a76fe9ee48a47df1526350885d002f9f3}{\string~BoardDisplay}}();}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_board_display_a93fc42cd60bb87aec1bb819821c85bfc}{display}}(\textcolor{keywordtype}{int}\ startX,\ \textcolor{keywordtype}{int}\ startY,\ \textcolor{keywordtype}{int}\ size,\ \textcolor{keywordtype}{int}\ sizeCell,\ \textcolor{keywordtype}{int}\ sizeCellPreview,\ \textcolor{keywordtype}{int}\ previewSize,\ \textcolor{keywordtype}{int}\ previewPadding,\ \textcolor{keywordtype}{int}\ padding,\ \textcolor{keywordtype}{bool}\ firstTurn,\ \textcolor{keyword}{const}\ vector<vector<vector<vector<int>>>>\&\ playerTiles,\ \textcolor{keywordtype}{int}\ currentPlayer,\ \textcolor{keyword}{const}\ vector<vector<int>>\&\ selectedTile,\ vector<Player>\ listPlayers,\ \textcolor{keywordtype}{bool}\ clickTileExchange,\ \textcolor{keywordtype}{bool}\ clickRepair);}
+\DoxyCodeLine{00044\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{class_board}{Board}}\&\ board;\ }
+\DoxyCodeLine{00046\ \ \ \ \ Texture2D\ textureBonusStone;\ }
+\DoxyCodeLine{00047\ \ \ \ \ Texture2D\ textureBonusTicket;\ }
+\DoxyCodeLine{00048\ \ \ \ \ Texture2D\ textureBonusVol;\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{int}\ sizeCell;\ }
+\DoxyCodeLine{00050\ \};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//LAYING\_GRASS\_BOARDDISPLAY\_H}}
+
+\end{DoxyCode}

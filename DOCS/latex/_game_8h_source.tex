@@ -1,0 +1,42 @@
+\doxysection{Game.\+h}
+\hypertarget{_game_8h_source}{}\label{_game_8h_source}\index{C:/Users/alexd/CLionProjects/Laying\_Grass/FILES/Game.h@{C:/Users/alexd/CLionProjects/Laying\_Grass/FILES/Game.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ GAME\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ GAME\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Board.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}BoardDisplay.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Player.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Tiles.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game}{Game}}\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_game_a174983283f0de1a408f2147a7c68ca8a}{Game}}(\textcolor{keywordtype}{int}\ size,\ \textcolor{keywordtype}{int}\ nbPlayer,\ \textcolor{keywordtype}{int}\ sizeCell,\ \textcolor{keywordtype}{int}\ padding,\ vector<Player>\ listPlayers);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa}{run}}();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ endGameEchange(\textcolor{keywordtype}{int}\ currentPlayer,\ vector<vector<vector<vector<int>>>>\ \&playerTiles,\ vector<vector<int>>\ \&selectedTile);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_game_a0580ca62e59819ff3acec84f639a589d}{biggerSquare}}(\textcolor{keywordtype}{int}\ player);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{class_board}{Board}}\ board;\ }
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_tiles}{Tiles}}\ tiles;\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{int}\ size;\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{int}\ sizeCell;\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{int}\ padding;\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{int}\ nbPlayer;\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{int}\ turnCount;\ }
+\DoxyCodeLine{00047\ \ \ \ \ vector<Player>\ listPlayers;\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{bool}\ isTilePlacementValid(vector<vector<int>>\ selectedTile,\ \textcolor{keywordtype}{int}\ currentPlayer,\ \mbox{\hyperlink{class_board}{Board}}\ board,\ \textcolor{keywordtype}{bool}\ firstTurn,\ \mbox{\hyperlink{class_tiles}{Tiles}}\ tiles);\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{int}\ nbGrassPlaced(\textcolor{keywordtype}{int}\ player);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00062\ \ \ \ \ vector<Player>\ calculWin();}
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{class_board_display}{BoardDisplay}}\ boardDisplay;\ }
+\DoxyCodeLine{00064\ \};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ GAME\_H}}
+
+\end{DoxyCode}

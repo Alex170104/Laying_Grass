@@ -1,0 +1,15 @@
+digraph "Tiles::isValidPosition"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="Tiles::isValidPosition",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Vérifie si la position de la tuile est valide."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="Board::getCase",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_board.html#aa7595e288d8c622b70e18089218cf0bf",tooltip="Accède à une case spécifique du plateau."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="Case::getCasePlayer",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_case.html#acdf4a530710a1e1471ec936d3a18a4a9",tooltip="Obtient le joueur associé à la case."];
+  Node1 -> Node4 [id="edge3_Node000001_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="Case::getType",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_case.html#ac809ac5d489b23705b914b0b6a70db43",tooltip="Obtient le type de la case."];
+}

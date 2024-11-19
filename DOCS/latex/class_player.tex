@@ -1,0 +1,262 @@
+\doxysection{Player Class Reference}
+\hypertarget{class_player}{}\label{class_player}\index{Player@{Player}}
+
+
+Classe représentant un joueur.  
+
+
+
+
+{\ttfamily \#include $<$Player.\+h$>$}
+
+
+
+Collaboration diagram for Player\+:
+% FIG 0
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_player_a8dd5edaf71e193a6245549e01332b91f}{Player}} (const std\+::string \&player\+Name, const Color player\+Color)
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe \doxylink{class_player}{Player}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a1104b881a1cbdaf897be11233625b714}{set\+Starting\+Tile}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Définit la tuile de départ du joueur. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_player_a38689c79912f451f0658e48b35a89b16}{get\+Nb\+Tiles\+Placed}} () const
+\begin{DoxyCompactList}\small\item\em Obtient le nombre de tuiles placées par le joueur. \end{DoxyCompactList}\item 
+\Hypertarget{class_player_ab9a6146b257df1c8f142b351848a7a32}\label{class_player_ab9a6146b257df1c8f142b351848a7a32} 
+void {\bfseries increment\+Nb\+Tiles\+Placed} ()
+\begin{DoxyCompactList}\small\item\em Incrémente le nombre de tuiles placées par le joueur. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_player_a4939193fc637f75bf7a11118334dae7e}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Obtient le nom du joueur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a443506d01e76bf7f53e1583e87842cd2}{add\+Char}} (char c)
+\begin{DoxyCompactList}\small\item\em Ajoute un caractère au nom du joueur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a182a8bcac51cc3a479c04be6368f9b02}{remove\+Char}} ()
+\begin{DoxyCompactList}\small\item\em Supprime un caractère du nom du joueur. \end{DoxyCompactList}\item 
+Color \mbox{\hyperlink{class_player_a9d414aeee5b3001d54492e48cde3881b}{get\+Color}} () const
+\begin{DoxyCompactList}\small\item\em Obtient la couleur du joueur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a7c100bf7077065c155187ccbc6cdc11e}{set\+Color}} (const Color player\+Color)
+\begin{DoxyCompactList}\small\item\em Définit la couleur du joueur. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_player_a329c0b8a710e9441204b88970a641703}{get\+Biggest\+Square}} () const
+\begin{DoxyCompactList}\small\item\em Obtient la plus grande zone carrée du joueur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a0f89ac7a8eb888d43dd3132886ab6541}{set\+Biggest\+Square}} (int square)
+\begin{DoxyCompactList}\small\item\em Définit la plus grande zone carrée du joueur. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_player_a51e100fd56f7f612ba780274f78f83c8}{get\+Nb\+Grass\+Placed}} () const
+\begin{DoxyCompactList}\small\item\em Obtient le nombre de cases d\textquotesingle{}herbe placées par le joueur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a8223b68b380039831041e75d02cce597}{set\+Nb\+Grass\+Placed}} (int grass)
+\begin{DoxyCompactList}\small\item\em Définit le nombre de cases d\textquotesingle{}herbe placées par le joueur. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_player_ac730d4db928b34d02e1f34de29e10602}{get\+Tile\+Coupons}} () const
+\begin{DoxyCompactList}\small\item\em Obtient le nombre de coupons de tuiles du joueur. \end{DoxyCompactList}\item 
+\Hypertarget{class_player_a5a00d81685531265ab913f567b215198}\label{class_player_a5a00d81685531265ab913f567b215198} 
+void {\bfseries add\+Tile\+Coupons} ()
+\begin{DoxyCompactList}\small\item\em Ajoute un coupon de tuile au joueur. \end{DoxyCompactList}\item 
+\Hypertarget{class_player_abe9647d805e6e956bc270bb59dec48ef}\label{class_player_abe9647d805e6e956bc270bb59dec48ef} 
+void {\bfseries remove\+Tile\+Coupons} ()
+\begin{DoxyCompactList}\small\item\em Supprime un coupon de tuile du joueur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe représentant un joueur. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_player_a8dd5edaf71e193a6245549e01332b91f}\label{class_player_a8dd5edaf71e193a6245549e01332b91f} 
+\index{Player@{Player}!Player@{Player}}
+\index{Player@{Player}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{Player()}{Player()}}
+{\footnotesize\ttfamily Player\+::\+Player (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{player\+Name,  }\item[{const Color}]{player\+Color }\end{DoxyParamCaption})}
+
+
+
+Constructeur de la classe \doxylink{class_player}{Player}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+Name} & Le nom du joueur. \\
+\hline
+{\em player\+Color} & La couleur du joueur. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_player_a443506d01e76bf7f53e1583e87842cd2}\label{class_player_a443506d01e76bf7f53e1583e87842cd2} 
+\index{Player@{Player}!addChar@{addChar}}
+\index{addChar@{addChar}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{addChar()}{addChar()}}
+{\footnotesize\ttfamily void Player\+::add\+Char (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})}
+
+
+
+Ajoute un caractère au nom du joueur. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Le caractère à ajouter. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_player_a329c0b8a710e9441204b88970a641703}\label{class_player_a329c0b8a710e9441204b88970a641703} 
+\index{Player@{Player}!getBiggestSquare@{getBiggestSquare}}
+\index{getBiggestSquare@{getBiggestSquare}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{getBiggestSquare()}{getBiggestSquare()}}
+{\footnotesize\ttfamily int Player\+::get\+Biggest\+Square (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Obtient la plus grande zone carrée du joueur. 
+
+Obtient la taille du plus grand carré formé par le joueur.
+
+\begin{DoxyReturn}{Returns}
+La taille de la plus grande zone carrée.
+
+La taille du plus grand carré. 
+\end{DoxyReturn}
+\Hypertarget{class_player_a9d414aeee5b3001d54492e48cde3881b}\label{class_player_a9d414aeee5b3001d54492e48cde3881b} 
+\index{Player@{Player}!getColor@{getColor}}
+\index{getColor@{getColor}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{getColor()}{getColor()}}
+{\footnotesize\ttfamily Color Player\+::get\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Obtient la couleur du joueur. 
+
+\begin{DoxyReturn}{Returns}
+La couleur du joueur. 
+\end{DoxyReturn}
+\Hypertarget{class_player_a4939193fc637f75bf7a11118334dae7e}\label{class_player_a4939193fc637f75bf7a11118334dae7e} 
+\index{Player@{Player}!getName@{getName}}
+\index{getName@{getName}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily string Player\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Obtient le nom du joueur. 
+
+\begin{DoxyReturn}{Returns}
+Le nom du joueur. 
+\end{DoxyReturn}
+\Hypertarget{class_player_a51e100fd56f7f612ba780274f78f83c8}\label{class_player_a51e100fd56f7f612ba780274f78f83c8} 
+\index{Player@{Player}!getNbGrassPlaced@{getNbGrassPlaced}}
+\index{getNbGrassPlaced@{getNbGrassPlaced}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{getNbGrassPlaced()}{getNbGrassPlaced()}}
+{\footnotesize\ttfamily int Player\+::get\+Nb\+Grass\+Placed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Obtient le nombre de cases d\textquotesingle{}herbe placées par le joueur. 
+
+\begin{DoxyReturn}{Returns}
+Le nombre de cases d\textquotesingle{}herbe placées. 
+\end{DoxyReturn}
+\Hypertarget{class_player_a38689c79912f451f0658e48b35a89b16}\label{class_player_a38689c79912f451f0658e48b35a89b16} 
+\index{Player@{Player}!getNbTilesPlaced@{getNbTilesPlaced}}
+\index{getNbTilesPlaced@{getNbTilesPlaced}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{getNbTilesPlaced()}{getNbTilesPlaced()}}
+{\footnotesize\ttfamily int Player\+::get\+Nb\+Tiles\+Placed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Obtient le nombre de tuiles placées par le joueur. 
+
+\begin{DoxyReturn}{Returns}
+Le nombre de tuiles placées. 
+\end{DoxyReturn}
+\Hypertarget{class_player_ac730d4db928b34d02e1f34de29e10602}\label{class_player_ac730d4db928b34d02e1f34de29e10602} 
+\index{Player@{Player}!getTileCoupons@{getTileCoupons}}
+\index{getTileCoupons@{getTileCoupons}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{getTileCoupons()}{getTileCoupons()}}
+{\footnotesize\ttfamily int Player\+::get\+Tile\+Coupons (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Obtient le nombre de coupons de tuiles du joueur. 
+
+\begin{DoxyReturn}{Returns}
+Le nombre de coupons de tuiles. 
+\end{DoxyReturn}
+\Hypertarget{class_player_a182a8bcac51cc3a479c04be6368f9b02}\label{class_player_a182a8bcac51cc3a479c04be6368f9b02} 
+\index{Player@{Player}!removeChar@{removeChar}}
+\index{removeChar@{removeChar}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{removeChar()}{removeChar()}}
+{\footnotesize\ttfamily void Player\+::remove\+Char (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Supprime un caractère du nom du joueur. 
+
+Supprime le dernier caractère du nom du joueur. \Hypertarget{class_player_a0f89ac7a8eb888d43dd3132886ab6541}\label{class_player_a0f89ac7a8eb888d43dd3132886ab6541} 
+\index{Player@{Player}!setBiggestSquare@{setBiggestSquare}}
+\index{setBiggestSquare@{setBiggestSquare}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{setBiggestSquare()}{setBiggestSquare()}}
+{\footnotesize\ttfamily void Player\+::set\+Biggest\+Square (\begin{DoxyParamCaption}\item[{int}]{square }\end{DoxyParamCaption})}
+
+
+
+Définit la plus grande zone carrée du joueur. 
+
+Définit la taille du plus grand carré formé par le joueur.
+
+
+\begin{DoxyParams}{Parameters}
+{\em square} & La nouvelle taille de la plus grande zone carrée.\\
+\hline
+{\em square} & La nouvelle taille du plus grand carré. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_player_a7c100bf7077065c155187ccbc6cdc11e}\label{class_player_a7c100bf7077065c155187ccbc6cdc11e} 
+\index{Player@{Player}!setColor@{setColor}}
+\index{setColor@{setColor}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{setColor()}{setColor()}}
+{\footnotesize\ttfamily void Player\+::set\+Color (\begin{DoxyParamCaption}\item[{const Color}]{player\+Color }\end{DoxyParamCaption})}
+
+
+
+Définit la couleur du joueur. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+Color} & La nouvelle couleur du joueur. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_player_a8223b68b380039831041e75d02cce597}\label{class_player_a8223b68b380039831041e75d02cce597} 
+\index{Player@{Player}!setNbGrassPlaced@{setNbGrassPlaced}}
+\index{setNbGrassPlaced@{setNbGrassPlaced}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{setNbGrassPlaced()}{setNbGrassPlaced()}}
+{\footnotesize\ttfamily void Player\+::set\+Nb\+Grass\+Placed (\begin{DoxyParamCaption}\item[{int}]{grass }\end{DoxyParamCaption})}
+
+
+
+Définit le nombre de cases d\textquotesingle{}herbe placées par le joueur. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em grass} & Le nouveau nombre de cases d\textquotesingle{}herbe placées. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_player_a1104b881a1cbdaf897be11233625b714}\label{class_player_a1104b881a1cbdaf897be11233625b714} 
+\index{Player@{Player}!setStartingTile@{setStartingTile}}
+\index{setStartingTile@{setStartingTile}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{setStartingTile()}{setStartingTile()}}
+{\footnotesize\ttfamily void Player\+::set\+Starting\+Tile (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Définit la tuile de départ du joueur. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & La coordonnée x de la tuile de départ. \\
+\hline
+{\em y} & La coordonnée y de la tuile de départ.\\
+\hline
+{\em x} & La coordonnée x de la tuile. \\
+\hline
+{\em y} & La coordonnée y de la tuile. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alexd/\+CLion\+Projects/\+Laying\+\_\+\+Grass/\+FILES/Player.\+h\item 
+C\+:/\+Users/alexd/\+CLion\+Projects/\+Laying\+\_\+\+Grass/\+FILES/Player.\+cpp\end{DoxyCompactItemize}
