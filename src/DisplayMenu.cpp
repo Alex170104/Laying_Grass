@@ -52,7 +52,7 @@ void DisplayMenu::showMenu() {
  * \brief Vérifie si le jeu a commencé.
  * \return true si le jeu a commencé, false sinon.
  */
-bool DisplayMenu::isGameStart() {
+bool DisplayMenu::isGameStart() const {
     return gameStart;
 }
 
@@ -61,27 +61,27 @@ bool DisplayMenu::isGameStart() {
  */
 void DisplayMenu::drawMenu() {
     DrawRectangle(40, 100, screenWidth - 80, screenHeight - 150, RAYWHITE);
-    DrawRectangle(screenWidth / 2 - 200, 30, 420, 60, Fade(BLACK, 0.8f));
-    DrawText("Création des joueurs", screenWidth / 2 - 150, 40, 40, WHITE);
+    DrawRectangle(screenWidth / 2 - 220, 30, 470, 60, Fade(BLACK, 0.8f));
+    DrawText("Création des joueurs", screenWidth / 2 - 200, 40, 40, WHITE);
     DrawText("Nombre de joueurs:", 100, 150, 40, BLACK);
     DrawRectangle(500, 140, 60, 60, Fade(RED, 0.8f));
     DrawText(to_string(numPlayers).c_str(), 520, 150, 40, WHITE);
-    DrawText("Utiler UP/DOWN keys to change", 100, 200, 20, BLACK);
+    DrawText("Utilisez les flèches HAUT/BAS pour changer", 100, 200, 20, BLACK);
 
     for (int i = 0; i < numPlayers; ++i) {
         Color color = (i == selectedPlayer) ? Fade(RED, 0.8f) : BLACK;
-        DrawText(("Player " + to_string(i + 1) + ": " + listPlayers[i].getName()).c_str(), 100, 250 + 75 * i, 40, color);
+        DrawText(("Joueur " + to_string(i + 1) + ": " + listPlayers[i].getName()).c_str(), 100, 250 + 75 * i, 40, color);
         Color squareColor = (listPlayers[i].getColor().r == GRAY.r && listPlayers[i].getColor().g == GRAY.g && listPlayers[i].getColor().b == GRAY.b && listPlayers[i].getColor().a == GRAY.a) ? GRAY : listPlayers[i].getColor();
         DrawCircle(70, 270 + 75 * i, 20, squareColor);
     }
 
-    DrawText("Available Colors:", 100, 250 + 75 * numPlayers, 20, BLACK);
+    DrawText("Couleurs disponibles :", 100, 250 + 75 * numPlayers, 20, BLACK);
     for (int i = 0; i < availableColors.size(); ++i) {
         DrawCircle(120 + i * 60, 305 + 75 * numPlayers, 25, availableColors[i]);
     }
 
-    DrawRectangle(screenWidth / 2 - 120, screenHeight - 160, 275, 60, Fade(BLACK, 0.8f));
-    DrawText("Start Game", screenWidth / 2 - 100, screenHeight - 150, 40, WHITE);
+    DrawRectangle(screenWidth / 2 - 120, screenHeight - 160, 308, 60, Fade(BLACK, 0.8f));
+    DrawText("Lancer le jeu", screenWidth / 2 - 100, screenHeight - 150, 40, WHITE);
 }
 
 /**

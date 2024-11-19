@@ -26,10 +26,6 @@ public:
      */
     void run();
 
-    void endGameEchange(int currentPlayer, vector<vector<vector<vector<int>>>> &playerTiles,
-                        vector<vector<int>> &selectedTile);
-
-
     /**
      * \brief Calcule la plus grande zone carrée pour un joueur.
      * \param player Le joueur.
@@ -47,9 +43,8 @@ private:
     int turnCount; /**< Le nombre de tours. */
     vector<Player> listPlayers; /**< La liste des joueurs. */
     bool turnEndExchange = false; /**< Le tour est celui correspondant à l'achat de tuile 1x1 */
-    bool gameFinish = false; /**< Le jeu est terminé. */
 
-    bool isTilePlacementValid(vector<vector<int>> selectedTile, int currentPlayer, Board board, bool firstTurn, Tiles tiles); /**< Vérifie si il retse de la place pour la tuile. */
+    bool isTilePlacementValid(vector<vector<int>> selectedTile, int currentPlayer, Board board, bool firstTurn, Tiles tiles) const; /**< Vérifie si il retse de la place pour la tuile. */
 
     /**
      * \brief Calcule le nombre de cases d'herbe placées par un joueur.

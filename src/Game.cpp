@@ -282,15 +282,6 @@ void Game::run() {
     CloseWindow();
 }
 
-
-void Game::endGameEchange(int currentPlayer, vector<vector<vector<vector<int>>>>& playerTiles, vector<vector<int>>& selectedTile) {
-    vector<vector<int>> tile1x1 = {{1}};
-    if (listPlayers[currentPlayer].getTileCoupons() > 0) {
-        selectedTile = tile1x1;
-        listPlayers[currentPlayer].removeTileCoupons();
-    }
-}
-
 /**
  * \brief Gère l'échange de tuiles en fin de partie pour un joueur.
  *
@@ -298,7 +289,7 @@ void Game::endGameEchange(int currentPlayer, vector<vector<vector<vector<int>>>>
  * \param playerTiles La liste des tuiles des joueurs.
  * \param selectedTile La tuile actuellement sélectionnée.
  */
-bool Game::isTilePlacementValid(vector<vector<int>>selectedTile, int currentPlayer, Board board, bool firstTurn, Tiles tiles){
+bool Game::isTilePlacementValid(vector<vector<int>>selectedTile, int currentPlayer, Board board, bool firstTurn, Tiles tiles) const{
     bool OK;
     for (int a = 0; a < 2; a++) {
         for (int b = 0; b < 4; b++) {

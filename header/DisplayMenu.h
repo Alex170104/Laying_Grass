@@ -35,7 +35,7 @@ public:
      * \brief Vérifie si le jeu a commencé.
      * \return true si le jeu a commencé, false sinon.
      */
-    bool isGameStart();
+    bool isGameStart() const;
 
     /**
      * \brief Obtient le nombre de joueurs.

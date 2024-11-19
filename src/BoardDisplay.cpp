@@ -8,7 +8,7 @@ using namespace std;
  * \param board Le plateau de jeu.
  * \param sizeCell La taille de la cellule.
  */
-BoardDisplay::BoardDisplay(Board& board, int sizeCell) : board(board), sizeCell(sizeCell) {
+BoardDisplay::BoardDisplay(Board& board, int sizeCell) : board(board) {
     Image imgBonusStone = LoadImage("../img/rock.png");
     Image imgBonusTicket = LoadImage("../img/ticket.png");
     Image imgBonusVol = LoadImage("../img/vol.png");
