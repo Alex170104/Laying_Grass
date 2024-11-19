@@ -19,6 +19,7 @@
 - Raylib 4.2.0
 - CMake pour la compilation
 - WINDOWS 10 ou superieur
+- CLion de preference (on ne fera pas de tutoriel pour les autres IDE)
 ## Installation
 
 1. **Clone le repository :**
