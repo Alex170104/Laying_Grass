@@ -95,7 +95,7 @@ void BoardDisplay::display(int startX, int startY, int size, int sizeCell, int s
                            {i >= 2 * size / 3, j >= 2 * size / 3}};
                 }
                 for (int k = 0; k < nbPlayer; ++k) {
-                    if (pos[k][0] and pos[k][1]) {
+                    if (pos[k][0] && pos[k][1]) {
                         colorEmpty = Fade(listPlayers[k].getColor(), 0.2f);
                     }
                 }

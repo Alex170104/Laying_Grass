@@ -72,8 +72,6 @@ void Game::run() {
             }
         }
 
-
-
         if (isPreviewing) {
 
             // Gérer l'aperçu de placement de tuile
@@ -141,6 +139,7 @@ void Game::run() {
                     playerTiles[player].erase(playerTiles[player].end() - index - 1);
                     robber = false;
                     isPreviewing = true;
+                    listPlayers[currentPlayer].setNbTilesPlaced(listPlayers[currentPlayer].getNbTilesPlaced() - 1);
                     continue;
                 }
                 if (!clickEmptyCase && !turnEndExchange) {
@@ -153,6 +152,9 @@ void Game::run() {
                     selectedTile = {{1}};
                     for (int i = 0; i < listPlayers[currentPlayer].getTileCoupons()-1; i++) {
                         playerTiles[currentPlayer].push_back(selectedTile);
+                    }
+                    if (listPlayers[currentPlayer].getTileCoupons() <= 0) {
+                        isPreviewing = false;
                     }
                 }
             }
@@ -280,6 +282,7 @@ void Game::run() {
     CloseWindow();
 }
 
+
 void Game::endGameEchange(int currentPlayer, vector<vector<vector<vector<int>>>>& playerTiles, vector<vector<int>>& selectedTile) {
     vector<vector<int>> tile1x1 = {{1}};
     if (listPlayers[currentPlayer].getTileCoupons() > 0) {
@@ -288,6 +291,13 @@ void Game::endGameEchange(int currentPlayer, vector<vector<vector<vector<int>>>>
     }
 }
 
+/**
+ * \brief Gère l'échange de tuiles en fin de partie pour un joueur.
+ *
+ * \param currentPlayer L'indice du joueur actuel.
+ * \param playerTiles La liste des tuiles des joueurs.
+ * \param selectedTile La tuile actuellement sélectionnée.
+ */
 bool Game::isTilePlacementValid(vector<vector<int>>selectedTile, int currentPlayer, Board board, bool firstTurn, Tiles tiles){
     bool OK;
     for (int a = 0; a < 2; a++) {
@@ -297,7 +307,6 @@ bool Game::isTilePlacementValid(vector<vector<int>>selectedTile, int currentPlay
                     if (board.getCase(i, j).getType() == 0) {
                         OK = tiles.isValidPosition(i, j, board, size, selectedTile, firstTurn, currentPlayer, nbPlayer);
                         if (OK) {
-                            cout << "ok" << endl;
                             return OK;
                         }
                     }
@@ -307,7 +316,6 @@ bool Game::isTilePlacementValid(vector<vector<int>>selectedTile, int currentPlay
         }
         tiles.flip(selectedTile);
     }
-    cout << "pas ok" << endl;
     return OK;
 }
 

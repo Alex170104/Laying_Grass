@@ -2,6 +2,7 @@
 #define LAYING_GRASS_CASE_H
 
 #include <string>
+
 #include "raylib.h"
 
 using namespace std;

@@ -25,11 +25,11 @@ void displayWin::run() {
 
         DrawText("Game Over", 275, 50, 50, GOLD);
         DrawRectangle(80, 130, 640, 50 + 100 * orderWinners.size(), Fade(BLACK, 0.1f));
-        DrawText("Joueur", 150, 150, 30, WHITE);
-        DrawText("Plus grand", 350, 135, 30, WHITE);
-        DrawText("carré", 350, 165, 30, WHITE);
-        DrawText("Nombre de", 542, 135, 30, WHITE);
-        DrawText("cases", 600, 165,30, WHITE);
+        DrawText("Joueur", 110, 160, 30, WHITE);
+        DrawText("Plus grand", 325, 145, 30, WHITE);
+        DrawText("carré", 360, 175, 30, WHITE);
+        DrawText("Nombre de", 542, 145, 30, WHITE);
+        DrawText("cases", 610, 175,30, WHITE);
         DrawTexture(textureTrophee, 40, 222, WHITE);
         for (int i = 0; i < orderWinners.size(); i++) {
             DrawRectangle(90, 218 + 50 * i, 610, 50, Fade(orderWinners[i].getColor(), 0.25f));

@@ -35,8 +35,8 @@ void DisplayMenu::showMenu() {
         if (showWarning){
             DrawRectangle(screenWidth / 8, screenHeight / 3, screenWidth * 3 / 4, screenHeight / 3, Fade(BLACK, 0.8f));
             DrawTexture(textureDANGER, screenWidth / 2 - 50, screenHeight / 4 + 150, WHITE);
-            DrawText("Please enter a name", screenWidth / 2 - MeasureText("Please enter a name", 40) / 2, screenHeight / 4 + 350, 40, RED);
-            DrawText("and select a color", screenWidth / 2 - MeasureText("and select a color", 40) / 2, screenHeight / 4 + 400, 40, RED);
+            DrawText("Veuillez entrer un nom", screenWidth / 2 - MeasureText("Veuillez entrer un nom", 40) / 2, screenHeight / 4 + 350, 40, RED);
+            DrawText("et sélectionner une couleur", screenWidth / 2 - MeasureText("et sélectionner une couleur", 40) / 2, screenHeight / 4 + 400, 40, RED);
             if (GetTime() - warningTimer > 3) {
                 showWarning = false;
             }
@@ -62,11 +62,11 @@ bool DisplayMenu::isGameStart() {
 void DisplayMenu::drawMenu() {
     DrawRectangle(40, 100, screenWidth - 80, screenHeight - 150, RAYWHITE);
     DrawRectangle(screenWidth / 2 - 200, 30, 420, 60, Fade(BLACK, 0.8f));
-    DrawText("Create Players", screenWidth / 2 - 150, 40, 40, WHITE);
-    DrawText("Number of Players:", 100, 150, 40, BLACK);
+    DrawText("Création des joueurs", screenWidth / 2 - 150, 40, 40, WHITE);
+    DrawText("Nombre de joueurs:", 100, 150, 40, BLACK);
     DrawRectangle(500, 140, 60, 60, Fade(RED, 0.8f));
     DrawText(to_string(numPlayers).c_str(), 520, 150, 40, WHITE);
-    DrawText("Use UP/DOWN keys to change", 100, 200, 20, BLACK);
+    DrawText("Utiler UP/DOWN keys to change", 100, 200, 20, BLACK);
 
     for (int i = 0; i < numPlayers; ++i) {
         Color color = (i == selectedPlayer) ? Fade(RED, 0.8f) : BLACK;

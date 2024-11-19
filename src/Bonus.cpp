@@ -11,6 +11,25 @@ using namespace std;
  */
 Bonus::Bonus() {}
 
+/**
+ * \brief Affiche une fenêtre popup avec une tuile.
+ * \param startTime Le temps de début.
+ * \param sizeCell La taille d'une cellule.
+ * \param size La taille du plateau.
+ * \param padding Le padding.
+ * \param text Le texte à afficher.
+ * \param boardDisplay L'objet permettant d'afficher le plateau.
+ * \param startX La position X de départ.
+ * \param startY La position Y de départ.
+ * \param sizeCellPreview La taille des cellules de prévisualisation.
+ * \param previewSize La taille de la prévisualisation.
+ * \param previewPadding Le padding de la prévisualisation.
+ * \param firstTurn Indique si c'est le premier tour.
+ * \param playerTiles Les tuiles des joueurs.
+ * \param currentPlayer Le joueur actuel.
+ * \param listPlayers La liste des joueurs.
+ * \param selectedTile La tuile sélectionnée.
+ */
 void Bonus::popUpTile(float startTime, int sizeCell, int size, int padding, string text, BoardDisplay& boardDisplay, int startX, int startY, int sizeCellPreview, int previewSize, int previewPadding, bool firstTurn, vector<vector<vector<vector<int>>>>& playerTiles, int currentPlayer, vector<Player> listPlayers, vector<vector<int>> selectedTile) {
     while (GetTime() - startTime < 5.0f) {
         BeginDrawing();
@@ -210,9 +229,9 @@ tuple<vector<vector<int>>, int, int> Bonus::robbery(int currentPlayer, bool robb
 int Bonus::verifBonus(Board& board, int size) {
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
-            if (board.getCase(j, i).getType() > 1 and board.getCase(j, i).getType() < 5 and board.getCase(j, i).getCasePlayer() == 0) {
+            if (board.getCase(j, i).getType() > 1 && board.getCase(j, i).getType() < 5 && board.getCase(j, i).getCasePlayer() == 0) {
                 int playerNeighbor = board.getCase(j-1, i).getCasePlayer();
-                if (board.getCase(j, i+1).getCasePlayer() == playerNeighbor and board.getCase(j+1, i).getCasePlayer() == playerNeighbor and board.getCase(j, i-1).getCasePlayer() == playerNeighbor) {
+                if (board.getCase(j, i+1).getCasePlayer() == playerNeighbor && board.getCase(j+1, i).getCasePlayer() == playerNeighbor && board.getCase(j, i-1).getCasePlayer() == playerNeighbor) {
                     if (playerNeighbor != 0) {
                         board.getCase(j, i).setCasePlayer(playerNeighbor);
                         return board.getCase(j, i).getType();
