@@ -18,6 +18,7 @@
 - C++20
 - Raylib 4.2.0
 - CMake pour la compilation
+- WINDOWS 10 ou superieur
 ## Installation
 
 1. **Clone le repository :**
@@ -30,6 +31,8 @@
 
 ## Documentation
 
-- Documentation du projet : [Laying Grass Game -- Documentation](documentation/html/index.html)
+- Documentation du projet PATH : documentation/html/index.html
+
+## EASTER EGG
 
 [Mme Michu -- pdp](img/mmeMichu.jpg)
