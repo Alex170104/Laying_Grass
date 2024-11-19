@@ -1,5 +1,6 @@
-#include "../header/DisplayMenu.h"
 #include <iostream>
+
+#include "../header/DisplayMenu.h"
 #include "raylib.h"
 
 /**

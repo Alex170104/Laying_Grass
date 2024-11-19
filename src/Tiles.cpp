@@ -1,8 +1,9 @@
-#include "../header/Tiles.h"
-#include "raylib.h"
 #include <iostream>
 #include <random>
 #include <algorithm>
+
+#include "../header/Tiles.h"
+#include "raylib.h"
 
 using namespace std;
 

@@ -1,5 +1,7 @@
-#include "../header/BoardDisplay.h"
 #include <iostream>
+
+#include "../header/BoardDisplay.h"
+
 
 using namespace std;
 

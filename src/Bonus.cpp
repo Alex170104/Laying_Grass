@@ -1,7 +1,3 @@
-//
-// Created by alexd on 15/11/2024.
-//
-
 #include "../header/Bonus.h"
 
 using namespace std;

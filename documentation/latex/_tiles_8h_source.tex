@@ -1,0 +1,575 @@
+\doxysection{Tiles.\+h}
+\hypertarget{_tiles_8h_source}{}\label{_tiles_8h_source}\index{header/Tiles.h@{header/Tiles.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ LAYING\_GRASS\_TILES\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ LAYING\_GRASS\_TILES\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Board.h"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_tiles}{Tiles}}\ \{}
+\DoxyCodeLine{00010\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{class_tiles_a3cafab4efdd0282a7afe22a4cc0bd1c9}{Tiles}}();}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tiles_abccf63d38bb8a081f91ba7acfcc4a081}{placeTile}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ player,\ \mbox{\hyperlink{class_board}{Board}}\&\ board,\ vector<vector<int>>\&\ tilePattern);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tiles_ac3b82f7044ec2f6565220c2381f9061c}{rotateTilePattern}}(vector<vector<int>>\&\ tilePattern);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tiles_a9a632185409fde18ba0cd3a36460a878}{drawTilePattern}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ sizeCell,\ \textcolor{keywordtype}{int}\ padding,\ Color\ color,\ vector<vector<int>>\&\ tilePattern);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tiles_a00a43e91a77825bd6834368e12f5dd23}{flip}}(vector<vector<int>>\&\ tilePattern);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_tiles_a029bec43814660e044e3b6977d9d378b}{isValidPosition}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \mbox{\hyperlink{class_board}{Board}}\&\ board,\ \textcolor{keywordtype}{int}\ size,\ vector<vector<int>>\&\ tilePattern,\ \textcolor{keywordtype}{bool}\ firstTurn,\ \textcolor{keywordtype}{int}\ currentPlayer,\ \textcolor{keywordtype}{int}\ nbPlayer);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00067\ \ \ \ \ vector<vector<vector<int>>>\ \mbox{\hyperlink{class_tiles_a365cdee054568062ffefee6a19ebe82d}{getTileList}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ listTile;\ \}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00074\ \ \ \ \ vector<vector<vector<vector<int>>>>\ \mbox{\hyperlink{class_tiles_a480fd7bffe8358400e8ffe19beab60b6}{distributeTiles}}(\textcolor{keywordtype}{int}\ nbPlayers);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00077\ \ \ \ \ vector<vector<vector<int>>>\ listTile\ =\ \{\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 1\ (2x3)}}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0\},}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1\}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 2\ (3x3)}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1\}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 3\ (3x3)}}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1\},}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 4\ (3x3)}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 0,\ 1\},}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1\},}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0\}}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 5\ (2x3)}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1\}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 6\ (2x2)}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\},}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\}}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 7\ (2x3)}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 1\},}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1\}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 8\ (1x3)}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1\}}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 9\ (3x2)}}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1\},}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\},}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\}}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 10\ (2x2)}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 11\ (3x3)}}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 0,\ 1\},}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 1\},}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0\}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 12\ (1x2)}}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 13\ (5x2)}}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1\},}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\},}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\}}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 14\ (5x3)}}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1\},}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0\},}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0\},}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0\},}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0\}}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 15\ (5x5)}}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 0,\ 0,\ 1,\ 0\},}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 0,\ 0,\ 1,\ 0\},}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 0,\ 0,\ 1,\ 1\},}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 1,\ 1,\ 0\},}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0,\ 0,\ 0\}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 16\ (4x3)}}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 0,\ 1\},}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 1\},}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0\},}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0\}}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 17\ (3x3)}}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1\},}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0\}}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 18\ (1x3)}}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1\}}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 19\ (4x2)}}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\},}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\}}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 20\ (3x3)}}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 1\},}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0\},}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0\}}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 21\ (3x3)}}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0\},}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1\}}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 22\ (4x3)}}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1\},}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0\}}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 23\ (2x2)}}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\}}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 24\ (3x2)}}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\},}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\},}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\}}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 25\ (4x3)}}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1\},}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\}}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 26\ (4x4)}}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0,\ 0\},}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0,\ 0\},}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 1,\ 0\},}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 0,\ 1,\ 1\}}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 27\ (1x5)}}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1,\ 1,\ 1\}}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 28\ (4x3)}}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0\},}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1\},}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 0,\ 1\},}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 0,\ 1\}}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 29\ (5x2)}}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\},}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\},}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\}}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 30\ (4x2)}}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\},}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\},}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\}}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 31\ (5x3)}}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1\},}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 1\}}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 32\ (1x2)}}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\}}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 33\ (3x4)}}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0,\ 0\},}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1,\ 0\},}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 1,\ 1\}}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 34\ (5x2)}}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1\},}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1\},}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\},}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\}}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 35\ (5x4)}}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0,\ 0\},}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0,\ 0\},}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 1,\ 1\},}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0,\ 0\},}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0,\ 0\}}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 36\ (4x2)}}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\},}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\}}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 37\ (3x2)}}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1\},}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\},}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\}}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 38\ (2x4)}}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0,\ 1\},}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1,\ 1\}}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 39\ (3x5)}}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 0,\ 0,\ 1,\ 1\},}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0,\ 0,\ 1\},}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1,\ 1,\ 1\}}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 40\ (4x4)}}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0,\ 0\},}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0,\ 0\},}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0,\ 0\},}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 1,\ 1\}}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 41\ (5x3)}}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0\},}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 1\},}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0\},}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 1\},}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\}}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 42\ (3x2)}}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\},}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\}}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 43\ (3x4)}}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0,\ 0\},}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0,\ 0\},}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1,\ 1\}}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 44\ (2x2)}}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\},}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\}}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 45\ (4x2)}}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1\},}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\},}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\},}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\}}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 46\ (3x3)}}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1\},}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0\}}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 47\ (1x4)}}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1,\ 1\}}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 48\ (2x3)}}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1\}}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 49\ (3x4)}}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0,\ 0\},}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0,\ 0\},}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1,\ 1\}}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 50\ (3x4)}}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 1,\ 0\},}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0,\ 0\},}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 1,\ 1\}}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 51\ (4x2)}}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1\},}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\},}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\}}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 52\ (2x3)}}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0\},}
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1\}}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 53\ (5x2)}}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\},}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\}}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 54\ (5x5)}}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 0,\ 1,\ 1,\ 1\},}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 0,\ 1,\ 0,\ 0\},}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 0,\ 1,\ 0,\ 0\},}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 0,\ 1,\ 0,\ 0\},}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1,\ 0,\ 0\}}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 55\ (6x2)}}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1\},}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1\},}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\},}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\},}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\}}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 56\ (1x4)}}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1,\ 1\}}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 57\ (4x4)}}
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0,\ 0\},}
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0,\ 0\},}
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 1,\ 1\},}
+\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 0,\ 0,\ 1\}}
+\DoxyCodeLine{00373\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 58\ (5x3)}}
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00377\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1\},}
+\DoxyCodeLine{00378\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\}}
+\DoxyCodeLine{00380\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 59\ (3x3)}}
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 0,\ 1\},}
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 0,\ 1\},}
+\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1\}}
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 60\ (6x1)}}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1\},}
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1\},}
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1\},}
+\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1\},}
+\DoxyCodeLine{00391\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1\},}
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1\}}
+\DoxyCodeLine{00393\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00394\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 61\ (4x3)}}
+\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 1\},}
+\DoxyCodeLine{00396\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1\},}
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00398\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0\}}
+\DoxyCodeLine{00399\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00400\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 62\ (4x4)}}
+\DoxyCodeLine{00401\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 0,\ 1,\ 0\},}
+\DoxyCodeLine{00402\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1,\ 0\},}
+\DoxyCodeLine{00403\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 1,\ 1\},}
+\DoxyCodeLine{00404\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0,\ 0\}}
+\DoxyCodeLine{00405\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00406\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 63\ (4x3)}}
+\DoxyCodeLine{00407\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 1\},}
+\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00409\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00410\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1\}}
+\DoxyCodeLine{00411\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00412\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 64\ (5x2)}}
+\DoxyCodeLine{00413\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00414\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00415\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\},}
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00417\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\}}
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 65\ (4x4)}}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0,\ 0\},}
+\DoxyCodeLine{00421\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0,\ 0\},}
+\DoxyCodeLine{00422\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0,\ 1\},}
+\DoxyCodeLine{00423\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1,\ 1\}}
+\DoxyCodeLine{00424\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00425\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 66\ (5x3)}}
+\DoxyCodeLine{00426\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 0,\ 1\},}
+\DoxyCodeLine{00427\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 1\},}
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0\},}
+\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0\},}
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0\}}
+\DoxyCodeLine{00431\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00432\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 67\ (6x3)}}
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 1\},}
+\DoxyCodeLine{00434\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00435\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00436\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00437\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0\},}
+\DoxyCodeLine{00438\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0\}}
+\DoxyCodeLine{00439\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00440\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 68\ (2x4)}}
+\DoxyCodeLine{00441\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 1,\ 0\},}
+\DoxyCodeLine{00442\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1,\ 1\}}
+\DoxyCodeLine{00443\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00444\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 69\ (4x4)}}
+\DoxyCodeLine{00445\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0,\ 0\},}
+\DoxyCodeLine{00446\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0,\ 1\},}
+\DoxyCodeLine{00447\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0,\ 1\},}
+\DoxyCodeLine{00448\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 1,\ 1\}}
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00450\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 70\ (5x2)}}
+\DoxyCodeLine{00451\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00452\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\},}
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00455\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\}}
+\DoxyCodeLine{00456\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00457\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 71\ (5x4)}}
+\DoxyCodeLine{00458\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0,\ 0\},}
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 1,\ 0\},}
+\DoxyCodeLine{00460\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1,\ 1\},}
+\DoxyCodeLine{00461\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0,\ 0\},}
+\DoxyCodeLine{00462\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0,\ 0\}}
+\DoxyCodeLine{00463\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00464\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 72\ (7x2)}}
+\DoxyCodeLine{00465\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\},}
+\DoxyCodeLine{00466\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00467\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00468\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00469\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00470\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00471\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\}}
+\DoxyCodeLine{00472\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 73\ (4x3)}}
+\DoxyCodeLine{00474\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00475\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1\},}
+\DoxyCodeLine{00476\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0\},}
+\DoxyCodeLine{00477\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0\}}
+\DoxyCodeLine{00478\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 74\ (1x2)}}
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\}}
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00482\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 75\ (3x3)}}
+\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 0,\ 1\},}
+\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 1\},}
+\DoxyCodeLine{00485\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1\}}
+\DoxyCodeLine{00486\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00487\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 76\ (3x3)}}
+\DoxyCodeLine{00488\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00489\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1\},}
+\DoxyCodeLine{00490\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 1\}}
+\DoxyCodeLine{00491\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00492\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 77\ (5x5)}}
+\DoxyCodeLine{00493\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 0,\ 1,\ 0,\ 0\},}
+\DoxyCodeLine{00494\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 0,\ 1,\ 0,\ 0\},}
+\DoxyCodeLine{00495\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1,\ 1,\ 1\},}
+\DoxyCodeLine{00496\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 0,\ 1,\ 0,\ 0\},}
+\DoxyCodeLine{00497\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 0,\ 1,\ 0,\ 0\}}
+\DoxyCodeLine{00498\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00499\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 78\ (6x4)}}
+\DoxyCodeLine{00500\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 0,\ 0,\ 1\},}
+\DoxyCodeLine{00501\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 0,\ 1,\ 1\},}
+\DoxyCodeLine{00502\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 0,\ 1,\ 0\},}
+\DoxyCodeLine{00503\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 0,\ 1,\ 0\},}
+\DoxyCodeLine{00504\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 1,\ 0\},}
+\DoxyCodeLine{00505\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0,\ 0\}}
+\DoxyCodeLine{00506\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00507\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 79\ (5x2)}}
+\DoxyCodeLine{00508\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\},}
+\DoxyCodeLine{00509\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00510\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\},}
+\DoxyCodeLine{00511\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00512\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\}}
+\DoxyCodeLine{00513\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00514\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 80\ (5x4)}}
+\DoxyCodeLine{00515\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0,\ 0\},}
+\DoxyCodeLine{00516\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0,\ 0\},}
+\DoxyCodeLine{00517\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0,\ 0\},}
+\DoxyCodeLine{00518\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1,\ 1\},}
+\DoxyCodeLine{00519\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0,\ 0\}}
+\DoxyCodeLine{00520\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00521\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 81\ (5x2)}}
+\DoxyCodeLine{00522\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1\},}
+\DoxyCodeLine{00523\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\},}
+\DoxyCodeLine{00524\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00525\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00526\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\}}
+\DoxyCodeLine{00527\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00528\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 82\ (4x3)}}
+\DoxyCodeLine{00529\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 1\},}
+\DoxyCodeLine{00530\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00531\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0\},}
+\DoxyCodeLine{00532\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0\}}
+\DoxyCodeLine{00533\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00534\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 83\ (6x3)}}
+\DoxyCodeLine{00535\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 1\},}
+\DoxyCodeLine{00536\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00537\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0\},}
+\DoxyCodeLine{00538\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 1\},}
+\DoxyCodeLine{00539\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00540\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\}}
+\DoxyCodeLine{00541\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00542\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 84\ (6x3)}}
+\DoxyCodeLine{00543\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0\},}
+\DoxyCodeLine{00544\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0\},}
+\DoxyCodeLine{00545\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 1\},}
+\DoxyCodeLine{00546\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00547\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00548\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\}}
+\DoxyCodeLine{00549\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00550\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 85\ (4x3)}}
+\DoxyCodeLine{00551\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00552\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 1\},}
+\DoxyCodeLine{00553\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0\},}
+\DoxyCodeLine{00554\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\}}
+\DoxyCodeLine{00555\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00556\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 86\ (2x4)}}
+\DoxyCodeLine{00557\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0,\ 0\},}
+\DoxyCodeLine{00558\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1,\ 1\}}
+\DoxyCodeLine{00559\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00560\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 87\ (4x4)}}
+\DoxyCodeLine{00561\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 0,\ 1,\ 1\},}
+\DoxyCodeLine{00562\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1,\ 0\},}
+\DoxyCodeLine{00563\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0,\ 0\},}
+\DoxyCodeLine{00564\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0,\ 0\}}
+\DoxyCodeLine{00565\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00566\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 88\ (4x3)}}
+\DoxyCodeLine{00567\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 1\},}
+\DoxyCodeLine{00568\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00569\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00570\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0\}}
+\DoxyCodeLine{00571\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00572\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 89\ (4x3)}}
+\DoxyCodeLine{00573\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00574\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00575\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1\},}
+\DoxyCodeLine{00576\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\}}
+\DoxyCodeLine{00577\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00578\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 90\ (4x3)}}
+\DoxyCodeLine{00579\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1\},}
+\DoxyCodeLine{00580\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 1\},}
+\DoxyCodeLine{00581\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0\},}
+\DoxyCodeLine{00582\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0\}}
+\DoxyCodeLine{00583\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00584\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 91\ (4x3)}}
+\DoxyCodeLine{00585\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{00586\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 1\},}
+\DoxyCodeLine{00587\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0\},}
+\DoxyCodeLine{00588\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0\}}
+\DoxyCodeLine{00589\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00590\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 92\ (3x3)}}
+\DoxyCodeLine{00591\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0\},}
+\DoxyCodeLine{00592\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0\},}
+\DoxyCodeLine{00593\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1\}}
+\DoxyCodeLine{00594\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00595\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 93\ (4x2)}}
+\DoxyCodeLine{00596\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00597\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00598\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00599\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\}}
+\DoxyCodeLine{00600\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00601\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 94\ (3x4)}}
+\DoxyCodeLine{00602\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 0,\ 0\},}
+\DoxyCodeLine{00603\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 1,\ 1\},}
+\DoxyCodeLine{00604\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0,\ 0\}}
+\DoxyCodeLine{00605\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00606\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 95\ (4x3)}}
+\DoxyCodeLine{00607\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1,\ 1\},}
+\DoxyCodeLine{00608\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1,\ 0\},}
+\DoxyCodeLine{00609\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0\},}
+\DoxyCodeLine{00610\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0,\ 0\}}
+\DoxyCodeLine{00611\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00612\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Forme\ 96\ (4x2)}}
+\DoxyCodeLine{00613\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 1\},}
+\DoxyCodeLine{00614\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\},}
+\DoxyCodeLine{00615\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 0\},}
+\DoxyCodeLine{00616\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 1\}}
+\DoxyCodeLine{00617\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00618\ \ \ \ \ \};}
+\DoxyCodeLine{00619\ \};}
+\DoxyCodeLine{00620\ }
+\DoxyCodeLine{00621\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//LAYING\_GRASS\_TILES\_H}}
+
+\end{DoxyCode}
