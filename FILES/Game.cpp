@@ -8,7 +8,6 @@
 
 using namespace std;
 
-
 /**
  * @brief Constructeur de la classe Game.
  *
@@ -79,42 +78,46 @@ void Game::run() {
 
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && validPosition) {
 
-                tiles.placeTile(y, x, currentPlayer + 1, board, selectedTile);
-                if (!turnEndExchange) {
+                if (!turnEndExchange || listPlayers[currentPlayer].getTileCoupons() > 0) {
+                    tiles.placeTile(y, x, currentPlayer + 1, board, selectedTile);
                     listPlayers[currentPlayer].incrementNbTilesPlaced();
-                }
-                else {
-                    listPlayers[currentPlayer].removeTileCoupons();
-                    if (listPlayers[currentPlayer].getTileCoupons() == 0) {
-                        listPlayers[currentPlayer].incrementNbTilesPlaced();
+                    if (turnEndExchange) {
+                        listPlayers[currentPlayer].removeTileCoupons();
+                        if (listPlayers[currentPlayer].getTileCoupons() <= 0) {
+                            isPreviewing = false;
+                        }
                     }
                 }
 
-                isPreviewing = true;
+                if (!turnEndExchange) {
+                    isPreviewing = true;
+                }
 
                 // Vérification des bonus après le placement
                 int newActiveBonus = bonus.verifBonus(board, size);
-                if (newActiveBonus != 0) {
-                    if (newActiveBonus == 2) {
-                        float startTime = GetTime();
-                        string text = "+1 coupon d'échange !";
-                        bonus.popUpBonus(startTime, sizeCell, size, padding, text, boardDisplay, startX, startY, sizeCellPreview, previewSize, previewPadding, firstTurn, playerTiles, currentPlayer, listPlayers, selectedTile);
-                        listPlayers[currentPlayer].addTileCoupons();
-                        boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers, clickTileExchange, clickRepair);
+                if (!turnEndExchange) {
+                    if (newActiveBonus != 0) {
+                        if (newActiveBonus == 2) {
+                            float startTime = GetTime();
+                            string text = "+1 coupon d'échange !";
+                            bonus.popUpBonus(startTime, sizeCell, size, padding, text, boardDisplay, startX, startY, sizeCellPreview, previewSize, previewPadding, firstTurn, playerTiles, currentPlayer, listPlayers, selectedTile);
+                            listPlayers[currentPlayer].addTileCoupons();
+                            boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers, clickTileExchange, clickRepair);
 
-                    } else if (newActiveBonus == 3) {
-                        isPreviewing = false;
-                        float startTime = GetTime();
-                        string text = "Vous lancez une pierre !";
-                        bonus.popUpBonus(startTime, sizeCell, size, padding, text, boardDisplay, startX, startY, sizeCellPreview, previewSize, previewPadding, firstTurn, playerTiles, currentPlayer, listPlayers, selectedTile);
-                        clickEmptyCase = true;
+                        } else if (newActiveBonus == 3) {
+                            isPreviewing = false;
+                            float startTime = GetTime();
+                            string text = "Vous lancez une pierre !";
+                            bonus.popUpBonus(startTime, sizeCell, size, padding, text, boardDisplay, startX, startY, sizeCellPreview, previewSize, previewPadding, firstTurn, playerTiles, currentPlayer, listPlayers, selectedTile);
+                            clickEmptyCase = true;
 
-                    } else if (newActiveBonus == 4) {
-                        isPreviewing = false;
-                        float startTime = GetTime();
-                        string text = "Vous volez une tuile !";
-                        bonus.popUpBonus(startTime, sizeCell, size, padding, text, boardDisplay, startX, startY, sizeCellPreview, previewSize, previewPadding, firstTurn, playerTiles, currentPlayer, listPlayers, selectedTile);
-                        robber = true;
+                        } else if (newActiveBonus == 4) {
+                            isPreviewing = false;
+                            float startTime = GetTime();
+                            string text = "Vous volez une tuile !";
+                            bonus.popUpBonus(startTime, sizeCell, size, padding, text, boardDisplay, startX, startY, sizeCellPreview, previewSize, previewPadding, firstTurn, playerTiles, currentPlayer, listPlayers, selectedTile);
+                            robber = true;
+                        }
                     }
                 }
                 if (robber){
@@ -138,18 +141,6 @@ void Game::run() {
                     for (int i = 0; i < listPlayers[currentPlayer].getTileCoupons()-1; i++) {
                         playerTiles[currentPlayer].push_back(selectedTile);
                     }
-                }
-                cout << listPlayers[currentPlayer].getNbTilesPlaced() << endl;
-                if (listPlayers[currentPlayer].getNbTilesPlaced() > 10) {
-                    EndDrawing();
-                    BeginDrawing();
-                    ClearBackground(GRAY);
-                    boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers, clickTileExchange, clickRepair);
-                    EndDrawing();
-                    vector<Player> orderWinners = calculWin();
-                    displayWin displayWin(orderWinners);
-                    displayWin.run();
-                    return;
                 }
             }
             if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {
@@ -227,20 +218,33 @@ void Game::run() {
                         }
                     }
                 }
-                if (mousePosition.x > startX + 725 && mousePosition.x < startX + 920 &&
+                if (!turnEndExchange && mousePosition.x > startX + 725 && mousePosition.x < startX + 920 &&
                     mousePosition.y > startY - 25 && mousePosition.y < startY + 35 && listPlayers[currentPlayer].getTileCoupons() > 0) {
                         clickTileExchange = !clickTileExchange;
                         clickRepair = false;
                 }
-                if (mousePosition.x > startX + 733 && mousePosition.x < startX + 913 &&
+                if (!turnEndExchange && mousePosition.x > startX + 733 && mousePosition.x < startX + 913 &&
                     mousePosition.y > startY + 45 && mousePosition.y < startY + 105 && board.hasCrack() && listPlayers[currentPlayer].getTileCoupons() > 0) {
                     clickRepair = !clickRepair;
                     clickTileExchange = false;
                 }
                 if (turnEndExchange && mousePosition.x > startX + 725 && mousePosition.x < startX + 920 &&
                     mousePosition.y > startY - 25 && mousePosition.y < startY + 35) {
-                    listPlayers[currentPlayer].incrementNbTilesPlaced();
+                    if (currentPlayer == nbPlayer - 1) {
+                        EndDrawing();
+                        BeginDrawing();
+                        ClearBackground(GRAY);
+                        boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers, clickTileExchange, clickRepair);
+                        EndDrawing();
+                        vector<Player> orderWinners = calculWin();
+                        displayWin displayWin(orderWinners);
+                        displayWin.run();
+                        return;
+                    }
                     currentPlayer = (currentPlayer + 1) % nbPlayer;
+                    if (listPlayers[currentPlayer].getTileCoupons() > 0) {
+                        isPreviewing = true;
+                    }
                 }
             }
         }
@@ -249,7 +253,14 @@ void Game::run() {
         if (IsKeyPressed(KEY_SPACE) && (!clickEmptyCase)) {
             clickTileExchange = false;
             clickRepair = false;
-            isPreviewing = !isPreviewing;
+            if (!turnEndExchange) {
+                isPreviewing = !isPreviewing;
+            }
+            else {
+                if (listPlayers[currentPlayer].getTileCoupons() > 0) {
+                    isPreviewing = !isPreviewing;
+                }
+            }
         }
         EndDrawing();
     }

@@ -42,6 +42,7 @@ private:
     int turnCount; /**< Le nombre de tours. */
     vector<Player> listPlayers; /**< La liste des joueurs. */
     bool turnEndExchange = false; /**< Le tour est celui correspondant à l'achat de tuile 1x1 */
+    bool gameFinish = false; /**< Le jeu est terminé. */
 
     /**
      * \brief Calcule le nombre de cases d'herbe placées par un joueur.

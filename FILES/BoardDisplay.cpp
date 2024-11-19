@@ -63,12 +63,11 @@ void BoardDisplay::display(int startX, int startY, int size, int sizeCell, int s
     DrawText(currentPlayerName.c_str(), startX + 10, padding - 40, 30, WHITE);
 
     if (firstTurn) {
-        DrawText("INITIALIZATION", startX + 350, padding - 40, 30, WHITE);
+        DrawText("INITIALISATION", startX + 350, padding - 40, 30, WHITE);
     } else if (listPlayers[currentPlayer].getNbTilesPlaced() < 10) {
-        DrawText(("TURN " + to_string(listPlayers[currentPlayer].getNbTilesPlaced())).c_str(), startX + 490, padding - 40, 30, WHITE);
-    }
-    else {
-        DrawText("GAME OVER", startX + 415, padding - 40, 30, WHITE);
+        DrawText(("TOUR " + to_string(listPlayers[currentPlayer].getNbTilesPlaced())).c_str(), startX + 486, padding - 40, 30, WHITE);
+    } else {
+        DrawText("PARTIE TERMINEE", startX + 305, padding - 40, 30, WHITE);
     }
 
     for (int i = 0; i < size; ++i) {
@@ -161,7 +160,13 @@ void BoardDisplay::display(int startX, int startY, int size, int sizeCell, int s
             DrawText("REPARER", startX + 753, startY + 60, 30, colorTextRepair);
         }
     } else {
-        DrawRectangle(startX + 725, startY - 25, 195, 60, Fade(BLACK, 0.5f));
-        DrawText("FIN DU TOUR", startX + 740, startY - 10, 30, WHITE);
+        if (currentPlayer != listPlayers.size() - 1) {
+            DrawRectangle(startX + 725, startY - 25, 230, 60, Fade(BLACK, 0.5f));
+            DrawText("FIN DU TOUR", startX + 740, startY - 10, 30, listPlayers[currentPlayer].getColor());
+        }
+        else {
+            DrawRectangle(startX + 725, startY - 25, 210, 60, Fade(BLACK, 0.5f));
+            DrawText("FIN DU JEU", startX + 740, startY - 10, 30, listPlayers[currentPlayer].getColor());
+        }
     }
 }
