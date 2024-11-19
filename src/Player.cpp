@@ -75,6 +75,14 @@ void Player::incrementNbTilesPlaced() {
 }
 
 /**
+ * \brief Définit le nombre de tuiles placées par le joueur.
+ * \param nbTiles Le nouveau nombre de tuiles placées.
+ */
+void Player::setNbTilesPlaced(int nbTiles) {
+    nbTilesPlaced = nbTiles;
+}
+
+/**
  * \brief Obtient la taille du plus grand carré formé par le joueur.
  * \return La taille du plus grand carré.
  */

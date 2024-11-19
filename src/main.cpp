@@ -32,7 +32,7 @@ int main() {
 
     if (menu.isGameStart()) {
         int nbPlayer = menu.getNumPlayers();
-        vector<Player> listPlayers = menu.getListPlayers();
+        vector<Player> listPlayers = menu.getRandomListPlayers();
         int size = sizeBoard(nbPlayer);
         int sizeCell = (nbPlayer > 4) ? 30 : 50;
         int padding = 100;

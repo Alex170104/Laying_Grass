@@ -10,7 +10,7 @@ using namespace std;
  * \param board Le plateau de jeu.
  * \param sizeCell La taille de la cellule.
  */
-BoardDisplay::BoardDisplay(Board& board, int sizeCell) : board(board), sizeCell(sizeCell) {
+BoardDisplay::BoardDisplay(Board& board, int sizeCell) : board(board) {
     Image imgBonusStone = LoadImage("../img/rock.png");
     Image imgBonusTicket = LoadImage("../img/ticket.png");
     Image imgBonusVol = LoadImage("../img/vol.png");
@@ -65,12 +65,11 @@ void BoardDisplay::display(int startX, int startY, int size, int sizeCell, int s
     DrawText(currentPlayerName.c_str(), startX + 10, padding - 40, 30, WHITE);
 
     if (firstTurn) {
-        DrawText("INITIALIZATION", startX + 350, padding - 40, 30, WHITE);
+        DrawText("INITIALISATION", startX + 750, padding - 40, 30, WHITE);
     } else if (listPlayers[currentPlayer].getNbTilesPlaced() < 10) {
-        DrawText(("TURN " + to_string(listPlayers[currentPlayer].getNbTilesPlaced())).c_str(), startX + 490, padding - 40, 30, WHITE);
-    }
-    else {
-        DrawText("GAME OVER", startX + 415, padding - 40, 30, WHITE);
+        DrawText(("TOUR " + to_string(listPlayers[currentPlayer].getNbTilesPlaced())).c_str(), startX + 886, padding - 40, 30, WHITE);
+    } else {
+        DrawText("PARTIE TERMINEE", startX + 705, padding - 40, 30, WHITE);
     }
 
     for (int i = 0; i < size; ++i) {
@@ -98,7 +97,7 @@ void BoardDisplay::display(int startX, int startY, int size, int sizeCell, int s
                            {i >= 2 * size / 3, j >= 2 * size / 3}};
                 }
                 for (int k = 0; k < nbPlayer; ++k) {
-                    if (pos[k][0] and pos[k][1]) {
+                    if (pos[k][0] && pos[k][1]) {
                         colorEmpty = Fade(listPlayers[k].getColor(), 0.2f);
                     }
                 }
@@ -118,7 +117,7 @@ void BoardDisplay::display(int startX, int startY, int size, int sizeCell, int s
             } else if (currentCase.getType() == 4) {
                 DrawTexture(textureBonusVol, padding + j * sizeCell, padding + i * sizeCell, WHITE);
             }else if (currentCase.getType() == 5) {
-                DrawRectangle(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell, DARKGRAY);
+                DrawRectangle(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell, BLACK);
                 DrawRectangleLines(padding + j * sizeCell, padding + i * sizeCell, sizeCell, sizeCell, WHITE);
             }
 
@@ -154,11 +153,22 @@ void BoardDisplay::display(int startX, int startY, int size, int sizeCell, int s
         colorTextRepair = listPlayers[currentPlayer].getColor();
     }
 
-    DrawText(("COUPON D'ECHANGE : " + to_string(listPlayers[currentPlayer].getTileCoupons())).c_str(), startX + 545, startY - 60, 30, WHITE);
-    DrawRectangle(startX + 625, startY - 25, 195, 60, Fade(BLACK, 0.5f));
-    DrawText("ECHANGER", startX + 640, startY - 10, 30, colorTextEchange);
-    if (board.hasCrack()) {
-        DrawRectangle(startX + 633, startY + 45, 180, 60, Fade(BLACK, 0.5f));
-        DrawText("REPARER", startX + 653, startY + 60, 30, colorTextRepair);
+    DrawText(("COUPON D'ECHANGE : " + to_string(listPlayers[currentPlayer].getTileCoupons())).c_str(), startX + 645, startY - 60, 30, BLACK);
+    if (listPlayers[currentPlayer].getNbTilesPlaced() < 10) {
+        DrawRectangle(startX + 725, startY - 25, 195, 60, Fade(BLACK, 0.5f));
+        DrawText("ECHANGER", startX + 740, startY - 10, 30, colorTextEchange);
+        if (board.hasCrack()) {
+            DrawRectangle(startX + 733, startY + 45, 180, 60, Fade(BLACK, 0.5f));
+            DrawText("REPARER", startX + 753, startY + 60, 30, colorTextRepair);
+        }
+    } else {
+        if (currentPlayer != listPlayers.size() - 1) {
+            DrawRectangle(startX + 725, startY - 25, 230, 60, Fade(BLACK, 0.5f));
+            DrawText("FIN DU TOUR", startX + 740, startY - 10, 30, listPlayers[currentPlayer].getColor());
+        }
+        else {
+            DrawRectangle(startX + 725, startY - 25, 210, 60, Fade(BLACK, 0.5f));
+            DrawText("FIN DU JEU", startX + 740, startY - 10, 30, listPlayers[currentPlayer].getColor());
+        }
     }
 }

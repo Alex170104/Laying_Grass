@@ -2,6 +2,7 @@
 #define LAYING_GRASS_PLAYER_H
 
 #include <string>
+
 #include "raylib.h"
 
 using namespace std;
@@ -35,6 +36,12 @@ public:
      * \brief Incrémente le nombre de tuiles placées par le joueur.
      */
     void incrementNbTilesPlaced();
+
+    /**
+     * \brief Définit le nombre de tuiles placées par le joueur.
+     * \param nbTiles Le nouveau nombre de tuiles placées.
+     */
+    void setNbTilesPlaced(int nbTiles);
 
     /**
      * \brief Obtient le nom du joueur.

@@ -53,7 +53,6 @@ vector<vector<Case>> Board::createBoard() {
                 compteur++;
             }
         }
-        compteur = 0;
     }
     return grid;
 }

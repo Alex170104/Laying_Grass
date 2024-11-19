@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+
 #include "raylib.h"
 #include "Player.h"
 
@@ -34,7 +35,7 @@ public:
      * \brief Vérifie si le jeu a commencé.
      * \return true si le jeu a commencé, false sinon.
      */
-    bool isGameStart();
+    bool isGameStart() const;
 
     /**
      * \brief Obtient le nombre de joueurs.
@@ -46,7 +47,7 @@ public:
      * \brief Obtient la liste des joueurs.
      * \return La liste des joueurs.
      */
-    vector<Player> getListPlayers(){ return listPlayers;};
+    vector<Player> getRandomListPlayers();
 
 private:
     int screenWidth; /**< La largeur de l'écran. */

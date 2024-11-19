@@ -46,7 +46,6 @@ private:
     Texture2D textureBonusStone; /**< Texture pour le bonus de pierre. */
     Texture2D textureBonusTicket; /**< Texture pour le bonus de ticket. */
     Texture2D textureBonusVol; /**< Texture pour le bonus de vol. */
-    int sizeCell; /**< Taille de la cellule. */
 };
 
 #endif //LAYING_GRASS_BOARDDISPLAY_H
