@@ -1,5 +1,8 @@
-#include "../header/DisplayMenu.h"
 #include <iostream>
+#include <random>
+#include <algorithm>
+
+#include "../header/DisplayMenu.h"
 #include "raylib.h"
 
 /**
@@ -80,8 +83,8 @@ void DisplayMenu::drawMenu() {
         DrawCircle(120 + i * 60, 305 + 75 * numPlayers, 25, availableColors[i]);
     }
 
-    DrawRectangle(screenWidth / 2 - 120, screenHeight - 160, 308, 60, Fade(BLACK, 0.8f));
-    DrawText("Lancer le jeu", screenWidth / 2 - 100, screenHeight - 150, 40, WHITE);
+    DrawRectangle(screenWidth / 2 - 170, screenHeight - 160, 308, 60, Fade(BLACK, 0.8f));
+    DrawText("Lancer le jeu", screenWidth / 2 - 150, screenHeight - 150, 40, WHITE);
 }
 
 /**
@@ -164,4 +167,11 @@ void DisplayMenu::handleInput() {
             listPlayers[selectedPlayer].removeChar();
         }
     }
+}
+
+vector<Player> DisplayMenu::getRandomListPlayers() {
+    random_device rd;
+    mt19937 g(rd());
+    shuffle(listPlayers.begin(), listPlayers.end(), g);
+    return listPlayers;
 }

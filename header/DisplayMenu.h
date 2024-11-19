@@ -47,7 +47,7 @@ public:
      * \brief Obtient la liste des joueurs.
      * \return La liste des joueurs.
      */
-    vector<Player> getListPlayers(){ return listPlayers;};
+    vector<Player> getRandomListPlayers();
 
 private:
     int screenWidth; /**< La largeur de l'écran. */

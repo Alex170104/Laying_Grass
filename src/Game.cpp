@@ -66,6 +66,7 @@ void Game::run() {
             possibleTile = isTilePlacementValid(selectedTile, currentPlayer, board, firstTurn, tiles);
             if (!possibleTile) {
                 bonus.popUpTile(GetTime(), sizeCell, size, padding, "Tuile impossible a placer", boardDisplay, startX, startY, sizeCellPreview, previewSize, previewPadding, firstTurn, playerTiles, currentPlayer, listPlayers, selectedTile);
+                listPlayers[currentPlayer].incrementNbTilesPlaced();
                 currentPlayer = (currentPlayer + 1) % nbPlayer;
                 selectedTile = playerTiles[currentPlayer].back();
                 playerTiles[currentPlayer].pop_back();

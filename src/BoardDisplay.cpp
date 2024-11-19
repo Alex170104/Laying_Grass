@@ -63,11 +63,11 @@ void BoardDisplay::display(int startX, int startY, int size, int sizeCell, int s
     DrawText(currentPlayerName.c_str(), startX + 10, padding - 40, 30, WHITE);
 
     if (firstTurn) {
-        DrawText("INITIALISATION", startX + 350, padding - 40, 30, WHITE);
+        DrawText("INITIALISATION", startX + 750, padding - 40, 30, WHITE);
     } else if (listPlayers[currentPlayer].getNbTilesPlaced() < 10) {
-        DrawText(("TOUR " + to_string(listPlayers[currentPlayer].getNbTilesPlaced())).c_str(), startX + 486, padding - 40, 30, WHITE);
+        DrawText(("TOUR " + to_string(listPlayers[currentPlayer].getNbTilesPlaced())).c_str(), startX + 886, padding - 40, 30, WHITE);
     } else {
-        DrawText("PARTIE TERMINEE", startX + 305, padding - 40, 30, WHITE);
+        DrawText("PARTIE TERMINEE", startX + 705, padding - 40, 30, WHITE);
     }
 
     for (int i = 0; i < size; ++i) {
