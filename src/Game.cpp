@@ -178,7 +178,7 @@ void Game::run() {
                     boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers, clickTileExchange, clickRepair);
                     EndDrawing();
                     float startTime = GetTime();
-                    string text = "vous avez place une pierre";
+                    string text = "vous avez fissuré une case !";
                     bonus.popUpBonus(startTime, sizeCell, size, padding, text, boardDisplay, startX, startY, sizeCellPreview, previewSize, previewPadding, firstTurn, playerTiles, currentPlayer, listPlayers, selectedTile);
                     BeginDrawing();
                     clickEmptyCase = false;
