@@ -1,4 +1,4 @@
-#include "BoardDisplay.h"
+#include "../header/BoardDisplay.h"
 #include <iostream>
 
 using namespace std;

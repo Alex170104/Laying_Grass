@@ -1,4 +1,4 @@
-#include "Board.h"
+#include "../header/Board.h"
 #include <iostream>
 #include <random>
 

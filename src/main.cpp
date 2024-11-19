@@ -1,9 +1,9 @@
-#include "Game.h"
-#include "DisplayMenu.h"
+#include "../header/Game.h"
+#include "../header/DisplayMenu.h"
 
 /**
  * @mainpage La documentation technique du jeu LAYING GRASS GAME !
- * Vous pouvez acceder à toutes les classes et fonctions du projet en cliquant sur les onglets ci-dessus.
+ * **Vous pouvez acceder à toutes les classes et fonctions du projet en cliquant sur les onglets ci-dessus.**
  * @author Alexandre DISCHAMPS
  * @author Camille CRETOIS--BLANCHARD
  * @version 1.0

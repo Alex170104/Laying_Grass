@@ -1,10 +1,10 @@
-#include "Game.h"
+#include "../header/Game.h"
 #include "raylib.h"
-#include "Tiles.h"
-#include "displayWin.h"
+#include "../header/Tiles.h"
+#include "../header/displayWin.h"
 #include <iostream>
 #include <random>
-#include "Bonus.h"
+#include "../header/Bonus.h"
 
 using namespace std;
 
@@ -27,7 +27,6 @@ Game::Game(int size, int nbPlayer, int sizeCell, int padding, vector<Player> lis
  * Gère les interactions utilisateur, l'affichage du plateau et la logique de jeu.
  */
 void Game::run() {
-    Tiles tiles;
     Bonus bonus;
 
     int currentPlayer = 0;
@@ -40,6 +39,7 @@ void Game::run() {
     bool clickRepair = false;
     bool clickEmptyCase = false;
     bool robber = false;
+    bool possibleTile = false;
 
     int sizeCellPreview = 20;
     int previewSize = 5;
@@ -61,6 +61,18 @@ void Game::run() {
 
         // Affichage du plateau et de l'interface
         boardDisplay.display(startX, startY, size, sizeCell, sizeCellPreview, previewSize, previewPadding, padding, firstTurn, playerTiles, currentPlayer, selectedTile, listPlayers, clickTileExchange, clickRepair);
+
+        if (!possibleTile) {
+            possibleTile = isTilePlacementValid(selectedTile, currentPlayer, board, firstTurn, tiles);
+            if (!possibleTile) {
+                bonus.popUpTile(GetTime(), sizeCell, size, padding, "Tuile impossible a placer", boardDisplay, startX, startY, sizeCellPreview, previewSize, previewPadding, firstTurn, playerTiles, currentPlayer, listPlayers, selectedTile);
+                currentPlayer = (currentPlayer + 1) % nbPlayer;
+                selectedTile = playerTiles[currentPlayer].back();
+                playerTiles[currentPlayer].pop_back();
+            }
+        }
+
+
 
         if (isPreviewing) {
 
@@ -89,6 +101,7 @@ void Game::run() {
                     }
                 }
 
+                possibleTile = false;
                 if (!turnEndExchange) {
                     isPreviewing = true;
                 }
@@ -266,6 +279,38 @@ void Game::run() {
     }
     CloseWindow();
 }
+
+void Game::endGameEchange(int currentPlayer, vector<vector<vector<vector<int>>>>& playerTiles, vector<vector<int>>& selectedTile) {
+    vector<vector<int>> tile1x1 = {{1}};
+    if (listPlayers[currentPlayer].getTileCoupons() > 0) {
+        selectedTile = tile1x1;
+        listPlayers[currentPlayer].removeTileCoupons();
+    }
+}
+
+bool Game::isTilePlacementValid(vector<vector<int>>selectedTile, int currentPlayer, Board board, bool firstTurn, Tiles tiles){
+    bool OK;
+    for (int a = 0; a < 2; a++) {
+        for (int b = 0; b < 4; b++) {
+            for (int i = 0; i < size; i++) {
+                for (int j = 0; j < size; j++) {
+                    if (board.getCase(i, j).getType() == 0) {
+                        OK = tiles.isValidPosition(i, j, board, size, selectedTile, firstTurn, currentPlayer, nbPlayer);
+                        if (OK) {
+                            cout << "ok" << endl;
+                            return OK;
+                        }
+                    }
+                }
+            }
+            tiles.rotateTilePattern(selectedTile);
+        }
+        tiles.flip(selectedTile);
+    }
+    cout << "pas ok" << endl;
+    return OK;
+}
+
 
 /**
  * @brief Calcule les gagnants de la partie.

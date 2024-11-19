@@ -4,6 +4,7 @@
 #include "Board.h"
 #include "BoardDisplay.h"
 #include "Player.h"
+#include "Tiles.h"
 
 /**
  * \brief Classe représentant le jeu.
@@ -25,6 +26,9 @@ public:
      */
     void run();
 
+    void endGameEchange(int currentPlayer, vector<vector<vector<vector<int>>>> &playerTiles,
+                        vector<vector<int>> &selectedTile);
+
 
     /**
      * \brief Calcule la plus grande zone carrée pour un joueur.
@@ -35,6 +39,7 @@ public:
 
 private:
     Board board; /**< Le plateau de jeu. */
+    Tiles tiles; /**< Les tuiles. */
     int size; /**< La taille du plateau. */
     int sizeCell; /**< La taille de la cellule. */
     int padding; /**< Le padding. */
@@ -43,6 +48,8 @@ private:
     vector<Player> listPlayers; /**< La liste des joueurs. */
     bool turnEndExchange = false; /**< Le tour est celui correspondant à l'achat de tuile 1x1 */
     bool gameFinish = false; /**< Le jeu est terminé. */
+
+    bool isTilePlacementValid(vector<vector<int>> selectedTile, int currentPlayer, Board board, bool firstTurn, Tiles tiles); /**< Vérifie si il retse de la place pour la tuile. */
 
     /**
      * \brief Calcule le nombre de cases d'herbe placées par un joueur.
