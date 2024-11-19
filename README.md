@@ -28,4 +28,8 @@
 
 [LAYING GRASS Game -- GitHub](https://github.com/Alex170104/Laying_Grass)
 
+## Documentation
+
+- Documentation du projet : [Laying Grass Game -- Documentation](documentation/html/index.html)
+
 [Mme Michu -- pdp](img/mmeMichu.jpg)

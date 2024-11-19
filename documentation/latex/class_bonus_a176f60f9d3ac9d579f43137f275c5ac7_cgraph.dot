@@ -7,7 +7,7 @@ digraph "Bonus::verifBonus"
   rankdir="LR";
   Node1 [id="Node000001",label="Bonus::verifBonus",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Vérifie les bonus sur le plateau."];
   Node1 -> Node2 [id="edge5_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
-  Node2 [id="Node000002",label="Board::getCase",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_board.html#aa7595e288d8c622b70e18089218cf0bf",tooltip="Accède à une case spécifique du plateau."];
+  Node2 [id="Node000002",label="Board::getCase",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_board.html#aa7595e288d8c622b70e18089218cf0bf",tooltip="Obtient une case spécifique du plateau."];
   Node1 -> Node3 [id="edge6_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
   Node3 [id="Node000003",label="Case::getCasePlayer",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_case.html#acdf4a530710a1e1471ec936d3a18a4a9",tooltip="Obtient le joueur associé à la case."];
   Node1 -> Node4 [id="edge7_Node000001_Node000004",color="steelblue1",style="solid",tooltip=" "];

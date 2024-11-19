@@ -7,7 +7,7 @@ digraph "Tiles::placeTile"
   rankdir="LR";
   Node1 [id="Node000001",label="Tiles::placeTile",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Place une tuile sur le plateau."];
   Node1 -> Node2 [id="edge4_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
-  Node2 [id="Node000002",label="Board::getCase",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_board.html#aa7595e288d8c622b70e18089218cf0bf",tooltip="Accède à une case spécifique du plateau."];
+  Node2 [id="Node000002",label="Board::getCase",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_board.html#aa7595e288d8c622b70e18089218cf0bf",tooltip="Obtient une case spécifique du plateau."];
   Node1 -> Node3 [id="edge5_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
   Node3 [id="Node000003",label="Case::setCasePlayer",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_case.html#a1e1716d3da72b1797837269b91dc6375",tooltip="Définit le joueur associé à la case."];
   Node1 -> Node4 [id="edge6_Node000001_Node000004",color="steelblue1",style="solid",tooltip=" "];

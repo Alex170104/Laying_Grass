@@ -12,76 +12,48 @@ Représente un plateau de jeu contenant des cases.
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_board_ae2dcec422642c322bc656b19b03c8283}\label{class_board_ae2dcec422642c322bc656b19b03c8283} 
-{\bfseries Board} (int size, int nb\+Player)
-\item 
-\Hypertarget{class_board_a6cce49c91f49077159a279187c6f0dbe}\label{class_board_a6cce49c91f49077159a279187c6f0dbe} 
-vector$<$ vector$<$ \mbox{\hyperlink{class_case}{Case}} $>$ $>$ {\bfseries get\+Board} () const
-\item 
+\mbox{\hyperlink{class_board_ae2dcec422642c322bc656b19b03c8283}{Board}} (int \mbox{\hyperlink{class_board_aedef7105f0accc0949b601afa97e9678}{size}}, int \mbox{\hyperlink{class_board_ac4e962ed64e9f41e7c13d728c91e2fd1}{nb\+Player}})
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe \doxylink{class_board}{Board}. \end{DoxyCompactList}\item 
+vector$<$ vector$<$ \mbox{\hyperlink{class_case}{Case}} $>$ $>$ \mbox{\hyperlink{class_board_a6cce49c91f49077159a279187c6f0dbe}{get\+Board}} () const
+\begin{DoxyCompactList}\small\item\em Méthode pour récupérer le plateau de jeu. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_case}{Case}} \& \mbox{\hyperlink{class_board_aa7595e288d8c622b70e18089218cf0bf}{get\+Case}} (int x, int y)
-\begin{DoxyCompactList}\small\item\em Accède à une case spécifique du plateau. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Obtient une case spécifique du plateau. \end{DoxyCompactList}\item 
 vector$<$ vector$<$ \mbox{\hyperlink{class_case}{Case}} $>$ $>$ \mbox{\hyperlink{class_board_a17c14300a6a13701ef457a83f8ddd679}{create\+Board}} ()
-\begin{DoxyCompactList}\small\item\em Crée le plateau de jeu et initialise les cases. \end{DoxyCompactList}\item 
-\Hypertarget{class_board_a5ca041c6b3547fb661988922a6f1c417}\label{class_board_a5ca041c6b3547fb661988922a6f1c417} 
-void {\bfseries display\+Type} ()
-\item 
-\Hypertarget{class_board_a6b4318ef53b3d54771fe94b41a0d294b}\label{class_board_a6b4318ef53b3d54771fe94b41a0d294b} 
-void {\bfseries display\+Case\+Player} ()
-\item 
-\Hypertarget{class_board_a861737bfa7b6e677b6f04fc33ad6ab17}\label{class_board_a861737bfa7b6e677b6f04fc33ad6ab17} 
-bool {\bfseries has\+Crack} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Crée le plateau de jeu. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_board_a861737bfa7b6e677b6f04fc33ad6ab17}{has\+Crack}} ()
+\begin{DoxyCompactList}\small\item\em Vérifie si le plateau a des fissures. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_board_a2e0d960143922667487bf5be7d97249b}\label{class_board_a2e0d960143922667487bf5be7d97249b} 
-vector$<$ vector$<$ \mbox{\hyperlink{class_case}{Case}} $>$ $>$ {\bfseries grid}
+vector$<$ vector$<$ \mbox{\hyperlink{class_case}{Case}} $>$ $>$ \mbox{\hyperlink{class_board_a2e0d960143922667487bf5be7d97249b}{grid}}
 \item 
-\Hypertarget{class_board_aedef7105f0accc0949b601afa97e9678}\label{class_board_aedef7105f0accc0949b601afa97e9678} 
-int {\bfseries size}
+int \mbox{\hyperlink{class_board_aedef7105f0accc0949b601afa97e9678}{size}}
 \item 
-\Hypertarget{class_board_ac4e962ed64e9f41e7c13d728c91e2fd1}\label{class_board_ac4e962ed64e9f41e7c13d728c91e2fd1} 
-int {\bfseries nb\+Player}
+int \mbox{\hyperlink{class_board_ac4e962ed64e9f41e7c13d728c91e2fd1}{nb\+Player}}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Représente un plateau de jeu contenant des cases. 
 
-\doxysubsection{Member Function Documentation}
-\Hypertarget{class_board_a17c14300a6a13701ef457a83f8ddd679}\label{class_board_a17c14300a6a13701ef457a83f8ddd679} 
-\index{Board@{Board}!createBoard@{createBoard}}
-\index{createBoard@{createBoard}!Board@{Board}}
-\doxysubsubsection{\texorpdfstring{createBoard()}{createBoard()}}
-{\footnotesize\ttfamily vector$<$ vector$<$ \mbox{\hyperlink{class_case}{Case}} $>$ $>$ Board\+::create\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+Représente le plateau de jeu contenant des cases. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_board_ae2dcec422642c322bc656b19b03c8283}\label{class_board_ae2dcec422642c322bc656b19b03c8283} 
+\index{Board@{Board}!Board@{Board}}
+\index{Board@{Board}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{Board()}{Board()}}
+{\footnotesize\ttfamily Board\+::\+Board (\begin{DoxyParamCaption}\item[{int}]{size,  }\item[{int}]{nb\+Player }\end{DoxyParamCaption})}
 
 
 
-Crée le plateau de jeu et initialise les cases. 
-
-Cette fonction crée une grille bidimensionnelle de cases. Elle attribue des coordonnées à chaque case et place des bonus (Tile\+Exchange, Stone, Robbery) aléatoirement en respectant certaines contraintes.
-
-\begin{DoxyReturn}{Returns}
-Un vecteur bidimensionnel représentant le plateau de jeu. 
-\end{DoxyReturn}
-\Hypertarget{class_board_aa7595e288d8c622b70e18089218cf0bf}\label{class_board_aa7595e288d8c622b70e18089218cf0bf} 
-\index{Board@{Board}!getCase@{getCase}}
-\index{getCase@{getCase}!Board@{Board}}
-\doxysubsubsection{\texorpdfstring{getCase()}{getCase()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_case}{Case}} \& Board\+::get\+Case (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
-
-
-
-Accède à une case spécifique du plateau. 
+Constructeur de la classe \doxylink{class_board}{Board}. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em x} & Coordonnée X de la case. \\
+{\em size} & La taille du plateau. \\
 \hline
-{\em y} & Coordonnée Y de la case. \\
+{\em nb\+Player} & Le nombre de joueurs. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-La référence à la case située aux coordonnées spécifiées. 
-\end{DoxyReturn}
-Here is the caller graph for this function\+:
+Here is the call graph for this function\+:

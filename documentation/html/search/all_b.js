@@ -1,12 +1,7 @@
 var searchData=
 [
-  ['setbiggestsquare_0',['setBiggestSquare',['../class_player.html#a0f89ac7a8eb888d43dd3132886ab6541',1,'Player']]],
-  ['setcaseplayer_1',['setCasePlayer',['../class_case.html#a1e1716d3da72b1797837269b91dc6375',1,'Case']]],
-  ['setcolor_2',['setColor',['../class_player.html#a7c100bf7077065c155187ccbc6cdc11e',1,'Player']]],
-  ['setnbgrassplaced_3',['setNbGrassPlaced',['../class_player.html#a8223b68b380039831041e75d02cce597',1,'Player']]],
-  ['setstartingtile_4',['setStartingTile',['../class_player.html#a1104b881a1cbdaf897be11233625b714',1,'Player']]],
-  ['settype_5',['setType',['../class_case.html#a4a3bef1060b87e62adecd4f3452e5cc3',1,'Case']]],
-  ['setx_6',['setX',['../class_case.html#a4aadab13b51935e3019d928cff836ef3',1,'Case']]],
-  ['sety_7',['setY',['../class_case.html#a1b52cc6d2d3fe04e5ac8e9666c8345d5',1,'Case']]],
-  ['showmenu_8',['showMenu',['../class_display_menu.html#aec026e61e50f11ff665ba844de1e19ee',1,'DisplayMenu']]]
+  ['placetile_0',['placeTile',['../class_tiles.html#abccf63d38bb8a081f91ba7acfcc4a081',1,'Tiles']]],
+  ['player_1',['Player',['../class_player.html',1,'Player'],['../class_player.html#a8dd5edaf71e193a6245549e01332b91f',1,'Player::Player()']]],
+  ['popupbonus_2',['popUpBonus',['../class_bonus.html#a87917872ed2a147e237d2a3e13583771',1,'Bonus']]],
+  ['popuptile_3',['popUpTile',['../class_bonus.html#a21729c4f04a95a6482671f7ed05b1b9b',1,'Bonus']]]
 ];

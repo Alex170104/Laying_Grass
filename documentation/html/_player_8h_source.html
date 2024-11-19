@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>LAYING GRASS: header/Player.h Source File</title>
+<title>LAYING GRASS: C:/Users/alexd/CLionProjects/Laying_Grass/header/Player.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -88,75 +88,79 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define LAYING_GRASS_PLAYER_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;raylib.h&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">using namespace </span>std;</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="class_player.html">   12</a></span><span class="keyword">class </span><a class="code hl_class" href="class_player.html">Player</a> {</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <a class="code hl_function" href="class_player.html#a8dd5edaf71e193a6245549e01332b91f">Player</a>(<span class="keyword">const</span> std::string&amp; playerName, <span class="keyword">const</span> Color playerColor);</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_player.html#a1104b881a1cbdaf897be11233625b714">setStartingTile</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_player.html#a38689c79912f451f0658e48b35a89b16">getNbTilesPlaced</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_player.html#ab9a6146b257df1c8f142b351848a7a32">incrementNbTilesPlaced</a>();</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">string</span> <a class="code hl_function" href="class_player.html#a4939193fc637f75bf7a11118334dae7e">getName</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_player.html#a443506d01e76bf7f53e1583e87842cd2">addChar</a>(<span class="keywordtype">char</span> c);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_player.html#a182a8bcac51cc3a479c04be6368f9b02">removeChar</a>();</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    Color <a class="code hl_function" href="class_player.html#a9d414aeee5b3001d54492e48cde3881b">getColor</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_player.html#a7c100bf7077065c155187ccbc6cdc11e">setColor</a>(<span class="keyword">const</span> Color playerColor);</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_player.html#a329c0b8a710e9441204b88970a641703">getBiggestSquare</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_player.html#a0f89ac7a8eb888d43dd3132886ab6541">setBiggestSquare</a>(<span class="keywordtype">int</span> square);</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_player.html#a51e100fd56f7f612ba780274f78f83c8">getNbGrassPlaced</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_player.html#a8223b68b380039831041e75d02cce597">setNbGrassPlaced</a>(<span class="keywordtype">int</span> grass);</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_player.html#ac730d4db928b34d02e1f34de29e10602">getTileCoupons</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_player.html#a5a00d81685531265ab913f567b215198">addTileCoupons</a>();</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_player.html#abe9647d805e6e956bc270bb59dec48ef">removeTileCoupons</a>();</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    std::string name; </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    Color color; </div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keywordtype">int</span> tileX, tileY; </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordtype">int</span> tileCoupons; </div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordtype">int</span> nbTilesPlaced = 0; </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="keywordtype">int</span> biggestSquare; </div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keywordtype">int</span> nbGrass; </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>};</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;raylib.h&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">using namespace </span>std;</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="class_player.html">   13</a></span><span class="keyword">class </span><a class="code hl_class" href="class_player.html">Player</a> {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <a class="code hl_function" href="class_player.html#a8dd5edaf71e193a6245549e01332b91f">Player</a>(<span class="keyword">const</span> std::string&amp; playerName, <span class="keyword">const</span> Color playerColor);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_player.html#a1104b881a1cbdaf897be11233625b714">setStartingTile</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_player.html#a38689c79912f451f0658e48b35a89b16">getNbTilesPlaced</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_player.html#ab9a6146b257df1c8f142b351848a7a32">incrementNbTilesPlaced</a>();</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_player.html#a9de3b8df8c5d097eb755d857a4168786">setNbTilesPlaced</a>(<span class="keywordtype">int</span> nbTiles);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">string</span> <a class="code hl_function" href="class_player.html#a4939193fc637f75bf7a11118334dae7e">getName</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_player.html#a443506d01e76bf7f53e1583e87842cd2">addChar</a>(<span class="keywordtype">char</span> c);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_player.html#a182a8bcac51cc3a479c04be6368f9b02">removeChar</a>();</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    Color <a class="code hl_function" href="class_player.html#a9d414aeee5b3001d54492e48cde3881b">getColor</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_player.html#a7c100bf7077065c155187ccbc6cdc11e">setColor</a>(<span class="keyword">const</span> Color playerColor);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_player.html#a329c0b8a710e9441204b88970a641703">getBiggestSquare</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_player.html#a0f89ac7a8eb888d43dd3132886ab6541">setBiggestSquare</a>(<span class="keywordtype">int</span> square);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_player.html#a51e100fd56f7f612ba780274f78f83c8">getNbGrassPlaced</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_player.html#a8223b68b380039831041e75d02cce597">setNbGrassPlaced</a>(<span class="keywordtype">int</span> grass);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_player.html#ac730d4db928b34d02e1f34de29e10602">getTileCoupons</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_player.html#a5a00d81685531265ab913f567b215198">addTileCoupons</a>();</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_player.html#abe9647d805e6e956bc270bb59dec48ef">removeTileCoupons</a>();</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    std::string name; </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    Color color; </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordtype">int</span> tileX, tileY; </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keywordtype">int</span> tileCoupons; </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordtype">int</span> nbTilesPlaced = 0; </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keywordtype">int</span> biggestSquare; </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keywordtype">int</span> nbGrass; </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>};</div>
 </div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="preprocessor">#endif </span><span class="comment">//LAYING_GRASS_PLAYER_H</span></div>
-<div class="ttc" id="aclass_player_html"><div class="ttname"><a href="class_player.html">Player</a></div><div class="ttdoc">Classe représentant un joueur.</div><div class="ttdef"><b>Definition</b> Player.h:12</div></div>
-<div class="ttc" id="aclass_player_html_a0f89ac7a8eb888d43dd3132886ab6541"><div class="ttname"><a href="class_player.html#a0f89ac7a8eb888d43dd3132886ab6541">Player::setBiggestSquare</a></div><div class="ttdeci">void setBiggestSquare(int square)</div><div class="ttdoc">Définit la plus grande zone carrée du joueur.</div><div class="ttdef"><b>Definition</b> Player.cpp:89</div></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="preprocessor">#endif </span><span class="comment">//LAYING_GRASS_PLAYER_H</span></div>
+<div class="ttc" id="aclass_player_html"><div class="ttname"><a href="class_player.html">Player</a></div><div class="ttdoc">Classe représentant un joueur.</div><div class="ttdef"><b>Definition</b> Player.h:13</div></div>
+<div class="ttc" id="aclass_player_html_a0f89ac7a8eb888d43dd3132886ab6541"><div class="ttname"><a href="class_player.html#a0f89ac7a8eb888d43dd3132886ab6541">Player::setBiggestSquare</a></div><div class="ttdeci">void setBiggestSquare(int square)</div><div class="ttdoc">Définit la plus grande zone carrée du joueur.</div><div class="ttdef"><b>Definition</b> Player.cpp:97</div></div>
 <div class="ttc" id="aclass_player_html_a1104b881a1cbdaf897be11233625b714"><div class="ttname"><a href="class_player.html#a1104b881a1cbdaf897be11233625b714">Player::setStartingTile</a></div><div class="ttdeci">void setStartingTile(int x, int y)</div><div class="ttdoc">Définit la tuile de départ du joueur.</div><div class="ttdef"><b>Definition</b> Player.cpp:18</div></div>
 <div class="ttc" id="aclass_player_html_a182a8bcac51cc3a479c04be6368f9b02"><div class="ttname"><a href="class_player.html#a182a8bcac51cc3a479c04be6368f9b02">Player::removeChar</a></div><div class="ttdeci">void removeChar()</div><div class="ttdoc">Supprime un caractère du nom du joueur.</div><div class="ttdef"><b>Definition</b> Player.cpp:42</div></div>
-<div class="ttc" id="aclass_player_html_a329c0b8a710e9441204b88970a641703"><div class="ttname"><a href="class_player.html#a329c0b8a710e9441204b88970a641703">Player::getBiggestSquare</a></div><div class="ttdeci">int getBiggestSquare() const</div><div class="ttdoc">Obtient la plus grande zone carrée du joueur.</div><div class="ttdef"><b>Definition</b> Player.cpp:81</div></div>
+<div class="ttc" id="aclass_player_html_a329c0b8a710e9441204b88970a641703"><div class="ttname"><a href="class_player.html#a329c0b8a710e9441204b88970a641703">Player::getBiggestSquare</a></div><div class="ttdeci">int getBiggestSquare() const</div><div class="ttdoc">Obtient la plus grande zone carrée du joueur.</div><div class="ttdef"><b>Definition</b> Player.cpp:89</div></div>
 <div class="ttc" id="aclass_player_html_a38689c79912f451f0658e48b35a89b16"><div class="ttname"><a href="class_player.html#a38689c79912f451f0658e48b35a89b16">Player::getNbTilesPlaced</a></div><div class="ttdeci">int getNbTilesPlaced() const</div><div class="ttdoc">Obtient le nombre de tuiles placées par le joueur.</div><div class="ttdef"><b>Definition</b> Player.cpp:66</div></div>
 <div class="ttc" id="aclass_player_html_a443506d01e76bf7f53e1583e87842cd2"><div class="ttname"><a href="class_player.html#a443506d01e76bf7f53e1583e87842cd2">Player::addChar</a></div><div class="ttdeci">void addChar(char c)</div><div class="ttdoc">Ajoute un caractère au nom du joueur.</div><div class="ttdef"><b>Definition</b> Player.cpp:35</div></div>
 <div class="ttc" id="aclass_player_html_a4939193fc637f75bf7a11118334dae7e"><div class="ttname"><a href="class_player.html#a4939193fc637f75bf7a11118334dae7e">Player::getName</a></div><div class="ttdeci">string getName() const</div><div class="ttdoc">Obtient le nom du joueur.</div><div class="ttdef"><b>Definition</b> Player.cpp:27</div></div>
-<div class="ttc" id="aclass_player_html_a51e100fd56f7f612ba780274f78f83c8"><div class="ttname"><a href="class_player.html#a51e100fd56f7f612ba780274f78f83c8">Player::getNbGrassPlaced</a></div><div class="ttdeci">int getNbGrassPlaced() const</div><div class="ttdoc">Obtient le nombre de cases d'herbe placées par le joueur.</div><div class="ttdef"><b>Definition</b> Player.cpp:97</div></div>
-<div class="ttc" id="aclass_player_html_a5a00d81685531265ab913f567b215198"><div class="ttname"><a href="class_player.html#a5a00d81685531265ab913f567b215198">Player::addTileCoupons</a></div><div class="ttdeci">void addTileCoupons()</div><div class="ttdoc">Ajoute un coupon de tuile au joueur.</div><div class="ttdef"><b>Definition</b> Player.cpp:120</div></div>
+<div class="ttc" id="aclass_player_html_a51e100fd56f7f612ba780274f78f83c8"><div class="ttname"><a href="class_player.html#a51e100fd56f7f612ba780274f78f83c8">Player::getNbGrassPlaced</a></div><div class="ttdeci">int getNbGrassPlaced() const</div><div class="ttdoc">Obtient le nombre de cases d'herbe placées par le joueur.</div><div class="ttdef"><b>Definition</b> Player.cpp:105</div></div>
+<div class="ttc" id="aclass_player_html_a5a00d81685531265ab913f567b215198"><div class="ttname"><a href="class_player.html#a5a00d81685531265ab913f567b215198">Player::addTileCoupons</a></div><div class="ttdeci">void addTileCoupons()</div><div class="ttdoc">Ajoute un coupon de tuile au joueur.</div><div class="ttdef"><b>Definition</b> Player.cpp:128</div></div>
 <div class="ttc" id="aclass_player_html_a7c100bf7077065c155187ccbc6cdc11e"><div class="ttname"><a href="class_player.html#a7c100bf7077065c155187ccbc6cdc11e">Player::setColor</a></div><div class="ttdeci">void setColor(const Color playerColor)</div><div class="ttdoc">Définit la couleur du joueur.</div><div class="ttdef"><b>Definition</b> Player.cpp:58</div></div>
-<div class="ttc" id="aclass_player_html_a8223b68b380039831041e75d02cce597"><div class="ttname"><a href="class_player.html#a8223b68b380039831041e75d02cce597">Player::setNbGrassPlaced</a></div><div class="ttdeci">void setNbGrassPlaced(int grass)</div><div class="ttdoc">Définit le nombre de cases d'herbe placées par le joueur.</div><div class="ttdef"><b>Definition</b> Player.cpp:105</div></div>
+<div class="ttc" id="aclass_player_html_a8223b68b380039831041e75d02cce597"><div class="ttname"><a href="class_player.html#a8223b68b380039831041e75d02cce597">Player::setNbGrassPlaced</a></div><div class="ttdeci">void setNbGrassPlaced(int grass)</div><div class="ttdoc">Définit le nombre de cases d'herbe placées par le joueur.</div><div class="ttdef"><b>Definition</b> Player.cpp:113</div></div>
 <div class="ttc" id="aclass_player_html_a8dd5edaf71e193a6245549e01332b91f"><div class="ttname"><a href="class_player.html#a8dd5edaf71e193a6245549e01332b91f">Player::Player</a></div><div class="ttdeci">Player(const std::string &amp;playerName, const Color playerColor)</div><div class="ttdoc">Constructeur de la classe Player.</div><div class="ttdef"><b>Definition</b> Player.cpp:10</div></div>
 <div class="ttc" id="aclass_player_html_a9d414aeee5b3001d54492e48cde3881b"><div class="ttname"><a href="class_player.html#a9d414aeee5b3001d54492e48cde3881b">Player::getColor</a></div><div class="ttdeci">Color getColor() const</div><div class="ttdoc">Obtient la couleur du joueur.</div><div class="ttdef"><b>Definition</b> Player.cpp:50</div></div>
+<div class="ttc" id="aclass_player_html_a9de3b8df8c5d097eb755d857a4168786"><div class="ttname"><a href="class_player.html#a9de3b8df8c5d097eb755d857a4168786">Player::setNbTilesPlaced</a></div><div class="ttdeci">void setNbTilesPlaced(int nbTiles)</div><div class="ttdoc">Définit le nombre de tuiles placées par le joueur.</div><div class="ttdef"><b>Definition</b> Player.cpp:81</div></div>
 <div class="ttc" id="aclass_player_html_ab9a6146b257df1c8f142b351848a7a32"><div class="ttname"><a href="class_player.html#ab9a6146b257df1c8f142b351848a7a32">Player::incrementNbTilesPlaced</a></div><div class="ttdeci">void incrementNbTilesPlaced()</div><div class="ttdoc">Incrémente le nombre de tuiles placées par le joueur.</div><div class="ttdef"><b>Definition</b> Player.cpp:73</div></div>
-<div class="ttc" id="aclass_player_html_abe9647d805e6e956bc270bb59dec48ef"><div class="ttname"><a href="class_player.html#abe9647d805e6e956bc270bb59dec48ef">Player::removeTileCoupons</a></div><div class="ttdeci">void removeTileCoupons()</div><div class="ttdoc">Supprime un coupon de tuile du joueur.</div><div class="ttdef"><b>Definition</b> Player.cpp:127</div></div>
-<div class="ttc" id="aclass_player_html_ac730d4db928b34d02e1f34de29e10602"><div class="ttname"><a href="class_player.html#ac730d4db928b34d02e1f34de29e10602">Player::getTileCoupons</a></div><div class="ttdeci">int getTileCoupons() const</div><div class="ttdoc">Obtient le nombre de coupons de tuiles du joueur.</div><div class="ttdef"><b>Definition</b> Player.cpp:113</div></div>
+<div class="ttc" id="aclass_player_html_abe9647d805e6e956bc270bb59dec48ef"><div class="ttname"><a href="class_player.html#abe9647d805e6e956bc270bb59dec48ef">Player::removeTileCoupons</a></div><div class="ttdeci">void removeTileCoupons()</div><div class="ttdoc">Supprime un coupon de tuile du joueur.</div><div class="ttdef"><b>Definition</b> Player.cpp:135</div></div>
+<div class="ttc" id="aclass_player_html_ac730d4db928b34d02e1f34de29e10602"><div class="ttname"><a href="class_player.html#ac730d4db928b34d02e1f34de29e10602">Player::getTileCoupons</a></div><div class="ttdeci">int getTileCoupons() const</div><div class="ttdoc">Obtient le nombre de coupons de tuiles du joueur.</div><div class="ttdef"><b>Definition</b> Player.cpp:121</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

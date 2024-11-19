@@ -19,11 +19,11 @@ Classe pour afficher le menu du jeu.
 \begin{DoxyCompactList}\small\item\em Destructeur de la classe \doxylink{class_display_menu}{Display\+Menu}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_display_menu_aec026e61e50f11ff665ba844de1e19ee}{show\+Menu}} ()
 \begin{DoxyCompactList}\small\item\em Affiche le menu. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{class_display_menu_af63de179b636875f030de9801e945bb1}{is\+Game\+Start}} ()
+bool \mbox{\hyperlink{class_display_menu_a430d4575def2ef9efd37ce10eb8e9a82}{is\+Game\+Start}} () const
 \begin{DoxyCompactList}\small\item\em Vérifie si le jeu a commencé. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_display_menu_a463df7ae2ff444790058ff13109f137e}{get\+Num\+Players}} ()
 \begin{DoxyCompactList}\small\item\em Obtient le nombre de joueurs. \end{DoxyCompactList}\item 
-vector$<$ \mbox{\hyperlink{class_player}{Player}} $>$ \mbox{\hyperlink{class_display_menu_a4042da55cc2e204acc344bde4b783c33}{get\+List\+Players}} ()
+vector$<$ \mbox{\hyperlink{class_player}{Player}} $>$ \mbox{\hyperlink{class_display_menu_af0bcd071625eda00ce8b894c5b8fd5da}{get\+Random\+List\+Players}} ()
 \begin{DoxyCompactList}\small\item\em Obtient la liste des joueurs. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -51,19 +51,6 @@ Constructeur de la classe \doxylink{class_display_menu}{Display\+Menu}.
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{class_display_menu_a4042da55cc2e204acc344bde4b783c33}\label{class_display_menu_a4042da55cc2e204acc344bde4b783c33} 
-\index{DisplayMenu@{DisplayMenu}!getListPlayers@{getListPlayers}}
-\index{getListPlayers@{getListPlayers}!DisplayMenu@{DisplayMenu}}
-\doxysubsubsection{\texorpdfstring{getListPlayers()}{getListPlayers()}}
-{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_player}{Player}} $>$ Display\+Menu\+::get\+List\+Players (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Obtient la liste des joueurs. 
-
-\begin{DoxyReturn}{Returns}
-La liste des joueurs. 
-\end{DoxyReturn}
 \Hypertarget{class_display_menu_a463df7ae2ff444790058ff13109f137e}\label{class_display_menu_a463df7ae2ff444790058ff13109f137e} 
 \index{DisplayMenu@{DisplayMenu}!getNumPlayers@{getNumPlayers}}
 \index{getNumPlayers@{getNumPlayers}!DisplayMenu@{DisplayMenu}}
@@ -77,11 +64,24 @@ Obtient le nombre de joueurs.
 \begin{DoxyReturn}{Returns}
 Le nombre de joueurs. 
 \end{DoxyReturn}
-\Hypertarget{class_display_menu_af63de179b636875f030de9801e945bb1}\label{class_display_menu_af63de179b636875f030de9801e945bb1} 
+\Hypertarget{class_display_menu_af0bcd071625eda00ce8b894c5b8fd5da}\label{class_display_menu_af0bcd071625eda00ce8b894c5b8fd5da} 
+\index{DisplayMenu@{DisplayMenu}!getRandomListPlayers@{getRandomListPlayers}}
+\index{getRandomListPlayers@{getRandomListPlayers}!DisplayMenu@{DisplayMenu}}
+\doxysubsubsection{\texorpdfstring{getRandomListPlayers()}{getRandomListPlayers()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_player}{Player}} $>$ Display\+Menu\+::get\+Random\+List\+Players (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtient la liste des joueurs. 
+
+\begin{DoxyReturn}{Returns}
+La liste des joueurs. 
+\end{DoxyReturn}
+\Hypertarget{class_display_menu_a430d4575def2ef9efd37ce10eb8e9a82}\label{class_display_menu_a430d4575def2ef9efd37ce10eb8e9a82} 
 \index{DisplayMenu@{DisplayMenu}!isGameStart@{isGameStart}}
 \index{isGameStart@{isGameStart}!DisplayMenu@{DisplayMenu}}
 \doxysubsubsection{\texorpdfstring{isGameStart()}{isGameStart()}}
-{\footnotesize\ttfamily bool Display\+Menu\+::is\+Game\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool Display\+Menu\+::is\+Game\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
@@ -104,5 +104,5 @@ Affiche le menu principal.
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-header/Display\+Menu.\+h\item 
-src/Display\+Menu.\+cpp\end{DoxyCompactItemize}
+C\+:/\+Users/alexd/\+CLion\+Projects/\+Laying\+\_\+\+Grass/header/Display\+Menu.\+h\item 
+C\+:/\+Users/alexd/\+CLion\+Projects/\+Laying\+\_\+\+Grass/src/Display\+Menu.\+cpp\end{DoxyCompactItemize}

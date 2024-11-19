@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['_7eboarddisplay_0',['~BoardDisplay',['../class_board_display.html#a76fe9ee48a47df1526350885d002f9f3',1,'BoardDisplay']]],
-  ['_7edisplaymenu_1',['~DisplayMenu',['../class_display_menu.html#a20938c7a68cb8d505bf5cc65bada6ac4',1,'DisplayMenu']]],
-  ['_7edisplaywin_2',['~displayWin',['../classdisplay_win.html#a82819a43404c01c085a7d1fa8ef17aa4',1,'displayWin']]]
+  ['technique_20du_20jeu_20laying_20grass_20game_0',['La documentation technique du jeu LAYING GRASS GAME !',['../index.html',1,'']]],
+  ['ticketexchange_1',['ticketExchange',['../class_bonus.html#ac582606e0789d758697bf32b87759e26',1,'Bonus']]],
+  ['tiles_2',['Tiles',['../class_tiles.html',1,'Tiles'],['../class_tiles.html#a3cafab4efdd0282a7afe22a4cc0bd1c9',1,'Tiles::Tiles()']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['verifbonus_0',['verifBonus',['../class_bonus.html#a176f60f9d3ac9d579f43137f275c5ac7',1,'Bonus']]]
+  ['ticketexchange_0',['ticketExchange',['../class_bonus.html#ac582606e0789d758697bf32b87759e26',1,'Bonus']]],
+  ['tiles_1',['Tiles',['../class_tiles.html#a3cafab4efdd0282a7afe22a4cc0bd1c9',1,'Tiles']]]
 ];

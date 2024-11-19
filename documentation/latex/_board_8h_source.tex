@@ -1,28 +1,31 @@
 \doxysection{Board.\+h}
-\hypertarget{_board_8h_source}{}\label{_board_8h_source}\index{header/Board.h@{header/Board.h}}
+\hypertarget{_board_8h_source}{}\label{_board_8h_source}\index{C:/Users/alexd/CLionProjects/Laying\_Grass/header/Board.h@{C:/Users/alexd/CLionProjects/Laying\_Grass/header/Board.h}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ LAYING\_GRASS\_BOARD\_H}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ LAYING\_GRASS\_BOARD\_H}}
 \DoxyCodeLine{00003\ }
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Case.h"{}}}
-\DoxyCodeLine{00006\ }
-\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_board}{Board}}\ \{}
-\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{class_board}{Board}}(\textcolor{keywordtype}{int}\ size,\ \textcolor{keywordtype}{int}\ nbPlayer);}
-\DoxyCodeLine{00014\ \ \ \ \ vector<vector<Case>>\ getBoard()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ grid;\ \}}
-\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_case}{Case}}\ \&\mbox{\hyperlink{class_board_aa7595e288d8c622b70e18089218cf0bf}{getCase}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
-\DoxyCodeLine{00016\ \ \ \ \ vector<vector<Case>>\ \mbox{\hyperlink{class_board_a17c14300a6a13701ef457a83f8ddd679}{createBoard}}();}
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ displayType();}
-\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ displayCasePlayer();}
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{bool}\ hasCrack();}
-\DoxyCodeLine{00020\ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00021\ \ \ \ \ vector<vector<Case>>\ grid;}
-\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ size;}
-\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ nbPlayer;}
-\DoxyCodeLine{00024\ \};}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//LAYING\_GRASS\_BOARD\_H}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Case.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_board}{Board}}\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{class_board_ae2dcec422642c322bc656b19b03c8283}{Board}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_board_aedef7105f0accc0949b601afa97e9678}{size}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_board_ac4e962ed64e9f41e7c13d728c91e2fd1}{nbPlayer}});}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00025\ \ \ \ \ vector<vector<Case>>\ \mbox{\hyperlink{class_board_a6cce49c91f49077159a279187c6f0dbe}{getBoard}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_board_a2e0d960143922667487bf5be7d97249b}{grid}};\ \}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{class_case}{Case}}\ \&\mbox{\hyperlink{class_board_aa7595e288d8c622b70e18089218cf0bf}{getCase}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00039\ \ vector<vector<Case>>\ \mbox{\hyperlink{class_board_a17c14300a6a13701ef457a83f8ddd679}{createBoard}}();}
+\DoxyCodeLine{00044\ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_board_a861737bfa7b6e677b6f04fc33ad6ab17}{hasCrack}}();}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00047\ \ \ \ \ vector<vector<Case>>\ \mbox{\hyperlink{class_board_a2e0d960143922667487bf5be7d97249b}{grid}};\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_board_aedef7105f0accc0949b601afa97e9678}{size}};\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_board_ac4e962ed64e9f41e7c13d728c91e2fd1}{nbPlayer}};\ }
+\DoxyCodeLine{00050\ \};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//LAYING\_GRASS\_BOARD\_H}}
 
 \end{DoxyCode}

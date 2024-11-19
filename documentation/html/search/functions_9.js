@@ -1,12 +1,8 @@
 var searchData=
 [
-  ['setbiggestsquare_0',['setBiggestSquare',['../class_player.html#a0f89ac7a8eb888d43dd3132886ab6541',1,'Player']]],
-  ['setcaseplayer_1',['setCasePlayer',['../class_case.html#a1e1716d3da72b1797837269b91dc6375',1,'Case']]],
-  ['setcolor_2',['setColor',['../class_player.html#a7c100bf7077065c155187ccbc6cdc11e',1,'Player']]],
-  ['setnbgrassplaced_3',['setNbGrassPlaced',['../class_player.html#a8223b68b380039831041e75d02cce597',1,'Player']]],
-  ['setstartingtile_4',['setStartingTile',['../class_player.html#a1104b881a1cbdaf897be11233625b714',1,'Player']]],
-  ['settype_5',['setType',['../class_case.html#a4a3bef1060b87e62adecd4f3452e5cc3',1,'Case']]],
-  ['setx_6',['setX',['../class_case.html#a4aadab13b51935e3019d928cff836ef3',1,'Case']]],
-  ['sety_7',['setY',['../class_case.html#a1b52cc6d2d3fe04e5ac8e9666c8345d5',1,'Case']]],
-  ['showmenu_8',['showMenu',['../class_display_menu.html#aec026e61e50f11ff665ba844de1e19ee',1,'DisplayMenu']]]
+  ['removechar_0',['removeChar',['../class_player.html#a182a8bcac51cc3a479c04be6368f9b02',1,'Player']]],
+  ['removetilecoupons_1',['removeTileCoupons',['../class_player.html#abe9647d805e6e956bc270bb59dec48ef',1,'Player']]],
+  ['robbery_2',['robbery',['../class_bonus.html#a29f7f80e8400e540725e772210edbc7a',1,'Bonus']]],
+  ['rotatetilepattern_3',['rotateTilePattern',['../class_tiles.html#ac3b82f7044ec2f6565220c2381f9061c',1,'Tiles']]],
+  ['run_4',['run',['../classdisplay_win.html#a9b3aaa0702c60d24d3e1da9905d937ad',1,'displayWin::run()'],['../class_game.html#a1ab78f5ed0d5ea879157357cf2fb2afa',1,'Game::run()']]]
 ];
