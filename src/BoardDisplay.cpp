@@ -154,11 +154,11 @@ void BoardDisplay::display(int startX, int startY, int size, int sizeCell, int s
         colorTextRepair = listPlayers[currentPlayer].getColor();
     }
 
-    DrawText(("COUPON D'ECHANGE : " + to_string(listPlayers[currentPlayer].getTileCoupons())).c_str(), startX + 645, startY - 60, 30, BLACK);
-    DrawRectangle(startX + 725, startY - 25, 195, 60, Fade(BLACK, 0.5f));
-    DrawText("ECHANGER", startX + 740, startY - 10, 30, colorTextEchange);
+    DrawText(("COUPON D'ECHANGE : " + to_string(listPlayers[currentPlayer].getTileCoupons())).c_str(), startX + 545, startY - 60, 30, WHITE);
+    DrawRectangle(startX + 625, startY - 25, 195, 60, Fade(BLACK, 0.5f));
+    DrawText("ECHANGER", startX + 640, startY - 10, 30, colorTextEchange);
     if (board.hasCrack()) {
-        DrawRectangle(startX + 733, startY + 45, 180, 60, Fade(BLACK, 0.5f));
-        DrawText("REPARER", startX + 753, startY + 60, 30, colorTextRepair);
+        DrawRectangle(startX + 633, startY + 45, 180, 60, Fade(BLACK, 0.5f));
+        DrawText("REPARER", startX + 653, startY + 60, 30, colorTextRepair);
     }
 }

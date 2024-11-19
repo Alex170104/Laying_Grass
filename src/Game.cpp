@@ -223,7 +223,7 @@ void Game::run() {
                         }
                     }
                 }
-                if (mousePosition.x > startX + 725 && mousePosition.x < startX + 920 &&
+                if (mousePosition.x > startX + 625 && mousePosition.x < startX + 820 &&
                     mousePosition.y > startY - 25 && mousePosition.y < startY + 35 && listPlayers[currentPlayer].getTileCoupons() > 0) {
                     if (listPlayers[currentPlayer].getNbTilesPlaced() < 10) {
                         clickTileExchange = !clickTileExchange;
@@ -234,7 +234,7 @@ void Game::run() {
                         isPreviewing = true;
                     }
                 }
-                if (mousePosition.x > startX + 733 && mousePosition.x < startX + 913 &&
+                if (mousePosition.x > startX + 633 && mousePosition.x < startX + 813 &&
                     mousePosition.y > startY + 45 && mousePosition.y < startY + 105 && board.hasCrack() && listPlayers[currentPlayer].getTileCoupons() > 0) {
                     clickRepair = !clickRepair;
                     clickTileExchange = false;
