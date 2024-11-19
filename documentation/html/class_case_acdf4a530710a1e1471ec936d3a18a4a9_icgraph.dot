@@ -1,0 +1,27 @@
+digraph "Case::getCasePlayer"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="Case::getCasePlayer",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Obtient le joueur associé à la case."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="Game::biggerSquare",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_game.html#a0580ca62e59819ff3acec84f639a589d",tooltip="Calcule la plus grande zone carrée pour un joueur."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="BoardDisplay::display",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_board_display.html#a93fc42cd60bb87aec1bb819821c85bfc",tooltip="Affiche le plateau de jeu."];
+  Node3 -> Node4 [id="edge3_Node000003_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="Bonus::popUpBonus",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_bonus.html#a87917872ed2a147e237d2a3e13583771",tooltip="Affiche un pop-up de bonus."];
+  Node4 -> Node5 [id="edge4_Node000004_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="Game::run",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_game.html#a1ab78f5ed0d5ea879157357cf2fb2afa",tooltip="Lance le jeu."];
+  Node3 -> Node6 [id="edge5_Node000003_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="Bonus::popUpTile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_bonus.html#a21729c4f04a95a6482671f7ed05b1b9b",tooltip="Affiche un pop-up de tuile."];
+  Node6 -> Node5 [id="edge6_Node000006_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 -> Node5 [id="edge7_Node000003_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node7 [id="edge8_Node000001_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="Tiles::isValidPosition",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_tiles.html#a029bec43814660e044e3b6977d9d378b",tooltip="Vérifie si la position de la tuile est valide."];
+  Node7 -> Node5 [id="edge9_Node000007_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node8 [id="edge10_Node000001_Node000008",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="Bonus::verifBonus",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_bonus.html#a176f60f9d3ac9d579f43137f275c5ac7",tooltip="Vérifie les bonus sur le plateau."];
+  Node8 -> Node5 [id="edge11_Node000008_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+}

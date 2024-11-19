@@ -1,0 +1,108 @@
+\doxysection{Display\+Menu Class Reference}
+\hypertarget{class_display_menu}{}\label{class_display_menu}\index{DisplayMenu@{DisplayMenu}}
+
+
+Classe pour afficher le menu du jeu.  
+
+
+
+
+{\ttfamily \#include $<$Display\+Menu.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_display_menu_acd63027bb0c1628f725f456d3ea875ac}{Display\+Menu}} (int screen\+Width, int screen\+Height)
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe \doxylink{class_display_menu}{Display\+Menu}. \end{DoxyCompactList}\item 
+\Hypertarget{class_display_menu_a20938c7a68cb8d505bf5cc65bada6ac4}\label{class_display_menu_a20938c7a68cb8d505bf5cc65bada6ac4} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Display\+Menu} ()
+\begin{DoxyCompactList}\small\item\em Destructeur de la classe \doxylink{class_display_menu}{Display\+Menu}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_display_menu_aec026e61e50f11ff665ba844de1e19ee}{show\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Affiche le menu. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_display_menu_af63de179b636875f030de9801e945bb1}{is\+Game\+Start}} ()
+\begin{DoxyCompactList}\small\item\em Vérifie si le jeu a commencé. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_display_menu_a463df7ae2ff444790058ff13109f137e}{get\+Num\+Players}} ()
+\begin{DoxyCompactList}\small\item\em Obtient le nombre de joueurs. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_player}{Player}} $>$ \mbox{\hyperlink{class_display_menu_a4042da55cc2e204acc344bde4b783c33}{get\+List\+Players}} ()
+\begin{DoxyCompactList}\small\item\em Obtient la liste des joueurs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe pour afficher le menu du jeu. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_display_menu_acd63027bb0c1628f725f456d3ea875ac}\label{class_display_menu_acd63027bb0c1628f725f456d3ea875ac} 
+\index{DisplayMenu@{DisplayMenu}!DisplayMenu@{DisplayMenu}}
+\index{DisplayMenu@{DisplayMenu}!DisplayMenu@{DisplayMenu}}
+\doxysubsubsection{\texorpdfstring{DisplayMenu()}{DisplayMenu()}}
+{\footnotesize\ttfamily Display\+Menu\+::\+Display\+Menu (\begin{DoxyParamCaption}\item[{int}]{screen\+Width,  }\item[{int}]{screen\+Height }\end{DoxyParamCaption})}
+
+
+
+Constructeur de la classe \doxylink{class_display_menu}{Display\+Menu}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em screen\+Width} & La largeur de l\textquotesingle{}écran. \\
+\hline
+{\em screen\+Height} & La hauteur de l\textquotesingle{}écran. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_display_menu_a4042da55cc2e204acc344bde4b783c33}\label{class_display_menu_a4042da55cc2e204acc344bde4b783c33} 
+\index{DisplayMenu@{DisplayMenu}!getListPlayers@{getListPlayers}}
+\index{getListPlayers@{getListPlayers}!DisplayMenu@{DisplayMenu}}
+\doxysubsubsection{\texorpdfstring{getListPlayers()}{getListPlayers()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_player}{Player}} $>$ Display\+Menu\+::get\+List\+Players (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtient la liste des joueurs. 
+
+\begin{DoxyReturn}{Returns}
+La liste des joueurs. 
+\end{DoxyReturn}
+\Hypertarget{class_display_menu_a463df7ae2ff444790058ff13109f137e}\label{class_display_menu_a463df7ae2ff444790058ff13109f137e} 
+\index{DisplayMenu@{DisplayMenu}!getNumPlayers@{getNumPlayers}}
+\index{getNumPlayers@{getNumPlayers}!DisplayMenu@{DisplayMenu}}
+\doxysubsubsection{\texorpdfstring{getNumPlayers()}{getNumPlayers()}}
+{\footnotesize\ttfamily int Display\+Menu\+::get\+Num\+Players (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtient le nombre de joueurs. 
+
+\begin{DoxyReturn}{Returns}
+Le nombre de joueurs. 
+\end{DoxyReturn}
+\Hypertarget{class_display_menu_af63de179b636875f030de9801e945bb1}\label{class_display_menu_af63de179b636875f030de9801e945bb1} 
+\index{DisplayMenu@{DisplayMenu}!isGameStart@{isGameStart}}
+\index{isGameStart@{isGameStart}!DisplayMenu@{DisplayMenu}}
+\doxysubsubsection{\texorpdfstring{isGameStart()}{isGameStart()}}
+{\footnotesize\ttfamily bool Display\+Menu\+::is\+Game\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Vérifie si le jeu a commencé. 
+
+\begin{DoxyReturn}{Returns}
+true si le jeu a commencé, false sinon. 
+\end{DoxyReturn}
+\Hypertarget{class_display_menu_aec026e61e50f11ff665ba844de1e19ee}\label{class_display_menu_aec026e61e50f11ff665ba844de1e19ee} 
+\index{DisplayMenu@{DisplayMenu}!showMenu@{showMenu}}
+\index{showMenu@{showMenu}!DisplayMenu@{DisplayMenu}}
+\doxysubsubsection{\texorpdfstring{showMenu()}{showMenu()}}
+{\footnotesize\ttfamily void Display\+Menu\+::show\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Affiche le menu. 
+
+Affiche le menu principal. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+header/Display\+Menu.\+h\item 
+src/Display\+Menu.\+cpp\end{DoxyCompactItemize}

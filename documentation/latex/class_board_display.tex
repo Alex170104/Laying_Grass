@@ -1,0 +1,100 @@
+\doxysection{Board\+Display Class Reference}
+\hypertarget{class_board_display}{}\label{class_board_display}\index{BoardDisplay@{BoardDisplay}}
+
+
+Classe pour afficher le plateau de jeu.  
+
+
+
+
+{\ttfamily \#include $<$Board\+Display.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_board_display_a9a24e996ccbdf1244e07129fb031a5f0}{Board\+Display}} (\mbox{\hyperlink{class_board}{Board}} \&board, int size\+Cell)
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe \doxylink{class_board_display}{Board\+Display}. \end{DoxyCompactList}\item 
+\Hypertarget{class_board_display_a76fe9ee48a47df1526350885d002f9f3}\label{class_board_display_a76fe9ee48a47df1526350885d002f9f3} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Board\+Display} ()
+\begin{DoxyCompactList}\small\item\em Destructeur de la classe \doxylink{class_board_display}{Board\+Display}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_board_display_a93fc42cd60bb87aec1bb819821c85bfc}{display}} (int startX, int startY, int size, int size\+Cell, int size\+Cell\+Preview, int preview\+Size, int preview\+Padding, int padding, bool first\+Turn, const vector$<$ vector$<$ vector$<$ vector$<$ int $>$ $>$ $>$ $>$ \&player\+Tiles, int current\+Player, const vector$<$ vector$<$ int $>$ $>$ \&selected\+Tile, vector$<$ \mbox{\hyperlink{class_player}{Player}} $>$ list\+Players, bool click\+Tile\+Exchange, bool click\+Repair)
+\begin{DoxyCompactList}\small\item\em Affiche le plateau de jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe pour afficher le plateau de jeu. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_board_display_a9a24e996ccbdf1244e07129fb031a5f0}\label{class_board_display_a9a24e996ccbdf1244e07129fb031a5f0} 
+\index{BoardDisplay@{BoardDisplay}!BoardDisplay@{BoardDisplay}}
+\index{BoardDisplay@{BoardDisplay}!BoardDisplay@{BoardDisplay}}
+\doxysubsubsection{\texorpdfstring{BoardDisplay()}{BoardDisplay()}}
+{\footnotesize\ttfamily Board\+Display\+::\+Board\+Display (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_board}{Board}} \&}]{board,  }\item[{int}]{size\+Cell }\end{DoxyParamCaption})}
+
+
+
+Constructeur de la classe \doxylink{class_board_display}{Board\+Display}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em board} & Le plateau de jeu. \\
+\hline
+{\em size\+Cell} & La taille de la cellule. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_board_display_a93fc42cd60bb87aec1bb819821c85bfc}\label{class_board_display_a93fc42cd60bb87aec1bb819821c85bfc} 
+\index{BoardDisplay@{BoardDisplay}!display@{display}}
+\index{display@{display}!BoardDisplay@{BoardDisplay}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily void Board\+Display\+::display (\begin{DoxyParamCaption}\item[{int}]{startX,  }\item[{int}]{startY,  }\item[{int}]{size,  }\item[{int}]{size\+Cell,  }\item[{int}]{size\+Cell\+Preview,  }\item[{int}]{preview\+Size,  }\item[{int}]{preview\+Padding,  }\item[{int}]{padding,  }\item[{bool}]{first\+Turn,  }\item[{const vector$<$ vector$<$ vector$<$ vector$<$ int $>$ $>$ $>$ $>$ \&}]{player\+Tiles,  }\item[{int}]{current\+Player,  }\item[{const vector$<$ vector$<$ int $>$ $>$ \&}]{selected\+Tile,  }\item[{vector$<$ \mbox{\hyperlink{class_player}{Player}} $>$}]{list\+Players,  }\item[{bool}]{click\+Tile\+Exchange,  }\item[{bool}]{click\+Repair }\end{DoxyParamCaption})}
+
+
+
+Affiche le plateau de jeu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em startX} & La coordonnée x de départ. \\
+\hline
+{\em startY} & La coordonnée y de départ. \\
+\hline
+{\em size} & La taille du plateau. \\
+\hline
+{\em size\+Cell} & La taille de la cellule. \\
+\hline
+{\em size\+Cell\+Preview} & La taille de la cellule en aperçu. \\
+\hline
+{\em preview\+Size} & La taille de l\textquotesingle{}aperçu. \\
+\hline
+{\em preview\+Padding} & Le padding de l\textquotesingle{}aperçu. \\
+\hline
+{\em padding} & Le padding. \\
+\hline
+{\em first\+Turn} & Indique si c\textquotesingle{}est le premier tour. \\
+\hline
+{\em player\+Tiles} & Les tuiles des joueurs. \\
+\hline
+{\em current\+Player} & Le joueur actuel. \\
+\hline
+{\em selected\+Tile} & La tuile sélectionnée. \\
+\hline
+{\em list\+Players} & La liste des joueurs. \\
+\hline
+{\em click\+Tile\+Exchange} & Indique si l\textquotesingle{}échange de tuiles est cliqué. \\
+\hline
+{\em click\+Repair} & Indique si la réparation est cliquée. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 0
+Here is the caller graph for this function\+:
+% FIG 1
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+header/Board\+Display.\+h\item 
+src/Board\+Display.\+cpp\end{DoxyCompactItemize}

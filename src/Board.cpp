@@ -1,6 +1,7 @@
-#include "../header/Board.h"
 #include <iostream>
 #include <random>
+
+#include "../header/Board.h"
 
 using namespace std;
 

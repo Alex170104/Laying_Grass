@@ -15,14 +15,17 @@
 
 ## Prérequis
 
-- C++20 ou supérieur
-- Raylib 4.2.0 ou version ultérieure
-- CMake pour la compilation (optionnel)
-  
+- C++20
+- Raylib 4.2.0
+- CMake pour la compilation
 ## Installation
 
 1. **Clone le repository :**
    ```bash
    git clone https://github.com/Alex170104/Laying_Grass.git
-   cd laying-grass-game
-   
+
+## Lien <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Icon" style="height: 30px;">
+
+[LAYING GRASS Game -- GitHub](https://github.com/Alex170104/Laying_Grass)
+
+[Mme Michu -- pdp](img/mmeMichu.jpg)

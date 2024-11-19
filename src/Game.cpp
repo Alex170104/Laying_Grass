@@ -1,9 +1,10 @@
+#include <iostream>
+#include <random>
+
 #include "../header/Game.h"
 #include "raylib.h"
 #include "../header/Tiles.h"
 #include "../header/displayWin.h"
-#include <iostream>
-#include <random>
 #include "../header/Bonus.h"
 
 using namespace std;
